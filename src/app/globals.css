@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-inter: 'Inter', system-ui, sans-serif;
+    --font-playfair: 'Playfair Display', Georgia, serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-brand-green font-sans antialiased;
+  }
+
+  h1, h2, h3 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-brand-green text-white px-6 py-3 rounded-md font-semibold text-sm tracking-wide hover:bg-brand-mid transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 border-2 border-brand-green text-brand-green px-6 py-3 rounded-md font-semibold text-sm tracking-wide hover:bg-brand-pale transition-colors duration-200;
+  }
+
+  .btn-whatsapp {
+    @apply inline-flex items-center gap-2 bg-[#25D366] text-white px-6 py-3 rounded-md font-semibold text-sm hover:bg-[#1ebe5d] transition-colors duration-200;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center gap-2 bg-brand-gold text-white px-6 py-3 rounded-md font-semibold text-sm hover:opacity-90 transition-opacity duration-200;
+  }
+
+  .section-heading {
+    @apply font-display text-3xl md:text-4xl font-bold text-brand-green leading-tight;
+  }
+
+  .section-subheading {
+    @apply text-brand-mid text-lg mt-3 leading-relaxed;
+  }
+
+  .card {
+    @apply bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200;
+  }
+
+  .container-site {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .badge {
+    @apply inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wide;
+  }
+}
