@@ -1,51 +1,114 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { Menu, X, ChevronDown, Phone } from 'lucide-react';
 
-const NAV_ITEMS = [
+const NAV = [
   {
-    label: 'Shop',
-    href: '#',
-    children: [
-      { label: 'Boba Innovations', href: '/collections/boba-innovations', desc: 'Tapioca pearls, popping boba & bases' },
-      { label: 'Tea Premixes', href: '/collections/tea-premixes', desc: 'CTC, Orthodox & specialty blends' },
-      { label: 'Syrups & Flavours', href: '/collections/syrups-flavours', desc: 'Fruit, floral & classic syrups' },
-      { label: 'Silky Mix Bases', href: '/collections/silky-mix', desc: 'Hot & cold beverage bases' },
-      { label: 'Toppings & Jellies', href: '/collections/toppings', desc: 'Nata de coco, konjac & more' },
-      { label: 'Beverage Kits', href: '/collections/kits', desc: 'Ready-to-launch starter packs' },
-    ],
-  },
-  {
-    label: 'Recipes',
-    href: '/recipes',
-    children: [
-      { label: 'Boba Drinks', href: '/recipes?category=boba', desc: 'Classic & fusion boba' },
-      { label: 'Iced Teas', href: '/recipes?category=iced-tea', desc: 'Cold brew & fruit teas' },
-      { label: 'Hot Beverages', href: '/recipes?category=hot', desc: 'Chai, matcha & more' },
-      { label: 'Frappes & Shakes', href: '/recipes?category=frappe', desc: 'Blended drink formulas' },
-      { label: 'Desserts & Cakes', href: '/recipes?category=dessert', desc: 'Boba cheesecakes & more' },
+    label: 'Products',
+    columns: [
+      {
+        heading: 'Premixes',
+        items: [
+          { label: 'Milk Tea Premixes',  href: '/collections/milk-tea-premixes' },
+          { label: 'Fruit Tea Premixes', href: '/collections/fruit-tea-premixes' },
+          { label: 'Ice Tea Premixes',   href: '/collections/ice-tea-premixes' },
+        ],
+      },
+      {
+        heading: 'Boba & Toppings',
+        items: [
+          { label: 'Popping Boba',        href: '/collections/popping-boba' },
+          { label: 'Tapioca Pearls',      href: '/collections/tapioca-pearls' },
+          { label: 'Nata de Coco',        href: '/collections/nata-de-coco' },
+          { label: 'Konjac Pearls',       href: '/collections/konjac-pearls' },
+        ],
+      },
+      {
+        heading: 'Syrups & Bases',
+        items: [
+          { label: 'Syrups & Concentrates', href: '/collections/syrups-concentrates' },
+          { label: 'Tea Concentrates',      href: '/collections/tea-concentrates' },
+          { label: 'Silky Mix Bases',       href: '/collections/silky-mix' },
+        ],
+      },
+      {
+        heading: 'Specialty',
+        items: [
+          { label: 'Sponge Cake Base Mixes',  href: '/collections/sponge-cake-mixes' },
+          { label: 'Industrial Ingredients',  href: '/collections/industrial' },
+        ],
+        cta: { label: 'View All Products →', href: '/collections/all' },
+      },
     ],
   },
   {
     label: 'Solutions',
-    href: '#',
-    children: [
-      { label: 'Menu Plug-In', href: '/solutions/menu-plugin', desc: 'Launch a boba menu in 7 days' },
-      { label: 'Cloud Kitchen Pack', href: '/solutions/cloud-kitchen', desc: 'Delivery-optimised beverage kits' },
-      { label: 'QSR & Café Setup', href: '/solutions/cafe-setup', desc: 'Full bar setup & training' },
-      { label: 'Distributor Program', href: '/solutions/distributor', desc: 'Become a regional partner' },
-      { label: 'Export Enquiry', href: '/solutions/export', desc: 'International B2B supply' },
+    columns: [
+      {
+        heading: 'By Business Type',
+        items: [
+          { label: 'For Cafés & Tea Bars',    href: '/solutions/cafe-setup',   desc: 'Full bar setup, menu & training' },
+          { label: 'For QSR Chains',           href: '/solutions/qsr',          desc: 'Multi-outlet consistency & supply' },
+          { label: 'For Cloud Kitchens',       href: '/solutions/cloud-kitchen',desc: 'Delivery-stable beverages & kits' },
+          { label: 'For Distributors',         href: '/solutions/distributor',  desc: 'Regional partner program' },
+          { label: 'For Industrial Customers', href: '/solutions/industrial',   desc: 'Bulk 20kg supply & custom formulation' },
+          { label: 'Export Enquiry',           href: '/solutions/export',       desc: 'International B2B supply' },
+        ],
+      },
+      {
+        heading: 'Packages',
+        items: [
+          { label: 'Menu Plug-In Kit',       href: '/solutions/menu-plugin',   desc: 'Launch a boba menu in 7 days' },
+          { label: 'Branded Operator Program', href: '/operator-program',     desc: 'Franchise-alternative model' },
+          { label: 'Business Packages',      href: '/packages',               desc: 'Starter, Growth & Pro kits' },
+        ],
+      },
     ],
   },
   {
-    label: 'Packages',
-    href: '/packages',
+    label: 'Recipes',
+    columns: [
+      {
+        heading: 'By Drink Type',
+        items: [
+          { label: 'Milk Teas',          href: '/recipes?category=milk-tea' },
+          { label: 'Fruit Coolers',      href: '/recipes?category=fruit-cooler' },
+          { label: 'Signature Fusions',  href: '/recipes?category=signature' },
+          { label: 'Iced Teas',          href: '/recipes?category=iced-tea' },
+          { label: 'Hot Beverages',      href: '/recipes?category=hot' },
+        ],
+      },
+      {
+        heading: 'By Series',
+        items: [
+          { label: 'Premium Series',    href: '/recipes?series=premium' },
+          { label: 'Seasonal Specials', href: '/recipes?series=seasonal' },
+          { label: 'Wellness Range',    href: '/recipes?series=wellness' },
+          { label: 'Desserts & Cakes',  href: '/recipes?series=dessert' },
+        ],
+        cta: { label: 'All Recipes →', href: '/recipes' },
+      },
+    ],
   },
   {
-    label: 'Why Tea Planet',
-    href: '/about',
+    label: 'Signature Drinks',
+    href: '/signature-drinks',
+  },
+  {
+    label: 'About',
+    columns: [
+      {
+        heading: 'Company',
+        items: [
+          { label: 'Our Story',                href: '/about' },
+          { label: 'Why Tea Planet',           href: '/about#why' },
+          { label: 'Certifications',           href: '/about#certifications' },
+          { label: 'Branded Operator Program', href: '/operator-program' },
+        ],
+      },
+    ],
   },
   {
     label: 'Contact',
@@ -53,66 +116,125 @@ const NAV_ITEMS = [
   },
 ];
 
+type NavItem = typeof NAV[number];
+
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [active, setActive] = useState<string | null>(null);
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const openDropdown = (label: string) => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setActive(label);
+  };
+  const closeDropdown = () => {
+    timeoutRef.current = setTimeout(() => setActive(null), 120);
+  };
+
+  const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '919876543210';
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
-      {/* Top bar */}
-      <div className="bg-brand-green text-white text-xs py-1.5">
-        <div className="container-site flex justify-between items-center">
-          <span>🇮🇳 Made in India &nbsp;|&nbsp; FSSC 22000 Certified &nbsp;|&nbsp; 1000+ Cafes & QSRs Served</span>
+    <header className="sticky top-0 z-50 bg-white border-b border-borderLight shadow-subtle">
+      {/* Top announcement bar */}
+      <div className="bg-brand-green text-white">
+        <div className="container-site flex items-center justify-between py-1.5 text-xs">
+          <span className="hidden sm:block">
+            🇮🇳  Made in India | FSSC 22000 Certified | Cost per cup from ₹19 | 100+ Partners
+          </span>
+          <span className="sm:hidden">FSSC 22000 · Made in India · ₹19/cup</span>
           <a
-            href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '919876543210'}?text=Hi%2C%20I%27d%20like%20a%20bulk%20enquiry`}
-            className="flex items-center gap-1 hover:text-brand-amber transition-colors"
-            target="_blank"
-            rel="noreferrer"
+            href={`https://wa.me/${waNumber}?text=${encodeURIComponent('Hi Tea Planet! I have a bulk enquiry.')}`}
+            target="_blank" rel="noreferrer"
+            className="flex items-center gap-1.5 font-medium hover:text-brand-amber transition-colors"
           >
-            <Phone size={12} />
-            Bulk Enquiry
+            <Phone size={11} /> Bulk Enquiry
           </a>
         </div>
       </div>
 
       {/* Main nav */}
-      <nav className="container-site flex items-center justify-between h-16">
+      <nav className="container-site flex items-center justify-between h-[64px]">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <span className="font-display text-2xl font-bold text-brand-green tracking-tight">
+        <Link href="/" className="flex items-center gap-2 shrink-0">
+          <span className="font-display text-xl font-bold text-brand-green tracking-tight leading-none">
             The Tea Planet
           </span>
         </Link>
 
-        {/* Desktop nav */}
-        <ul className="hidden lg:flex items-center gap-1">
-          {NAV_ITEMS.map((item) => (
+        {/* Desktop links */}
+        <ul className="hidden lg:flex items-center">
+          {NAV.map((item) => (
             <li
               key={item.label}
               className="relative"
-              onMouseEnter={() => item.children && setActiveDropdown(item.label)}
-              onMouseLeave={() => setActiveDropdown(null)}
+              onMouseEnter={() => item.columns && openDropdown(item.label)}
+              onMouseLeave={() => item.columns && closeDropdown()}
             >
-              <Link
-                href={item.href}
-                className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-gray-700 hover:text-brand-green rounded-md hover:bg-brand-pale transition-colors"
-              >
-                {item.label}
-                {item.children && <ChevronDown size={14} />}
-              </Link>
+              {'href' in item && item.href ? (
+                <Link
+                  href={item.href}
+                  className="flex items-center gap-1 px-3.5 py-2 text-sm font-medium text-textPrimary hover:text-brand-green rounded-[8px] hover:bg-background transition-colors"
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <button
+                  className={`flex items-center gap-1 px-3.5 py-2 text-sm font-medium rounded-[8px] transition-colors ${
+                    active === item.label
+                      ? 'text-brand-green bg-background'
+                      : 'text-textPrimary hover:text-brand-green hover:bg-background'
+                  }`}
+                >
+                  {item.label}
+                  <ChevronDown size={13} className={`transition-transform ${active === item.label ? 'rotate-180' : ''}`} />
+                </button>
+              )}
 
-              {item.children && activeDropdown === item.label && (
-                <div className="absolute top-full left-0 mt-0 w-72 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50">
-                  {item.children.map((child) => (
-                    <Link
-                      key={child.label}
-                      href={child.href}
-                      className="flex flex-col px-4 py-3 hover:bg-brand-pale transition-colors"
-                    >
-                      <span className="text-sm font-semibold text-brand-green">{child.label}</span>
-                      <span className="text-xs text-gray-500 mt-0.5">{child.desc}</span>
-                    </Link>
-                  ))}
+              {/* Mega dropdown */}
+              {item.columns && active === item.label && (
+                <div
+                  className="absolute top-full left-0 mt-0 bg-white shadow-elevated border border-borderLight rounded-[8px] py-6 z-50 min-w-[480px]"
+                  onMouseEnter={() => openDropdown(item.label)}
+                  onMouseLeave={closeDropdown}
+                >
+                  <div className={`grid gap-6 px-6 ${
+                    item.columns.length >= 3 ? 'grid-cols-3' :
+                    item.columns.length === 2 ? 'grid-cols-2' : 'grid-cols-1'
+                  }`}>
+                    {item.columns.map((col) => (
+                      <div key={col.heading}>
+                        <p className="text-xs font-semibold uppercase tracking-widest text-textSecondary mb-3 pb-2 border-b border-borderLight">
+                          {col.heading}
+                        </p>
+                        <ul className="space-y-1">
+                          {col.items.map((child) => (
+                            <li key={child.label}>
+                              <Link
+                                href={child.href}
+                                className="block py-1.5 text-sm text-textPrimary hover:text-brand-green transition-colors"
+                                onClick={() => setActive(null)}
+                              >
+                                {child.label}
+                                {'desc' in child && child.desc && (
+                                  <span className="block text-xs text-textSecondary mt-0.5">{child.desc}</span>
+                                )}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                        {'cta' in col && col.cta && (
+                          <Link
+                            href={col.cta.href}
+                            className="mt-3 inline-block text-xs font-semibold text-brand-mid hover:text-brand-green transition-colors"
+                            onClick={() => setActive(null)}
+                          >
+                            {col.cta.label}
+                          </Link>
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
             </li>
@@ -120,26 +242,22 @@ export default function Navbar() {
         </ul>
 
         {/* Desktop CTAs */}
-        <div className="hidden lg:flex items-center gap-3">
-          <Link
-            href="/contact#bulk-enquiry"
-            className="btn-secondary text-xs px-4 py-2"
-          >
+        <div className="hidden lg:flex items-center gap-2">
+          <Link href="/contact#bulk-enquiry" className="btn-secondary text-sm px-4 py-2">
             Bulk Enquiry
           </Link>
           <a
-            href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '919876543210'}?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20products`}
-            target="_blank"
-            rel="noreferrer"
-            className="btn-whatsapp text-xs px-4 py-2"
+            href={`https://wa.me/${waNumber}?text=${encodeURIComponent('Hi Tea Planet! I want to know about your products and pricing.')}`}
+            target="_blank" rel="noreferrer"
+            className="btn-whatsapp text-sm px-4 py-2"
           >
-            WhatsApp Us
+            WhatsApp
           </a>
         </div>
 
-        {/* Mobile hamburger */}
+        {/* Mobile toggle */}
         <button
-          className="lg:hidden p-2 rounded-md text-brand-green"
+          className="lg:hidden p-2 rounded-[8px] text-brand-green hover:bg-background min-w-[44px] min-h-[44px] flex items-center justify-center"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
@@ -149,43 +267,63 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="lg:hidden border-t border-gray-100 bg-white pb-4">
-          {NAV_ITEMS.map((item) => (
+        <div className="lg:hidden border-t border-borderLight bg-white max-h-[80vh] overflow-y-auto">
+          {NAV.map((item: NavItem) => (
             <div key={item.label}>
-              <Link
-                href={item.href}
-                className="block px-6 py-3 text-sm font-semibold text-brand-green hover:bg-brand-pale"
-                onClick={() => setMobileOpen(false)}
-              >
-                {item.label}
-              </Link>
-              {item.children && (
-                <div className="bg-gray-50">
-                  {item.children.map((child) => (
-                    <Link
-                      key={child.label}
-                      href={child.href}
-                      className="block px-10 py-2 text-sm text-gray-600 hover:text-brand-green"
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      {child.label}
-                    </Link>
-                  ))}
-                </div>
+              {'href' in item && item.href ? (
+                <Link
+                  href={item.href}
+                  className="block px-6 py-3.5 text-sm font-semibold text-textPrimary border-b border-borderLight hover:bg-background"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <>
+                  <button
+                    className="w-full flex items-center justify-between px-6 py-3.5 text-sm font-semibold text-textPrimary border-b border-borderLight hover:bg-background min-h-[44px]"
+                    onClick={() => setMobileExpanded(mobileExpanded === item.label ? null : item.label)}
+                  >
+                    {item.label}
+                    <ChevronDown size={14} className={`transition-transform ${mobileExpanded === item.label ? 'rotate-180' : ''}`} />
+                  </button>
+                  {mobileExpanded === item.label && item.columns && (
+                    <div className="bg-background px-6 pb-3">
+                      {item.columns.map((col) => (
+                        <div key={col.heading} className="pt-3">
+                          <p className="text-[10px] font-semibold uppercase tracking-widest text-textSecondary mb-2">{col.heading}</p>
+                          {col.items.map((child) => (
+                            <Link
+                              key={child.label}
+                              href={child.href}
+                              className="block py-2 text-sm text-textPrimary hover:text-brand-green"
+                              onClick={() => setMobileOpen(false)}
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </>
               )}
             </div>
           ))}
-          <div className="flex gap-3 px-6 pt-4">
+          <div className="flex gap-3 p-4 border-t border-borderLight">
             <a
-              href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '919876543210'}?text=Hi%2C%20I%27d%20like%20a%20bulk%20enquiry`}
-              target="_blank"
-              rel="noreferrer"
+              href={`https://wa.me/${waNumber}?text=${encodeURIComponent('Hi Tea Planet! Bulk enquiry.')}`}
+              target="_blank" rel="noreferrer"
               className="btn-whatsapp flex-1 justify-center text-sm"
             >
               WhatsApp
             </a>
-            <Link href="/contact#bulk-enquiry" className="btn-secondary flex-1 justify-center text-sm" onClick={() => setMobileOpen(false)}>
-              Bulk Enquiry
+            <Link
+              href="/contact#bulk-enquiry"
+              className="btn-secondary flex-1 justify-center text-sm"
+              onClick={() => setMobileOpen(false)}
+            >
+              Enquiry
             </Link>
           </div>
         </div>
