@@ -1,60 +1,61 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 
-const TRUST_PILLS = [
-  'FSSC 22000 Certified',
-  'Made in India',
-  '1000+ Cafes & QSRs',
-  'Pan-India Delivery',
+const CDN = 'https://theteaplanet.com/cdn/shop/files';
+
+const STATS = [
+  { number: '100+',   label: 'Partner Businesses', icon: '🤝' },
+  { number: '₹19',     label: 'Cost per cup from',  icon: '💰' },
+  { number: '15+',    label: 'Years experience',    icon: '🏅' },
+  { number: '1 week', label: 'Dispatch time',       icon: '🚚' },
 ];
 
 export default function HeroSection() {
+  const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '919876543210';
   return (
     <section className="relative bg-brand-green overflow-hidden">
-      {/* Background texture */}
       <div className="absolute inset-0 opacity-10"
-           style={{ backgroundImage: 'radial-gradient(circle at 20% 50%, #52B788 0%, transparent 50%), radial-gradient(circle at 80% 20%, #D4A017 0%, transparent 40%)' }} />
+           style={{ backgroundImage: 'radial-gradient(circle at 15% 60%, #52B788 0%, transparent 50%), radial-gradient(circle at 85% 10%, #D4A017 0%, transparent 40%)' }} />
 
-      <div className="container-site relative py-20 md:py-28 lg:py-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left: Copy */}
-          <div className="animate-fade-in">
-            <div className="inline-flex items-center gap-2 bg-brand-amber/20 text-brand-amber px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
+      <div className="container-site relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch min-h-[560px]">
+          {/* Left — Copy */}
+          <div className="flex flex-col justify-center py-16 lg:py-20 lg:pr-12">
+            <div className="inline-flex items-center gap-2 bg-brand-amber/20 text-brand-amber px-4 py-1.5 rounded-full text-sm font-semibold mb-6 self-start">
               <span className="w-2 h-2 rounded-full bg-brand-amber animate-pulse" />
-              B2B Beverage Manufacturer
+              B2B Beverage Manufacturer · FSSC 22000
             </div>
 
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-              Launch Your
-              <span className="text-brand-amber"> Boba Menu</span>
-              <br />in 7 Days
+            <h1 className="font-display text-white leading-[1.1] mb-4">
+              Imported When Necessary.
+              <br />
+              <span className="text-brand-amber">Indian-Made</span> When You Want
+              <br />
+              Speed, Support &amp; Scale.
             </h1>
 
-            <p className="text-brand-pale text-lg md:text-xl leading-relaxed mb-8 max-w-xl">
-              India&apos;s leading manufacturer of Boba Ingredients, Tea Premixes &amp; Beverage Bases.
-              Cost-per-cup from ₹12. No minimum order for first trial.
+            <p className="text-brand-pale text-lg leading-relaxed mb-6 max-w-lg">
+              Premium Boba Ingredients, Tea Premixes &amp; Syrups manufactured in India.
+              {' '}<strong className="text-white">₹19–20 per cup</strong> vs ₹22–25 imported.
+              Dispatch in 1 week vs 4–8 weeks.
             </p>
 
-            {/* Trust pills */}
-            <div className="flex flex-wrap gap-3 mb-8">
-              {TRUST_PILLS.map((pill) => (
-                <span key={pill} className="flex items-center gap-1.5 bg-white/10 text-white text-xs px-3 py-1.5 rounded-full">
-                  <CheckCircle size={12} className="text-brand-amber" />
-                  {pill}
+            <div className="flex flex-wrap gap-2 mb-8">
+              {['FSSC 22000 Certified', 'Made in India', '15+ Years Experience', '3x Repeat Rate'].map((t) => (
+                <span key={t} className="flex items-center gap-1.5 bg-white/10 text-white text-xs px-3 py-1.5 rounded-full">
+                  <CheckCircle size={11} className="text-brand-amber" /> {t}
                 </span>
               ))}
             </div>
 
-            {/* CTAs */}
-            <div className="flex flex-wrap gap-4">
-              <Link href="/collections/boba-innovations" className="btn-gold">
-                Shop Boba Range
-                <ArrowRight size={16} />
+            <div className="flex flex-wrap gap-3">
+              <Link href="/collections/silky-mix" className="btn-gold">
+                Shop Products <ArrowRight size={15} />
               </Link>
               <a
-                href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '919876543210'}?text=Hi%2C%20I%20want%20to%20launch%20a%20boba%20menu.%20Please%20share%20your%20starter%20kit%20details.`}
-                target="_blank"
-                rel="noreferrer"
+                href={`https://wa.me/${waNumber}?text=${encodeURIComponent('Hi Tea Planet! I want to launch a boba menu. Please share your Menu Plug-In Kit details.')}`}
+                target="_blank" rel="noreferrer"
                 className="btn-whatsapp"
               >
                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
@@ -65,21 +66,40 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right: Stats */}
-          <div className="grid grid-cols-2 gap-4">
-            {[
-              { number: '1000+', label: 'Cafes & QSRs', icon: '☕' },
-              { number: '₹12', label: 'Cost per cup from', icon: '💰' },
-              { number: '100+', label: 'SKUs in catalog', icon: '📦' },
-              { number: '7 days', label: 'Menu launch time', icon: '🚀' },
-            ].map((stat) => (
-              <div key={stat.label} className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-white">
-                <div className="text-3xl mb-2">{stat.icon}</div>
-                <div className="font-display text-3xl font-bold text-brand-amber">{stat.number}</div>
-                <div className="text-brand-pale text-sm mt-1">{stat.label}</div>
-              </div>
-            ))}
+          {/* Right — Hero image + stat overlay */}
+          <div className="relative hidden lg:block">
+            <Image
+              src={`${CDN}/TP_cafe.jpg`}
+              alt="Tea Planet café setup"
+              fill
+              priority
+              className="object-cover object-center"
+              sizes="50vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-l from-transparent to-brand-green/40" />
+
+            {/* Stat cards overlaid on image */}
+            <div className="absolute bottom-6 left-6 right-6 grid grid-cols-2 gap-3">
+              {STATS.map((s) => (
+                <div key={s.label} className="bg-white/90 backdrop-blur-sm rounded-[8px] p-3 text-center">
+                  <div className="text-lg mb-0.5">{s.icon}</div>
+                  <div className="font-display text-xl font-bold text-brand-green">{s.number}</div>
+                  <div className="text-textSecondary text-xs">{s.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
+        </div>
+
+        {/* Mobile stats row */}
+        <div className="lg:hidden grid grid-cols-2 gap-3 pb-8">
+          {STATS.map((s) => (
+            <div key={s.label} className="bg-white/10 rounded-[8px] p-4 text-center">
+              <div className="text-2xl mb-1">{s.icon}</div>
+              <div className="font-display text-2xl font-bold text-brand-amber">{s.number}</div>
+              <div className="text-brand-pale text-xs mt-0.5">{s.label}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
