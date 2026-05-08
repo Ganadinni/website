@@ -1,4 +1,4 @@
-import Link from 'next/image';
+import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import { WA_LINK } from '@/lib/config';

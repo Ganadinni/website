@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { CheckCircle, ArrowRight, MessageCircle, Star } from 'lucide-react';
+import { WA_LINK } from '@/lib/config';
 
 const CDN = 'https://theteaplanet.com/cdn/shop/files';
-const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '918886277713';
 
 const BENEFITS = [
   { icon: '🎨', title: 'Branded Equipment', desc: 'Cups, straws, shakers and packaging with your brand identity — not ours.' },
@@ -57,7 +57,7 @@ export const metadata = {
 };
 
 export default function OperatorProgramPage() {
-  const waUrl = `https://wa.me/${WA}?text=${encodeURIComponent('Hi Tea Planet! I want to learn about the Branded Operator Program. Please share details.')}` ;
+  const waUrl = WA_LINK('Hi Tea Planet! I want to learn about the Branded Operator Program. Please share details.');
 
   return (
     <div className="bg-white">

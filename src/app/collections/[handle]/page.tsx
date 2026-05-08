@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { ChevronRight, ShoppingCart, MessageCircle, Filter } from 'lucide-react';
 import { MOCK_COLLECTIONS, MOCK_PRODUCTS } from '@/lib/mock-data';
 import BulkEnquiryCTA from '@/components/shared/BulkEnquiryCTA';
+import { WA_LINK } from '@/lib/config';
 
 const COLLECTION_META: Record<string, { description: string; education: string; relatedCollections: string[] }> = {
   'boba-innovations': {
@@ -67,7 +68,6 @@ export default async function CollectionPage({ params }: { params: Promise<{ han
   const title = collection?.title ?? handle.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
   const products = collection?.products ?? MOCK_PRODUCTS;
   const meta = COLLECTION_META[handle];
-  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '918886277713';
 
   return (
     <div className="bg-white">
@@ -89,7 +89,7 @@ export default async function CollectionPage({ params }: { params: Promise<{ han
           {meta && <p className="text-gray-600 max-w-2xl leading-relaxed">{meta.description}</p>}
           <div className="flex flex-wrap gap-3 mt-5">
             <a
-              href={`https://wa.me/${number}?text=${encodeURIComponent(`Hi! I'd like bulk pricing for the ${title} range.`)}`}
+              href={WA_LINK(`Hi! I'd like bulk pricing for the ${title} range.`)}
               target="_blank" rel="noreferrer"
               className="btn-whatsapp text-sm"
             >
@@ -113,7 +113,7 @@ export default async function CollectionPage({ params }: { params: Promise<{ han
           <div className="text-center py-20">
             <p className="text-gray-400 text-lg">Products coming soon.</p>
             <a
-              href={`https://wa.me/${number}?text=${encodeURIComponent(`Hi! I'm looking for products in ${title}. Do you have stock?`)}`}
+              href={WA_LINK(`Hi! I'm looking for products in ${title}. Do you have stock?`)}
               target="_blank" rel="noreferrer"
               className="btn-whatsapp mt-4 inline-flex"
             >
@@ -152,7 +152,7 @@ export default async function CollectionPage({ params }: { params: Promise<{ han
                     <ShoppingCart size={13} /> Order
                   </Link>
                   <a
-                    href={`https://wa.me/${number}?text=${encodeURIComponent(`Hi! I want bulk pricing for ${product.title} (SKU: ${product.sku}).`)}`}
+                    href={WA_LINK(`Hi! I want bulk pricing for ${product.title} (SKU: ${product.sku}).`)}
                     target="_blank" rel="noreferrer"
                     className="p-2 rounded-md border-2 border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white transition-colors"
                     title="WhatsApp Bulk Enquiry"

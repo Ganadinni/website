@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Phone, Mail, MapPin, ArrowRight } from 'lucide-react';
+import { WA_LINK } from '@/lib/config';
 
 export default function ContactPage() {
   const [form, setForm] = useState({
@@ -21,8 +22,7 @@ export default function ContactPage() {
       `Quantity: ${form.quantity}`,
       `Message: ${form.message}`,
     ].join('\n');
-    const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '918886277713';
-    window.open(`https://wa.me/${number}?text=${encodeURIComponent(msg)}`, '_blank');
+    window.open(WA_LINK(msg), '_blank');
     setSubmitted(true);
   };
 
@@ -142,7 +142,7 @@ export default function ContactPage() {
               <h3 className="font-semibold mb-2">Prefer WhatsApp?</h3>
               <p className="text-brand-pale text-sm mb-4">Most of our B2B conversations happen on WhatsApp. Fast, personal, and easy to share product photos.</p>
               <a
-                href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '918886277713'}?text=${encodeURIComponent('Hi Tea Planet! I have a B2B enquiry.')}`}
+                href={WA_LINK('Hi Tea Planet! I have a B2B enquiry.')}
                 target="_blank" rel="noreferrer"
                 className="btn-whatsapp w-full justify-center"
               >

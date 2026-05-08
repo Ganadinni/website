@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { CheckCircle, ChevronRight, Clock, ShoppingCart, MessageCircle } from 'lucide-react';
 import { MOCK_PRODUCTS, MOCK_RECIPES } from '@/lib/mock-data';
 import BulkEnquiryCTA from '@/components/shared/BulkEnquiryCTA';
+import { WA_LINK } from '@/lib/config';
 
 export async function generateStaticParams() {
   return MOCK_PRODUCTS.map((p) => ({ handle: p.handle }));
@@ -26,8 +27,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
 
   const relatedRecipes = MOCK_RECIPES.filter((r) => product.relatedRecipes.includes(r.slug));
   const crossSellProducts = MOCK_PRODUCTS.filter((p) => product.crossSell.includes(p.handle));
-  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '918886277713';
-  const waMsg = encodeURIComponent(`Hi! I'm interested in ${product.title} (SKU: ${product.sku}). Please share bulk pricing.`);
+  const waUrl = WA_LINK(`Hi! I'm interested in ${product.title} (SKU: ${product.sku}). Please share bulk pricing.`);
 
   return (
     <div className="bg-white">
@@ -109,7 +109,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
                 <ShoppingCart size={16} /> Add to Cart
               </button>
               <a
-                href={`https://wa.me/${number}?text=${waMsg}`}
+                href={waUrl}
                 target="_blank"
                 rel="noreferrer"
                 className="btn-whatsapp flex-1 justify-center py-3.5"

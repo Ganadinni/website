@@ -5,8 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, MessageCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 import { SIGNATURE_DRINKS } from '@/lib/mock-data';
-
-const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '918886277713';
+import { WA_LINK } from '@/lib/config';
 
 function DrinkCard({ drink, featured = false }: { drink: typeof SIGNATURE_DRINKS.fusion[0]; featured?: boolean }) {
   return (
@@ -95,7 +94,7 @@ function TabCarousel({ drinks }: { drinks: typeof SIGNATURE_DRINKS.fusion }) {
 
 export default function SignatureDrinksPage() {
   const [tab, setTab] = useState<'fusion' | 'coolers'>('fusion');
-  const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Hi Tea Planet! I want to add Signature Drinks to my menu. Please share the full menu plan.')}`;
+  const waUrl = WA_LINK('Hi Tea Planet! I want to add Signature Drinks to my menu. Please share the full menu plan.');
 
   return (
     <div className="bg-white">
