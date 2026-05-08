@@ -48,6 +48,12 @@ export interface ShopifyCollection {
   products: { nodes: ShopifyProduct[] };
 }
 
+export interface PricingTier {
+  qty: string;
+  price: number;   // 0 = contact for quote
+  badge?: string;
+}
+
 export interface MockProduct {
   id: string;
   handle: string;
@@ -72,6 +78,10 @@ export interface MockProduct {
   faq: { q: string; a: string }[];
   relatedRecipes: string[];
   crossSell: string[];
+  // B2B pricing & calculator fields
+  pricingTiers?: PricingTier[];
+  dosagePerCup?: number;        // grams per standard cold cup
+  suggestedSellPrice?: number;  // INR per cup (market rate)
 }
 
 export interface MockRecipe {
