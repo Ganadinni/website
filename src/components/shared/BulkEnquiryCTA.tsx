@@ -9,7 +9,7 @@ interface BulkEnquiryCTAProps {
 }
 
 export default function BulkEnquiryCTA({ productName, sku, variant = 'inline' }: BulkEnquiryCTAProps) {
-  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '919876543210';
+  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '918886277713';
   const baseMsg = productName
     ? `Hi Tea Planet! I'd like bulk pricing for ${productName}${sku ? ` (SKU: ${sku})` : ''}. Please share your B2B price sheet.`
     : `Hi Tea Planet! I'd like to place a bulk order. Please share your B2B price sheet.`;

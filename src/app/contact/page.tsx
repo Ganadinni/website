@@ -21,7 +21,7 @@ export default function ContactPage() {
       `Quantity: ${form.quantity}`,
       `Message: ${form.message}`,
     ].join('\n');
-    const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '919876543210';
+    const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '918886277713';
     window.open(`https://wa.me/${number}?text=${encodeURIComponent(msg)}`, '_blank');
     setSubmitted(true);
   };
@@ -57,7 +57,7 @@ export default function ContactPage() {
                   <div>
                     <label className="block text-xs font-semibold text-gray-600 mb-1">WhatsApp Number *</label>
                     <input required type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                      placeholder="+91 98765 43210" className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-green" />
+                      placeholder="+91 88862 77713" className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-green" />
                   </div>
                   <div>
                     <label className="block text-xs font-semibold text-gray-600 mb-1">Email</label>
@@ -118,14 +118,14 @@ export default function ContactPage() {
                   <Phone size={16} className="text-brand-mid mt-0.5" />
                   <div>
                     <p className="text-xs text-gray-500">Sales &amp; B2B</p>
-                    <a href="tel:+919876543210" className="text-sm font-medium text-brand-green hover:underline">+91 98765 43210</a>
+                    <a href="tel:+918886277713" className="text-sm font-medium text-brand-green hover:underline">+91 88862 77713</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Mail size={16} className="text-brand-mid mt-0.5" />
                   <div>
                     <p className="text-xs text-gray-500">Email</p>
-                    <a href="mailto:b2b@theteaplanet.com" className="text-sm font-medium text-brand-green hover:underline">b2b@theteaplanet.com</a>
+                    <a href="mailto:founder@theteaplanet.com" className="text-sm font-medium text-brand-green hover:underline">founder@theteaplanet.com</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -142,7 +142,7 @@ export default function ContactPage() {
               <h3 className="font-semibold mb-2">Prefer WhatsApp?</h3>
               <p className="text-brand-pale text-sm mb-4">Most of our B2B conversations happen on WhatsApp. Fast, personal, and easy to share product photos.</p>
               <a
-                href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '919876543210'}?text=${encodeURIComponent('Hi Tea Planet! I have a B2B enquiry.')}`}
+                href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '918886277713'}?text=${encodeURIComponent('Hi Tea Planet! I have a B2B enquiry.')}`}
                 target="_blank" rel="noreferrer"
                 className="btn-whatsapp w-full justify-center"
               >

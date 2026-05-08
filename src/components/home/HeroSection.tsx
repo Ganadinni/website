@@ -12,7 +12,7 @@ const STATS = [
 ];
 
 export default function HeroSection() {
-  const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '919876543210';
+  const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '918886277713';
   return (
     <section className="relative bg-brand-green overflow-hidden">
       <div className="absolute inset-0 opacity-10"

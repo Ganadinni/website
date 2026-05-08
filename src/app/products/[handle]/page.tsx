@@ -26,7 +26,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
 
   const relatedRecipes = MOCK_RECIPES.filter((r) => product.relatedRecipes.includes(r.slug));
   const crossSellProducts = MOCK_PRODUCTS.filter((p) => product.crossSell.includes(p.handle));
-  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '919876543210';
+  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '918886277713';
   const waMsg = encodeURIComponent(`Hi! I'm interested in ${product.title} (SKU: ${product.sku}). Please share bulk pricing.`);
 
   return (

@@ -64,11 +64,10 @@ export default async function CollectionPage({ params }: { params: Promise<{ han
   const { handle } = await params;
   const collection = MOCK_COLLECTIONS.find((c) => c.handle === handle);
 
-  // Fall back to showing all products for unlisted collections
   const title = collection?.title ?? handle.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
   const products = collection?.products ?? MOCK_PRODUCTS;
   const meta = COLLECTION_META[handle];
-  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '919876543210';
+  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '918886277713';
 
   return (
     <div className="bg-white">

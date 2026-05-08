@@ -132,7 +132,7 @@ export default function Navbar() {
     timeoutRef.current = setTimeout(() => setActive(null), 120);
   };
 
-  const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '919876543210';
+  const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '918886277713';
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-borderLight shadow-subtle">
@@ -140,7 +140,7 @@ export default function Navbar() {
       <div className="bg-brand-green text-white">
         <div className="container-site flex items-center justify-between py-1.5 text-xs">
           <span className="hidden sm:block">
-            🇮🇳  Made in India | FSSC 22000 Certified | Cost per cup from ₹19 | 100+ Partners
+            🇮🇳  Made in India | FSSC 22000 Certified | Cost per cup from ₹19 | 100+ Partners
           </span>
           <span className="sm:hidden">FSSC 22000 · Made in India · ₹19/cup</span>
           <a

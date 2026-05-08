@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 export default function WhatsAppFloat() {
-  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '919876543210';
+  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '918886277713';
   const message = encodeURIComponent('Hi, I\'d like to know more about your products and pricing.');
   return (
     <a

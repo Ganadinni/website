@@ -35,8 +35,8 @@ export default function Footer() {
         <div className="lg:col-span-2">
           <p className="font-display text-2xl font-bold mb-3">The Tea Planet</p>
           <p className="text-brand-pale text-sm leading-relaxed mb-5 max-w-xs">
-            India's leading manufacturer of Boba, Syrups, Tea Premixes & Beverage Ingredients.
-            FSSC 22000 Certified. Trusted by 1000+ F&B businesses across India.
+            India's leading manufacturer of Boba, Syrups, Tea Premixes &amp; Beverage Ingredients.
+            FSSC 22000 Certified. Trusted by 1000+ F&amp;B businesses across India.
           </p>
           <div className="flex items-start gap-2 text-sm text-brand-pale mb-2">
             <MapPin size={15} className="mt-0.5 shrink-0" />
@@ -44,11 +44,11 @@ export default function Footer() {
           </div>
           <div className="flex items-center gap-2 text-sm text-brand-pale mb-2">
             <Phone size={15} />
-            <a href="tel:+919876543210" className="hover:text-white transition-colors">+91 98765 43210</a>
+            <a href="tel:+918886277713" className="hover:text-white transition-colors">+91 88862 77713</a>
           </div>
           <div className="flex items-center gap-2 text-sm text-brand-pale mb-5">
             <Mail size={15} />
-            <a href="mailto:b2b@theteaplanet.com" className="hover:text-white transition-colors">b2b@theteaplanet.com</a>
+            <a href="mailto:founder@theteaplanet.com" className="hover:text-white transition-colors">founder@theteaplanet.com</a>
           </div>
           <div className="flex gap-3">
             <a href="https://instagram.com/theteaplanet" target="_blank" rel="noreferrer" aria-label="Instagram"
@@ -104,7 +104,7 @@ export default function Footer() {
           <ul className="space-y-2">
             <li><Link href="/about" className="text-sm text-brand-pale hover:text-white transition-colors">Why Tea Planet</Link></li>
             <li><Link href="/about#certifications" className="text-sm text-brand-pale hover:text-white transition-colors">Certifications</Link></li>
-            <li><Link href="/contact" className="text-sm text-brand-pale hover:text-white transition-colors">Contact & Enquiry</Link></li>
+            <li><Link href="/contact" className="text-sm text-brand-pale hover:text-white transition-colors">Contact &amp; Enquiry</Link></li>
           </ul>
         </div>
       </div>
