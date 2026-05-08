@@ -21,7 +21,7 @@ export default async function RecipePage({ params }: { params: Promise<{ slug: s
   if (!recipe) notFound();
 
   const linkedProducts = MOCK_PRODUCTS.filter((p) => recipe.linkedProducts.includes(p.handle));
-  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '919876543210';
+  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '918886277713';
   const shopMsg = encodeURIComponent(
     `Hi! I want to order ingredients for the recipe: ${recipe.title}. Can you share a combined price?`
   );
@@ -43,7 +43,6 @@ export default async function RecipePage({ params }: { params: Promise<{ slug: s
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
           {/* Left: main content */}
           <div className="lg:col-span-3">
-            {/* Hero image */}
             <div className="relative h-72 md:h-96 rounded-2xl overflow-hidden bg-gray-100 mb-8">
               <Image
                 src={recipe.image} alt={recipe.title} fill priority
@@ -52,7 +51,6 @@ export default async function RecipePage({ params }: { params: Promise<{ slug: s
               />
             </div>
 
-            {/* Meta */}
             <div className="flex flex-wrap gap-3 mb-4">
               <span className="badge bg-brand-pale text-brand-green">{recipe.category}</span>
               <span className="flex items-center gap-1 text-xs text-gray-500"><Clock size={12} /> {recipe.prepTime}</span>
@@ -94,7 +92,7 @@ export default async function RecipePage({ params }: { params: Promise<{ slug: s
               </div>
             </div>
 
-            {/* Preparation steps */}
+            {/* Steps */}
             <div className="mb-8">
               <h2 className="font-display text-xl font-bold text-brand-green mb-4">Preparation Steps</h2>
               <ol className="space-y-3">
@@ -118,7 +116,6 @@ export default async function RecipePage({ params }: { params: Promise<{ slug: s
 
           {/* Right: sidebar */}
           <div className="lg:col-span-2 space-y-6">
-            {/* Shop this recipe */}
             <div className="bg-brand-green rounded-2xl p-6 text-white sticky top-20">
               <h3 className="font-display text-xl font-bold mb-1">Shop This Recipe</h3>
               <p className="text-brand-pale text-sm mb-5">Order all ingredients in one enquiry.</p>
@@ -153,7 +150,6 @@ export default async function RecipePage({ params }: { params: Promise<{ slug: s
               </div>
             </div>
 
-            {/* Applications */}
             <div className="card p-5">
               <h4 className="font-semibold text-brand-green mb-3">Ideal For</h4>
               <div className="flex flex-wrap gap-2">

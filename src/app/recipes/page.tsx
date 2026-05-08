@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Clock, ArrowRight } from 'lucide-react';
 import { MOCK_RECIPES } from '@/lib/mock-data';
 
-const CATEGORIES = ['All', 'Boba Drinks', 'Iced Tea', 'Hot Beverages', 'Frappes', 'Desserts'];
+const CATEGORIES = ['All', 'Milk Teas', 'Fruit Coolers', 'Signature Fusions', 'Hot Beverages', 'Desserts & Cakes'];
 
 const DIFF_COLOR: Record<string, string> = {
   Easy: 'bg-green-100 text-green-700',
@@ -12,8 +12,8 @@ const DIFF_COLOR: Record<string, string> = {
 };
 
 export const metadata = {
-  title: 'Recipes',
-  description: 'Explore 50+ tested beverage recipes using Tea Planet ingredients. Every recipe links to exact products.',
+  title: 'Recipes — The Tea Planet',
+  description: 'Tested beverage recipes using Tea Planet ingredients. Every recipe links to exact products with costing and selling price guides.',
 };
 
 export default function RecipesPage() {
@@ -22,11 +22,9 @@ export default function RecipesPage() {
       {/* Hero */}
       <div className="bg-brand-green py-16">
         <div className="container-site text-center">
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">
-            Recipe Library
-          </h1>
+          <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">Recipe Library</h1>
           <p className="text-brand-pale text-lg max-w-xl mx-auto">
-            50+ tested recipes. Every ingredient linked to Tea Planet stock. Build your menu today.
+            {MOCK_RECIPES.length}+ tested recipes. Every ingredient linked to Tea Planet stock. Build your menu today.
           </p>
         </div>
       </div>
@@ -34,7 +32,7 @@ export default function RecipesPage() {
       {/* Category filter */}
       <div className="sticky top-16 z-30 bg-white border-b shadow-sm">
         <div className="container-site">
-          <div className="flex gap-2 overflow-x-auto py-3 scrollbar-hide">
+          <div className="flex gap-2 overflow-x-auto py-3">
             {CATEGORIES.map((cat) => (
               <button
                 key={cat}
@@ -62,7 +60,7 @@ export default function RecipesPage() {
                   {recipe.difficulty}
                 </span>
                 <div className="absolute top-3 right-3 flex gap-1">
-                  {recipe.applicationTypes.map((t) => (
+                  {recipe.applicationTypes.slice(0,2).map((t) => (
                     <span key={t} className="badge bg-black/50 text-white text-[10px]">{t}</span>
                   ))}
                 </div>
@@ -92,7 +90,7 @@ export default function RecipesPage() {
           <h2 className="font-display text-2xl font-bold text-brand-green mb-2">Need a Custom Recipe?</h2>
           <p className="text-gray-600 mb-6">Our R&amp;D team can formulate recipes for your specific menu and business format.</p>
           <a
-            href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '919876543210'}?text=${encodeURIComponent('Hi! I need a custom recipe developed for my menu. Can you help?')}`}
+            href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '918886277713'}?text=${encodeURIComponent('Hi! I need a custom recipe developed for my menu. Can you help?')}`}
             target="_blank" rel="noreferrer"
             className="btn-whatsapp inline-flex"
           >

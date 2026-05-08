@@ -94,6 +94,42 @@ const SOLUTIONS = {
     pricing: 'Pricing depends on destination, MOQ, and product mix.',
     ctaText: 'Submit Export Enquiry',
   },
+  'qsr': {
+    title: 'QSR Chains',
+    tagline: 'Multi-outlet consistency & bulk supply',
+    icon: '🏪',
+    description:
+      'Supplying beverage ingredients to QSR chains requires absolute consistency across every outlet. Tea Planet's manufacturing-direct model ensures the same quality, the same taste, and the same cost — every single batch.',
+    includes: [
+      'Volume pricing from 50kg/month',
+      'Centralised ordering dashboard',
+      'Standardised SOPs per menu item',
+      'Multi-city delivery network',
+      'Dedicated chain account manager',
+      'Monthly costing review & menu refresh',
+    ],
+    idealFor: ['Fast food chains', 'Multi-outlet QSR brands', 'Franchise networks'],
+    pricing: 'Volume-based pricing. Contact us for chain pricing proposal.',
+    ctaText: 'Get Chain Pricing',
+  },
+  'industrial': {
+    title: 'Industrial Supply',
+    tagline: 'Bulk 20kg+ supply & custom formulation',
+    icon: '🏭',
+    description:
+      'For food manufacturers, institutional buyers and large processors requiring bulk beverage ingredients. Factory-direct pricing, FSSC 22000 certified batches, custom formulation, and private labelling available.',
+    includes: [
+      'Factory-direct bulk pricing (20kg MOQ)',
+      'FSSC 22000 certified production batches',
+      'Custom formulation & flavour development',
+      'Private label at 100kg+ MOQ',
+      'Full batch documentation & COAs',
+      'Flexible delivery scheduling',
+    ],
+    idealFor: ['Food manufacturers', 'FMCG processors', 'Institutional kitchens'],
+    pricing: 'Quote-based. Contact industrial team with volume requirements.',
+    ctaText: 'Request Industrial Quote',
+  },
 };
 
 export async function generateStaticParams() {
@@ -104,7 +140,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
   const { slug } = await params;
   const sol = SOLUTIONS[slug as keyof typeof SOLUTIONS];
   if (!sol) notFound();
-  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '919876543210';
+  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '918886277713';
   const waMsg = encodeURIComponent(`Hi! I'm interested in the ${sol.title} from Tea Planet. Can you share details?`);
 
   return (
@@ -122,7 +158,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
           <div className="lg:col-span-2">
             <p className="text-gray-700 text-lg leading-relaxed mb-10">{sol.description}</p>
 
-            <h2 className="font-display text-2xl font-bold text-brand-green mb-5">What’s Included</h2>
+            <h2 className="font-display text-2xl font-bold text-brand-green mb-5">What's Included</h2>
             <ul className="space-y-3 mb-10">
               {sol.includes.map((item) => (
                 <li key={item} className="flex items-start gap-3">
@@ -170,6 +206,8 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
                 ))}
               </ul>
             </div>
+
+            <BulkEnquiryCTA variant="card" />
           </div>
         </div>
       </div>
