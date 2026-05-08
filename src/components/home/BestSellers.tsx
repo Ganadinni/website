@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ShoppingCart, MessageCircle } from 'lucide-react';
 import { BEST_SELLERS } from '@/lib/mock-data';
+import { WA_LINK } from '@/lib/config';
 
 export default function BestSellers() {
   return (
@@ -9,10 +10,11 @@ export default function BestSellers() {
       <div className="container-site">
         <div className="flex items-end justify-between mb-10">
           <div>
+            <p className="text-brand-mid text-sm font-semibold uppercase tracking-widest mb-2">Top Ordered</p>
             <h2 className="section-heading">Best Sellers</h2>
-            <p className="section-subheading">Top ingredients ordered by cafes &amp; QSRs across India.</p>
+            <p className="section-subheading">Top ingredients ordered by cafés &amp; QSRs across India.</p>
           </div>
-          <Link href="/collections/boba-innovations" className="hidden sm:flex btn-secondary text-sm">
+          <Link href="/collections/all" className="hidden sm:flex btn-secondary text-sm">
             View All
           </Link>
         </div>
@@ -54,11 +56,10 @@ export default function BestSellers() {
                   href={`/products/${product.handle}`}
                   className="flex-1 btn-primary text-xs py-2 justify-center"
                 >
-                  <ShoppingCart size={13} />
-                  Order
+                  <ShoppingCart size={13} /> Order
                 </Link>
                 <a
-                  href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '919876543210'}?text=Hi%2C%20I%27m%20interested%20in%20${encodeURIComponent(product.title)}%20(SKU%3A%20${product.sku}).%20Please%20share%20bulk%20pricing.`}
+                  href={WA_LINK(`Hi! I'm interested in ${product.title} (SKU: ${product.sku}). Please share bulk pricing.`)}
                   target="_blank"
                   rel="noreferrer"
                   className="p-2 rounded-md border-2 border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white transition-colors"
@@ -72,7 +73,7 @@ export default function BestSellers() {
         </div>
 
         <div className="text-center mt-8 sm:hidden">
-          <Link href="/collections/boba-innovations" className="btn-secondary">View All Products</Link>
+          <Link href="/collections/all" className="btn-secondary">View All Products</Link>
         </div>
       </div>
     </section>

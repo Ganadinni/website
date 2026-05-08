@@ -1,57 +1,58 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import { WA_LINK } from '@/lib/config';
 
 const SOLUTIONS = [
   {
-    href: '/solutions/menu-plugin',
-    icon: '🚀',
-    title: 'Menu Plug-In',
-    tagline: 'Launch a profitable boba menu in 7 days',
+    href: '/operator-program',
+    icon: '🎨',
+    title: 'Branded Operator Program',
+    tagline: 'Your brand. Our backbone. No franchise fees.',
     points: [
-      'Curated ingredient kit for 10 menu items',
-      'Recipe guide + portion cards included',
-      'Staff training video library',
-      'Reorder on WhatsApp in 2 minutes',
+      'Branded cups, straws & packaging',
+      'Ready-made 15–25 drink menu',
+      'Staff training (on-site or virtual)',
+      'Dedicated account manager + reorder support',
     ],
-    cta: 'Get Menu Plan',
+    cta: 'Apply for Program',
     highlight: true,
   },
   {
+    href: '/solutions/menu-plugin',
+    icon: '🚀',
+    title: 'Menu Plug-In Kit',
+    tagline: 'Launch a profitable boba menu in 7 days',
+    points: [
+      'Curated ingredients for 300 cups',
+      'Recipe cards + portion guide included',
+      'WhatsApp support for 30 days',
+      'Reorder in 2 minutes on WhatsApp',
+    ],
+    cta: 'Get Menu Plan',
+  },
+  {
     href: '/solutions/cloud-kitchen',
-    icon: '🥑',
+    icon: '📦',
     title: 'Cloud Kitchen Pack',
     tagline: 'Delivery-optimised beverages that travel well',
     points: [
       'Sealed cup-compatible recipes',
-      'High shelf-life ingredient selection',
       'Zomato & Swiggy menu naming guide',
+      'High shelf-life ingredient selection',
       'Cost-per-cup analysis included',
     ],
     cta: 'View Pack',
   },
   {
-    href: '/solutions/cafe-setup',
-    icon: '☕',
-    title: 'QSR & Café Setup',
-    tagline: 'Complete bar setup from equipment to menu',
-    points: [
-      'Bar layout & equipment checklist',
-      'Ingredient subscription plan',
-      'Staff SOP + recipe booklet',
-      'Monthly menu refresh support',
-    ],
-    cta: 'Explore Setup',
-  },
-  {
     href: '/solutions/distributor',
     icon: '🚚',
     title: 'Distributor Program',
-    tagline: 'Become a regional partner for Tea Planet',
+    tagline: 'Become a regional supply partner',
     points: [
       'Exclusive territory agreements',
-      'High margin B2B pricing',
+      'Factory-direct pricing',
       'Marketing & display support',
-      'Direct factory supply',
+      'Pan-India network access',
     ],
     cta: 'Apply Now',
   },
@@ -62,9 +63,10 @@ export default function BusinessSolutions() {
     <section className="bg-brand-pale py-16 md:py-24">
       <div className="container-site">
         <div className="text-center mb-12">
+          <p className="text-brand-mid text-sm font-semibold uppercase tracking-widest mb-2">For Every Business Format</p>
           <h2 className="section-heading">Beverage Solutions for Your Business</h2>
           <p className="section-subheading max-w-2xl mx-auto">
-            We don’t just sell ingredients — we help you build a profitable beverage business.
+            We don't just sell ingredients — we help you build a profitable beverage business.
           </p>
         </div>
 
@@ -77,7 +79,7 @@ export default function BusinessSolutions() {
               }`}
             >
               {sol.highlight && (
-                <span className="self-start badge bg-brand-green text-white mb-4">🔥 Most Popular</span>
+                <span className="self-start badge bg-brand-green text-white mb-4">⭐ Most Popular</span>
               )}
               <div className="text-4xl mb-3">{sol.icon}</div>
               <h3 className="font-display text-xl font-bold text-brand-green mb-1">{sol.title}</h3>
@@ -97,15 +99,14 @@ export default function BusinessSolutions() {
           ))}
         </div>
 
-        {/* B2B CTA strip */}
         <div className="mt-10 bg-brand-green rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
             <h3 className="font-display text-2xl font-bold text-white mb-1">Not sure which solution fits?</h3>
-            <p className="text-brand-pale text-sm">Talk to our beverage specialist. Free 15-min consultation.</p>
+            <p className="text-brand-pale text-sm">Talk to our beverage specialist. Free 15-min consultation on WhatsApp.</p>
           </div>
           <div className="flex gap-4 shrink-0">
             <a
-              href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '919876543210'}?text=Hi%2C%20I%27d%20like%20a%20free%20beverage%20consultation%20for%20my%20business.`}
+              href={WA_LINK('Hi Tea Planet! I\'d like a free beverage consultation for my business.')}
               target="_blank"
               rel="noreferrer"
               className="btn-whatsapp"

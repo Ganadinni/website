@@ -2,28 +2,79 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 const CATEGORIES = [
-  { handle: 'silky-mix',           title: 'Silky Mix Bases',        icon: '✨',  desc: 'Hot & cold beverage bases. One SKU, unlimited recipes.',        badge: 'Best Seller', skus: '10+ Bases' },
-  { handle: 'popping-boba',        title: 'Popping Boba',           icon: '🎇',  desc: 'Juice-filled bursting pearls. 6+ varieties. No cooking.',        badge: 'New',         skus: '6+ Flavours' },
-  { handle: 'tapioca-pearls',      title: 'Tapioca Pearls',         icon: '⚫',   desc: 'Standard & instant. Consistent chew. Ready in 5 minutes.',       badge: null,          skus: '3 Variants' },
-  { handle: 'syrups-concentrates', title: 'Syrups & Concentrates',  icon: '🍯',  desc: 'Fruit, floral & classic syrups for beverages & desserts.',        badge: null,          skus: '25+ Flavours' },
-  { handle: 'milk-tea-premixes',   title: 'Tea Premixes',           icon: '🍵',  desc: 'Milk, Fruit & Ice Tea premixes. 15+ proven flavours.',            badge: 'Most Popular',skus: '15+ Flavours' },
-  { handle: 'nata-de-coco',        title: 'Nata de Coco',           icon: '🧡',  desc: '8–10mm cubes. Premium topping. High upsell value.',               badge: null,          skus: 'In Stock' },
-  { handle: 'konjac-pearls',       title: 'Konjac Pearls',          icon: '�️',  desc: 'Wire-cut & jelly-cut variants. Low calorie premium topping.',     badge: null,          skus: '2 Variants' },
-  { handle: 'sponge-cake-mixes',   title: 'Sponge Cake Mixes',      icon: '🎂',  desc: '5 tea-infused flavours. ₹899 each. Extend into desserts.',        badge: 'New',         skus: '5 Flavours' },
-  { handle: 'industrial',          title: 'Industrial Ingredients', icon: '🏧',  desc: 'Bulk 20kg buckets for high-volume production.',                   badge: null,          skus: 'Bulk Supply' },
+  {
+    handle: 'boba-bubble-tea',
+    title: 'Boba & Bubble Tea',
+    icon: '🧋',
+    desc: 'Premixes, toppings, pearls & everything boba.',
+    badge: 'Best Seller',
+    skus: '20+ SKUs',
+    gradient: 'from-brand-green to-brand-mid',
+  },
+  {
+    handle: 'boba-desserts',
+    title: 'Boba Desserts',
+    icon: '🍰',
+    desc: 'Sponge cake base mixes & frost swirls whip premix.',
+    badge: 'New',
+    skus: '5 Products',
+    gradient: 'from-pink-600 to-rose-400',
+  },
+  {
+    handle: 'tea-coffee',
+    title: 'Tea & Coffee',
+    icon: '☕',
+    desc: 'Chai premixes, tea concentrates & coffee blends.',
+    badge: 'Most Popular',
+    skus: '15+ Flavours',
+    gradient: 'from-amber-700 to-amber-500',
+  },
+  {
+    handle: 'japanese-tea',
+    title: 'Japanese Tea Range',
+    icon: '🍵',
+    desc: 'Premium Sencha, Matcha, Hōjicha, Gyokuro & latte premixes.',
+    badge: 'Premium',
+    skus: '10+ Varieties',
+    gradient: 'from-teal-700 to-teal-500',
+  },
+  {
+    handle: 'beverage-mixes',
+    title: 'Beverage Mixes',
+    icon: '🥤',
+    desc: 'Milkshakes, mocktails, lemonades & syrups.',
+    badge: null,
+    skus: '25+ Flavours',
+    gradient: 'from-violet-700 to-purple-500',
+  },
+  {
+    handle: 'toppings',
+    title: 'Toppings',
+    icon: '🫧',
+    desc: 'Popping boba (14+ flavors), nata de coco, tapioca pearls & konjac jelly.',
+    badge: null,
+    skus: '30+ Variants',
+    gradient: 'from-orange-600 to-amber-400',
+  },
+  {
+    handle: 'diy-boba-cups',
+    title: 'DIY Boba Cups',
+    icon: '🧉',
+    desc: 'Single-serve boba cups — just add hot water.',
+    badge: 'New',
+    skus: '4 Variants',
+    gradient: 'from-sky-600 to-cyan-500',
+  },
+  {
+    handle: 'rtd-beverages',
+    title: 'RTD Beverages',
+    icon: '🍶',
+    desc: 'Ready to drink popping boba, nata de coco & iced tea.',
+    badge: null,
+    skus: '3 Products',
+    gradient: 'from-indigo-700 to-indigo-500',
+  },
 ];
-
-const COLOR_MAP: Record<string, string> = {
-  'silky-mix':           'from-brand-green to-brand-mid',
-  'popping-boba':        'from-pink-600 to-rose-400',
-  'tapioca-pearls':      'from-amber-700 to-amber-500',
-  'syrups-concentrates': 'from-orange-600 to-amber-400',
-  'milk-tea-premixes':   'from-teal-700 to-teal-500',
-  'nata-de-coco':        'from-sky-600 to-cyan-400',
-  'konjac-pearls':       'from-violet-700 to-purple-400',
-  'sponge-cake-mixes':   'from-brand-brown to-amber-600',
-  'industrial':          'from-gray-700 to-gray-500',
-};
 
 export default function CategoryGrid() {
   return (
@@ -37,10 +88,10 @@ export default function CategoryGrid() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-5">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
           {CATEGORIES.map((cat) => (
             <Link key={cat.handle} href={`/collections/${cat.handle}`} className="group card overflow-hidden">
-              <div className={`bg-gradient-to-br ${COLOR_MAP[cat.handle] ?? 'from-gray-600 to-gray-400'} p-5 relative`}>
+              <div className={`bg-gradient-to-br ${cat.gradient} p-5 relative`}>
                 <span className="text-3xl">{cat.icon}</span>
                 {cat.badge && (
                   <span className="absolute top-3 right-3 badge bg-white/20 text-white text-[10px]">{cat.badge}</span>
@@ -58,6 +109,12 @@ export default function CategoryGrid() {
               </div>
             </Link>
           ))}
+        </div>
+
+        <div className="text-center mt-10">
+          <Link href="/collections/all" className="btn-secondary">
+            Browse Full Catalog <ArrowRight size={14} />
+          </Link>
         </div>
       </div>
     </section>
