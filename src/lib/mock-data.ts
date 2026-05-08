@@ -1,356 +1,188 @@
 import type { MockProduct, MockRecipe } from './types';
 
 const CDN = 'https://theteaplanet.com/cdn/shop/files';
+const BOBA_IMG = `${CDN}/Boba_packs.jpg`;
+const CAFE_IMG  = `${CDN}/TP_cafe.jpg`;
 
-export const MOCK_PRODUCTS: MockProduct[] = [
-  /* ── SILKY MIX ── */
-  {
-    id: 'prod_001',
-    handle: 'silky-mix-original-base',
-    title: 'Silky Mix — Original Boba Base',
-    subtitle: 'The all-in-one hot & cold beverage base',
-    category: 'Silky Mix Bases',
-    categoryHandle: 'silky-mix',
-    packSizes: ['500g', '1.5 kg', '5 kg', '10 kg'],
-    price: 599,
-    compareAtPrice: 699,
-    unit: 'per kg',
-    sku: '72002',
-    image: `${CDN}/TP_cafe.jpg`,
-    tags: ['silky-mix', 'premix', 'bestseller', 'hot', 'cold'],
-    badge: 'Best Seller',
-    isBestSeller: true,
-    description:
-      'The professional-grade boba base trusted by 100+ partners. Works hot or cold — one SKU, unlimited recipes. Cost per cup from ₹19 vs ₹22–25 for imported alternatives.',
-    benefits: [
-      'Hot & cold — one SKU replaces 3–4 separate ingredients',
-      'Cost per cup: ₹19–20 (vs ₹22–25 imported)',
-      '3x higher repeat rate vs generic premixes',
-      'FSSC 22000 certified manufacturing',
-      '1-week dispatch vs 4–8 weeks for imports',
-    ],
-    usageDosage: {
-      hot:   '10–15g per 100ml hot water or milk',
-      cold:  '30g per 350ml cold milk or water',
-      notes: 'Adjust sweetness by varying dosage. Best paired with Tapioca Pearls (SKU 17025).',
-    },
-    applications: ['Café & Tea Bar', 'QSR', 'Cloud Kitchen', 'Hotel & Resort', 'Distributor'],
-    faq: [
-      { q: 'What is the shelf life?',        a: '18 months from manufacturing date in original sealed packaging.' },
-      { q: 'Does it need refrigeration?',    a: 'No — store cool and dry. Refrigerate after opening.' },
-      { q: 'Is it vegetarian / vegan?',      a: 'Yes — fully plant-based, no animal derivatives.' },
-      { q: 'What is the minimum order?',     a: 'Retail: 500g. Bulk B2B: 5 kg. Custom pack sizes on request.' },
-      { q: 'How fast do you dispatch?',      a: '48-hour dispatch on standard orders. 1-week for bulk/custom.' },
-    ],
-    relatedRecipes: ['classic-boba-milk-tea', 'brown-sugar-boba', 'thai-milk-tea'],
-    crossSell: ['tapioca-pearls-black', 'popping-boba-strawberry', 'brown-sugar-syrup'],
-  },
-
-  /* ── TAPIOCA PEARLS ── */
-  {
-    id: 'prod_002',
-    handle: 'tapioca-pearls-black',
-    title: 'Tapioca Pearls — Black (Quick-Cook)',
-    subtitle: 'Ready in 5 minutes. Consistent chew every batch.',
-    category: 'Tapioca Pearls',
-    categoryHandle: 'tapioca-pearls',
-    packSizes: ['1 kg', '5 kg', '10 kg'],
-    price: 320,
-    unit: 'per kg',
-    sku: '17025',
-    image: `${CDN}/Boba_packs.jpg`,
-    tags: ['boba', 'topping', 'bestseller'],
-    badge: 'Best Seller',
-    isBestSeller: true,
-    description:
-      'Pre-cooked quick-cook tapioca pearls with consistent chew texture. Cook in 5 minutes vs 30 for raw pearls. Reduces kitchen prep and waste.',
-    benefits: [
-      '5-minute cook time vs 30 mins for raw pearls',
-      'Consistent chew texture batch after batch',
-      'Brown sugar infused variant available',
-      'Stays fresh in sugar syrup for 4 hours',
-      'Reduces kitchen prep time by 80%',
-    ],
-    usageDosage: {
-      notes: 'Boil in water 5 minutes, drain, coat in brown sugar syrup. Serve within 4 hours.',
-    },
-    applications: ['Café & Tea Bar', 'QSR', 'Cloud Kitchen', 'Fine Dining'],
-    faq: [
-      { q: 'How long do cooked pearls last?',  a: 'Up to 4 hours in brown sugar syrup at room temperature.' },
-      { q: 'Standard vs instant — difference?', a: 'Standard: 5 min cook, better texture. Instant: 30 sec, ideal for fast QSR.' },
-    ],
-    relatedRecipes: ['classic-boba-milk-tea', 'brown-sugar-boba', 'thai-milk-tea'],
-    crossSell: ['silky-mix-original-base', 'brown-sugar-syrup', 'popping-boba-strawberry'],
-  },
-
-  /* ── POPPING BOBA ── */
-  {
-    id: 'prod_003',
-    handle: 'popping-boba-strawberry',
-    title: 'Popping Boba — Strawberry',
-    subtitle: 'Juice-filled bursting pearls. No cooking. Premium upsell.',
-    category: 'Popping Boba',
-    categoryHandle: 'popping-boba',
-    packSizes: ['450g', '3.2 kg'],
-    price: 480,
-    unit: 'per 450g',
-    sku: 'PB-STR-001',
-    image: `${CDN}/Boba_packs.jpg`,
-    tags: ['popping-boba', 'topping', 'new'],
-    badge: 'New',
-    isNew: true,
-    description:
-      'Real juice-filled popping boba that bursts in the mouth. No cooking required. Adds ₹30–50 to your cup selling price. Available in 6+ varieties.',
-    benefits: [
-      'No cooking — open and serve',
-      'Real fruit juice filling',
-      'Premium upsell: +₹30–50 per cup',
-      '6+ flavours: Strawberry, Mango, Passion Fruit, Lychee, Blueberry, Green Apple',
-      '18-month shelf life',
-    ],
-    usageDosage: {
-      notes: 'Drain from storage liquid, rinse. Add 2–3 tbsp per cup. No heating required.',
-    },
-    applications: ['Café & Tea Bar', 'QSR', 'Fine Dining', 'Dessert Shops'],
-    faq: [
-      { q: 'Do these need cooking?',     a: 'No — ready to use. Drain and rinse from container.' },
-      { q: 'What flavours are in stock?', a: 'Strawberry, Mango, Passion Fruit, Lychee, Blueberry, Green Apple.' },
-    ],
-    relatedRecipes: ['iced-taro-boba', 'sparkling-kaffir-lime'],
-    crossSell: ['silky-mix-original-base', 'tapioca-pearls-black', 'nata-de-coco'],
-  },
-
-  /* ── BROWN SUGAR SYRUP ── */
-  {
-    id: 'prod_004',
-    handle: 'brown-sugar-syrup',
-    title: 'Brown Sugar Syrup',
-    subtitle: 'Thick, rich, Taiwanese-style caramel syrup',
-    category: 'Syrups & Concentrates',
-    categoryHandle: 'syrups-concentrates',
-    packSizes: ['500ml', '1L', '5L'],
-    price: 280,
-    unit: 'per 500ml',
-    sku: '91171',
-    image: `${CDN}/TP_cafe.jpg`,
-    tags: ['syrup', 'bestseller'],
-    isBestSeller: true,
-    description:
-      'Authentic Taiwanese-style brown sugar syrup. Thick and consistent for tiger stripes, drizzle, and mixing. Heat stable to 100°C.',
-    benefits: [
-      'Thick consistency — ideal for tiger stripes & drizzle',
-      'Authentic caramel depth with molasses notes',
-      'Heat stable up to 100°C',
-      'Cost per cup: ₹5–8',
-    ],
-    usageDosage: {
-      hot:  '15–20ml per 100ml serving',
-      cold: '20–30ml per 350ml serving',
-    },
-    applications: ['Café & Tea Bar', 'QSR', 'Cloud Kitchen', 'Bakery & Dessert'],
-    faq: [
-      { q: 'Suitable for cake drizzle?', a: 'Yes — thick consistency works well for decoration.' },
-    ],
-    relatedRecipes: ['brown-sugar-boba', 'classic-boba-milk-tea'],
-    crossSell: ['tapioca-pearls-black', 'silky-mix-original-base'],
-  },
-
-  /* ── SPONGE CAKE MIXES ── */
-  {
-    id: 'prod_005',
-    handle: 'sponge-cake-mix-spiced-chai',
-    title: 'Sponge Cake Base Mix — Spiced Chai',
-    subtitle: 'Professional chiffon sponge with authentic chai flavour',
-    category: 'Sponge Cake Base Mixes',
-    categoryHandle: 'sponge-cake-mixes',
-    packSizes: ['500g'],
-    price: 899,
-    unit: 'per pack',
-    sku: 'SCM-CHAI-001',
-    image: `${CDN}/SpicedChai.jpg`,
-    tags: ['cake', 'dessert', 'new'],
-    badge: 'New',
-    isNew: true,
-    description:
-      'Professional chiffon sponge cake base with authentic Indian spiced chai flavour. Pairs perfectly with boba toppings and boosts dessert menu revenue.',
-    benefits: [
-      'Consistent bakery-quality results every time',
-      'Pairs with boba toppings for premium desserts',
-      'Extends your menu into desserts & cakes',
-      'No specialist baking skills required',
-    ],
-    usageDosage: {
-      notes: 'Mix 500g with eggs, oil, water per pack instructions. Bake at 170°C for 25–30 minutes.',
-    },
-    applications: ['Bakery & Dessert Shop', 'Café & Tea Bar', 'Cloud Kitchen', 'Fine Dining'],
-    faq: [
-      { q: 'What toppings work best?', a: 'Boba pearls, popping boba, nata de coco, and konjac jelly all work beautifully.' },
-      { q: 'Other flavours available?', a: 'Yes: Matcha Tea, Jasmine Green Tea, Earl Grey, Black Tea.' },
-    ],
-    relatedRecipes: ['matcha-boba-sponge-cake'],
-    crossSell: ['tapioca-pearls-black', 'popping-boba-strawberry', 'nata-de-coco'],
-  },
-  {
-    id: 'prod_006',
-    handle: 'sponge-cake-mix-matcha',
-    title: 'Sponge Cake Base Mix — Matcha Tea',
-    subtitle: 'Premium Japanese matcha chiffon sponge base',
-    category: 'Sponge Cake Base Mixes',
-    categoryHandle: 'sponge-cake-mixes',
-    packSizes: ['500g'],
-    price: 899,
-    unit: 'per pack',
-    sku: 'SCM-MATCHA-001',
-    image: `${CDN}/MatchaTea.jpg`,
-    tags: ['cake', 'dessert', 'matcha'],
-    description: 'Premium matcha chiffon sponge cake base with authentic Japanese green tea flavour. Perfect for boba cheesecake menus.',
-    benefits: [
-      'Authentic matcha colour and flavour',
-      'Pairs with taro and red bean toppings',
-      'Instagram-worthy deep green colour',
-    ],
-    usageDosage: { notes: 'Mix per pack instructions. Bake at 170°C for 25–30 minutes.' },
-    applications: ['Bakery & Dessert Shop', 'Café & Tea Bar'],
-    faq: [{ q: 'Can I add boba toppings?', a: 'Yes — matcha sponge pairs beautifully with popping boba and tapioca.' }],
-    relatedRecipes: ['matcha-boba-sponge-cake'],
-    crossSell: ['tapioca-pearls-black', 'popping-boba-strawberry'],
-  },
+// ─── MILK TEA PREMIXES ────────────────────────────────────────────────────────
+const MILK_PREMIXES: MockProduct[] = [
+  { id:'mp01', handle:'taro-bubble-tea-premix', title:'Taro Bubble Tea Premix', subtitle:'Creamy, earthy taro — a premium menu staple', category:'Milk Tea Premixes', categoryHandle:'milk-tea-premixes', packSizes:['800g','1 kg'], price:1399, unit:'per pack', sku:'MTP-TARO-1K', image:BOBA_IMG, tags:['premix','milk-tea','bestseller'], badge:'Best Seller', isBestSeller:true, description:'Taiwanese taro base blended with authentic Indian flavours. Vegetarian, Vegan, Non-GMO, Halal. Mix with water or milk and serve immediately.', benefits:['Halal & Vegan certified','No artificial colour or preservatives','Consistent cup quality every time','Cost per cup from ₹19'], usageDosage:{hot:'25g per 100ml hot milk',cold:'40g per 350ml cold milk + ice'}, applications:['Café & Tea Bar','QSR','Cloud Kitchen','Hotel'], faq:[{q:'Shelf life?',a:'18 months sealed. Refrigerate after opening.'},{q:'Can I use water instead of milk?',a:'Yes — works with water or milk.'}], relatedRecipes:['taro-matcha','iced-taro-boba'], crossSell:['tapioca-pearls-classic-black','popping-boba-strawberry','brown-sugar-syrup'] },
+  { id:'mp02', handle:'chocolate-bubble-tea-premix', title:'Chocolate Bubble Tea Premix', subtitle:'Rich cocoa boba drink with deep chocolate notes', category:'Milk Tea Premixes', categoryHandle:'milk-tea-premixes', packSizes:['800g','1 kg'], price:1399, unit:'per pack', sku:'MTP-CHOC-1K', image:BOBA_IMG, tags:['premix','milk-tea','chocolate'], description:'Rich, velvety chocolate bubble tea premix. No artificial colour. Pairs perfectly with tapioca pearls and popping boba.', benefits:['Deep chocolate flavour','No artificial colour or preservatives','Halal certified'], usageDosage:{cold:'40g per 350ml cold milk + ice'}, applications:['Café','QSR','Cloud Kitchen'], faq:[{q:'Shelf life?',a:'18 months sealed.'}], relatedRecipes:['classic-boba-milk-tea'], crossSell:['tapioca-pearls-classic-black','popping-boba-strawberry'] },
+  { id:'mp03', handle:'blueberry-bubble-tea-premix', title:'Blueberry Bubble Tea Premix', subtitle:'Bold blueberry with a smooth creamy finish', category:'Milk Tea Premixes', categoryHandle:'milk-tea-premixes', packSizes:['800g','1 kg'], price:1499, unit:'per pack', sku:'MTP-BLUE-1K', image:BOBA_IMG, tags:['premix','milk-tea','fruit'], isNew:true, description:'Bright blueberry flavour blended into a smooth, velvety milk tea base. Highly Instagram-able purple colour.', benefits:['Natural blueberry flavour','Vibrant purple colour','No artificial preservatives'], usageDosage:{cold:'40g per 350ml cold milk + ice'}, applications:['Café','QSR','Cloud Kitchen'], faq:[{q:'Shelf life?',a:'18 months sealed.'}], relatedRecipes:['classic-boba-milk-tea'], crossSell:['tapioca-pearls-classic-black','lychee-popping-boba'] },
+  { id:'mp04', handle:'cappuccino-bubble-tea-premix', title:'Cappuccino Bubble Tea Premix', subtitle:'Espresso-forward boba for coffee lovers', category:'Milk Tea Premixes', categoryHandle:'milk-tea-premixes', packSizes:['800g'], price:1499, unit:'per pack', sku:'MTP-CAPP-800', image:BOBA_IMG, tags:['premix','milk-tea','coffee'], description:'Rich cappuccino flavour meets boba culture. The perfect crossover product for cafés with existing coffee customers.', benefits:['Espresso-forward flavour','Strong coffee category crossover','No artificial colour'], usageDosage:{cold:'40g per 350ml cold milk + ice'}, applications:['Café','Fine Dining'], faq:[{q:'Shelf life?',a:'18 months sealed.'}], relatedRecipes:['classic-boba-milk-tea'], crossSell:['tapioca-pearls-classic-black','brown-sugar-syrup'] },
+  { id:'mp05', handle:'thai-tea-bubble-tea-premix', title:'Thai Tea Bubble Tea Premix', subtitle:'Aromatic Thai tea — a café classic', category:'Milk Tea Premixes', categoryHandle:'milk-tea-premixes', packSizes:['800g'], price:1399, unit:'per pack', sku:'MTP-THAI-800', image:BOBA_IMG, tags:['premix','milk-tea','thai'], isBestSeller:true, badge:'Best Seller', description:'Authentic Thai tea flavour with rich orange colour. A proven bestseller in café and QSR formats across India.', benefits:['Authentic Thai flavour profile','Strong repeat purchase behaviour','Beautiful orange colour'], usageDosage:{cold:'40g per 350ml cold milk + ice'}, applications:['Café','QSR','Cloud Kitchen'], faq:[{q:'Shelf life?',a:'18 months sealed.'}], relatedRecipes:['thai-milk-tea'], crossSell:['tapioca-pearls-classic-black','coconut-tapioca-pearls'] },
+  { id:'mp06', handle:'classic-milk-tea-premix-3in1', title:'Classic Milk Tea Premix (3-in-1)', subtitle:'All-in-one base — tea, milk & sweetener combined', category:'Milk Tea Premixes', categoryHandle:'milk-tea-premixes', packSizes:['1 kg'], price:1299, unit:'per pack', sku:'MTP-CLAS-1K', image:BOBA_IMG, tags:['premix','milk-tea','classic'], description:'The 3-in-1 format combines tea, milk powder and sweetener in one sachet. Eliminates barista skill dependency. Ideal for QSR and high-volume formats.', benefits:['3-in-1: tea + milk + sugar in one','Eliminates barista skill dependency','Consistent cup every time'], usageDosage:{hot:'25g per 200ml hot water',cold:'30g per 250ml cold water'}, applications:['QSR','Institutional','Cloud Kitchen'], faq:[{q:'Does it need milk?',a:'No — milk powder is included in the 3-in-1 blend.'}], relatedRecipes:['classic-boba-milk-tea'], crossSell:['tapioca-pearls-classic-black'] },
+  { id:'mp07', handle:'tiramisu-bubble-tea-premix', title:'Tiramisu Bubble Tea Premix', subtitle:'Elegant coffee-liqueur boba — premium menu item', category:'Milk Tea Premixes', categoryHandle:'milk-tea-premixes', packSizes:['1 kg'], price:1499, unit:'per pack', sku:'MTP-TIRA-1K', image:BOBA_IMG, tags:['premix','milk-tea','premium'], badge:'Premium', description:'Elegant tiramisu flavour with fragrant coffee liqueur aroma. No artificial colour, aroma or preservatives. A premium menu differentiator.', benefits:['Premium coffee-liqueur flavour','No artificial colour or aroma','Excellent margin potential'], usageDosage:{cold:'40g per 350ml cold milk + ice'}, applications:['Fine Dining','Café','Hotel'], faq:[{q:'Shelf life?',a:'18 months sealed.'}], relatedRecipes:['classic-boba-milk-tea'], crossSell:['tapioca-pearls-classic-black','brown-sugar-syrup'] },
+  { id:'mp08', handle:'grapefruit-bubble-tea-premix', title:'Grapefruit Bubble Tea Premix', subtitle:'Bright, refreshing citrus boba', category:'Milk Tea Premixes', categoryHandle:'milk-tea-premixes', packSizes:['800g'], price:1499, unit:'per pack', sku:'MTP-GRAP-800', image:BOBA_IMG, tags:['premix','milk-tea','fruit','citrus'], description:'Bright grapefruit citrus blend. Thirst-quenching and refreshing. Strong seasonal appeal. Pairs well with popping boba for premium upsell.', benefits:['Bright citrus flavour','Strong seasonal appeal','Premium upsell with popping boba'], usageDosage:{cold:'40g per 350ml cold water + ice'}, applications:['Café','Cloud Kitchen'], faq:[{q:'Shelf life?',a:'18 months sealed.'}], relatedRecipes:['sparkling-kaffir-lime'], crossSell:['passion-fruit-popping-boba','lychee-popping-boba'] },
+  { id:'mp09', handle:'coconut-bubble-tea-premix', title:'Coconut Bubble Tea Premix', subtitle:'Tropical coconut boba — creamy & exotic', category:'Milk Tea Premixes', categoryHandle:'milk-tea-premixes', packSizes:['800g','1 kg'], price:1399, unit:'per pack', sku:'MTP-COCO-1K', image:BOBA_IMG, tags:['premix','milk-tea','tropical'], description:'Smooth tropical coconut flavour. A consistent top-seller in coastal and resort markets. Pairs beautifully with nata de coco toppings.', benefits:['Tropical coconut flavour','Pairs perfectly with nata de coco','Strong resort & coastal market performance'], usageDosage:{cold:'40g per 350ml cold milk + ice'}, applications:['Hotel & Resort','Café','Cloud Kitchen'], faq:[{q:'Shelf life?',a:'18 months sealed.'}], relatedRecipes:['classic-boba-milk-tea'], crossSell:['nata-de-coco','tapioca-pearls-classic-black'] },
+  { id:'mp10', handle:'sea-salt-caramel-bubble-tea-premix', title:'Sea Salt Caramel Bubble Tea Premix', subtitle:'Salted caramel boba — indulgent & crave-worthy', category:'Milk Tea Premixes', categoryHandle:'milk-tea-premixes', packSizes:['800g','1 kg'], price:1399, unit:'per pack', sku:'MTP-SCAR-1K', image:BOBA_IMG, tags:['premix','milk-tea','caramel'], description:'Rich caramel with a subtle salt balance. One of the most crave-worthy boba flavours. Exceptional repeat purchase rate.', benefits:['Highly crave-worthy flavour','Exceptional repeat purchase rate','Pairs with brown sugar drizzle'], usageDosage:{cold:'40g per 350ml cold milk + ice'}, applications:['Café','QSR','Fine Dining'], faq:[{q:'Shelf life?',a:'18 months sealed.'}], relatedRecipes:['brown-sugar-boba'], crossSell:['brown-sugar-syrup','tapioca-pearls-classic-black'] },
 ];
 
-export const MOCK_RECIPES: MockRecipe[] = [
-  {
-    slug: 'classic-boba-milk-tea',
-    title: 'Classic Boba Milk Tea',
-    category: 'Milk Teas',
-    prepTime: '8 min',
-    servingSize: '350ml',
-    difficulty: 'Easy',
-    image: `${CDN}/TP_cafe.jpg`,
-    description: 'The original boba milk tea. Consistent, crowd-pleasing, and highly profitable. The backbone of any boba menu.',
-    ingredients: [
-      { name: 'Silky Mix — Original Base', dosage: '30g',        sku: '72002', productHandle: 'silky-mix-original-base' },
-      { name: 'Black Tapioca Pearls (cooked)', dosage: '50g',    sku: '17025', productHandle: 'tapioca-pearls-black' },
-      { name: 'Cold Milk or Water',        dosage: '280ml' },
-      { name: 'Ice',                       dosage: '100g' },
-    ],
-    steps: [
-      'Cook tapioca pearls: boil 5 minutes, drain, coat in brown sugar syrup.',
-      'Add 30g Silky Mix to shaker.',
-      'Add 280ml cold milk and 100g ice.',
-      'Shake vigorously 15 seconds until frothy.',
-      'Add cooked pearls to serving cup.',
-      'Pour shaken mixture over pearls.',
-      'Serve with wide boba straw.',
-    ],
-    sellingNotes: 'Cost per cup: ₹22–28. Selling price: ₹120–180. Margin: 75–85%. Upsell popping boba for +₹30.',
-    applicationTypes: ['Café', 'QSR', 'Cloud Kitchen'],
-    linkedProducts: ['silky-mix-original-base', 'tapioca-pearls-black', 'brown-sugar-syrup'],
-  },
-  {
-    slug: 'brown-sugar-boba',
-    title: 'Brown Sugar Tiger Boba',
-    category: 'Signature Fusions',
-    prepTime: '10 min',
-    servingSize: '350ml',
-    difficulty: 'Medium',
-    image: `${CDN}/TP_cafe.jpg`,
-    description: 'The viral tiger-stripe boba that drives social media shares and repeat visits. Instagram-worthy every time.',
-    ingredients: [
-      { name: 'Silky Mix — Original Base', dosage: '30g',     sku: '72002', productHandle: 'silky-mix-original-base' },
-      { name: 'Black Tapioca Pearls (cooked)', dosage: '60g', sku: '17025', productHandle: 'tapioca-pearls-black' },
-      { name: 'Brown Sugar Syrup',         dosage: '25ml',    sku: '91171', productHandle: 'brown-sugar-syrup' },
-      { name: 'Fresh Milk',                dosage: '280ml' },
-      { name: 'Ice',                       dosage: '100g' },
-    ],
-    steps: [
-      'Cook pearls and coat in brown sugar syrup while hot.',
-      'Drizzle brown sugar syrup inside glass in tiger stripe pattern.',
-      'Add hot coated pearls immediately.',
-      'Fill glass with ice.',
-      'Shake Silky Mix with milk and pour slowly over ice.',
-      'Serve immediately for maximum visual impact.',
-    ],
-    sellingNotes: 'Cost per cup: ₹28–35. Selling price: ₹150–220. High Instagram-ability — encourage photo sharing.',
-    applicationTypes: ['Café', 'Fine Dining', 'QSR'],
-    linkedProducts: ['silky-mix-original-base', 'tapioca-pearls-black', 'brown-sugar-syrup'],
-  },
-  {
-    slug: 'thai-milk-tea',
-    title: 'Thai Milk Tea',
-    category: 'Milk Teas',
-    prepTime: '8 min',
-    servingSize: '350ml',
-    difficulty: 'Easy',
-    image: `${CDN}/TP_cafe.jpg`,
-    description: 'Aromatic Thai tea with condensed milk and tapioca. A café classic with strong repeat purchase behaviour.',
-    ingredients: [
-      { name: 'Thai Tea Concentrate',      dosage: '80ml' },
-      { name: 'Condensed Milk',            dosage: '30ml' },
-      { name: 'Black Tapioca Pearls (cooked)', dosage: '50g', sku: '17025', productHandle: 'tapioca-pearls-black' },
-      { name: 'Ice',                       dosage: '150g' },
-    ],
-    steps: [
-      'Brew Thai tea concentrate or use pre-made.',
-      'Add condensed milk and stir.',
-      'Add cooked tapioca pearls to cup.',
-      'Fill with ice and pour tea mixture.',
-      'Serve with boba straw.',
-    ],
-    sellingNotes: 'Cost per cup: ₹18–24. Selling price: ₹100–160. Strong repeat purchase. Pair with popping boba upsell.',
-    applicationTypes: ['Café', 'QSR', 'Cloud Kitchen'],
-    linkedProducts: ['tapioca-pearls-black', 'brown-sugar-syrup'],
-  },
-  {
-    slug: 'sparkling-kaffir-lime',
-    title: 'Sparkling Kaffir Lime',
-    category: 'Fruit Coolers',
-    prepTime: '5 min',
-    servingSize: '350ml',
-    difficulty: 'Easy',
-    image: `${CDN}/TP_cafe.jpg`,
-    description: 'Zesty kaffir lime with a sparkling finish. Tropical and bold. A seasonal bestseller with high margin.',
-    ingredients: [
-      { name: 'Kaffir Lime Syrup',         dosage: '30ml' },
-      { name: 'Popping Boba — any flavour', dosage: '40g', productHandle: 'popping-boba-strawberry' },
-      { name: 'Sparkling Water',           dosage: '280ml' },
-      { name: 'Ice',                       dosage: '100g' },
-      { name: 'Kaffir Lime Leaf (garnish)', dosage: '1 leaf' },
-    ],
-    steps: [
-      'Add popping boba to serving glass.',
-      'Add ice.',
-      'Mix kaffir lime syrup with sparkling water.',
-      'Pour over ice slowly.',
-      'Garnish with fresh kaffir lime leaf.',
-    ],
-    sellingNotes: 'Cost per cup: ₹15–20. Selling price: ₹140–180. No cooking, fast service. Premium look.',
-    applicationTypes: ['Café', 'Fine Dining', 'Cloud Kitchen'],
-    linkedProducts: ['popping-boba-strawberry'],
-  },
+// ─── TAPIOCA PEARLS ───────────────────────────────────────────────────────────
+const TAPIOCA: MockProduct[] = [
+  { id:'tp01', handle:'tapioca-pearls-classic-black', title:'Classic Black Tapioca Pearls', subtitle:'The original boba pearl — chewy & consistent', category:'Tapioca Pearls', categoryHandle:'tapioca-pearls', packSizes:['500g','1 kg','5 kg'], price:249, unit:'per 500g', sku:'17025', image:BOBA_IMG, tags:['tapioca','topping','bestseller'], badge:'Best Seller', isBestSeller:true, description:'The original quick-cook black tapioca pearl. Cooks in 5 minutes, consistent chew texture, stays fresh in syrup for 4 hours.', benefits:['5-minute cook time','Consistent chew every batch','Stays fresh in syrup for 4 hours','Reduces prep time by 80%'], usageDosage:{notes:'Boil 5 min, drain, coat in brown sugar syrup. Serve within 4 hours.'}, applications:['Café & Tea Bar','QSR','Cloud Kitchen','Fine Dining'], faq:[{q:'How long do cooked pearls last?',a:'Up to 4 hours in brown sugar syrup.'},{q:'Standard vs instant?',a:'Standard: 5 min, better texture. Instant: 30 sec, ideal for high-volume QSR.'}], relatedRecipes:['classic-boba-milk-tea','brown-sugar-boba','thai-milk-tea'], crossSell:['brown-sugar-syrup','silky-mix-original-base'] },
+  { id:'tp02', handle:'coconut-tapioca-pearls', title:'Coconut Tapioca Pearls', subtitle:'Coconut-flavoured pearls for tropical menus', category:'Tapioca Pearls', categoryHandle:'tapioca-pearls', packSizes:['500g'], price:499, unit:'per 500g', sku:'TAP-COCO-500', image:BOBA_IMG, tags:['tapioca','topping','flavoured'], description:'White coconut-flavoured tapioca pearls. A premium topping that upsells +₹20–30 per cup.', benefits:['Premium flavoured variant','Upsell opportunity','Tropical flavour profile'], usageDosage:{notes:'Cook 8–10 min. Coat in coconut syrup. Serve within 3 hours.'}, applications:['Café','Hotel & Resort'], faq:[{q:'Shelf life?',a:'12 months sealed.'}], relatedRecipes:['classic-boba-milk-tea'], crossSell:['coconut-bubble-tea-premix','nata-de-coco'] },
+  { id:'tp03', handle:'mango-tapioca-pearls', title:'Mango Tapioca Pearls', subtitle:'Sunshine-yellow mango pearls', category:'Tapioca Pearls', categoryHandle:'tapioca-pearls', packSizes:['500g'], price:499, unit:'per 500g', sku:'TAP-MANG-500', image:BOBA_IMG, tags:['tapioca','topping','mango'], description:'Golden mango-flavoured tapioca pearls. Vibrant colour and fruity sweetness. A summer bestseller.', benefits:['Vibrant yellow colour','Fruity mango flavour','Summer seasonal bestseller'], usageDosage:{notes:'Cook 8–10 min. Coat in mango syrup.'}, applications:['Café','Cloud Kitchen'], faq:[{q:'Shelf life?',a:'12 months sealed.'}], relatedRecipes:['sparkling-kaffir-lime'], crossSell:['mango-popping-boba'] },
+  { id:'tp04', handle:'strawberry-tapioca-pearls', title:'Strawberry Tapioca Pearls', subtitle:'Pink strawberry pearls for vibrant cups', category:'Tapioca Pearls', categoryHandle:'tapioca-pearls', packSizes:['500g'], price:499, unit:'per 500g', sku:'TAP-STRW-500', image:BOBA_IMG, tags:['tapioca','topping','strawberry'], description:'Pink strawberry-flavoured tapioca pearls. Highly photogenic and pairs perfectly with milk tea or fruit teas.', benefits:['Vibrant pink colour','Photogenic — drives social media sharing','Pairs with fruit or milk teas'], usageDosage:{notes:'Cook 8–10 min. Coat in strawberry syrup.'}, applications:['Café','QSR'], faq:[{q:'Shelf life?',a:'12 months sealed.'}], relatedRecipes:['classic-boba-milk-tea'], crossSell:['strawberry-popping-boba','strawberry-fruit-syrup'] },
+  { id:'tp05', handle:'instant-tapioca-pearls', title:'Instant Tapioca Pearls', subtitle:'Ready in 30 seconds — built for high-volume QSR', category:'Tapioca Pearls', categoryHandle:'tapioca-pearls', packSizes:['500g','1 kg'], price:500, unit:'per 500g', sku:'TAP-INST-500', image:BOBA_IMG, tags:['tapioca','topping','instant','qsr'], description:'Ready in just 30 seconds. Designed for high-volume QSR and cloud kitchen formats where speed is critical.', benefits:['30-second cook time','Designed for high-volume service','No specialist equipment needed'], usageDosage:{notes:'Pour into boiling water 30 sec, drain, serve immediately.'}, applications:['QSR','Cloud Kitchen','Institutional'], faq:[{q:'Texture vs standard?',a:'Slightly softer than standard pearls. Ideal for speed-of-service formats.'}], relatedRecipes:['classic-boba-milk-tea'], crossSell:['classic-milk-tea-premix-3in1'] },
+];
+
+// ─── POPPING BOBA ─────────────────────────────────────────────────────────────
+const POPPING_BOBA: MockProduct[] = [
+  { id:'pb01', handle:'strawberry-popping-boba', title:'Strawberry Popping Boba', subtitle:'Juice-filled bursting pearls. No cooking required.', category:'Popping Boba', categoryHandle:'popping-boba', packSizes:['400g','1 kg','2 kg'], price:649, unit:'per 1kg', sku:'PB-STRW-1K', image:BOBA_IMG, tags:['popping-boba','topping','bestseller'], badge:'Best Seller', isBestSeller:true, description:'Real strawberry juice-filled popping boba. No cooking. Open and serve. Adds ₹30–50 to your cup selling price.', benefits:['No cooking — open and serve','Real fruit juice filling','Premium upsell: +₹30–50 per cup','18-month shelf life'], usageDosage:{notes:'Drain from storage liquid, rinse. Add 2–3 tbsp per cup. No heating.'}, applications:['Café & Tea Bar','QSR','Fine Dining'], faq:[{q:'Need cooking?',a:'No — ready to use. Just drain and rinse.'},{q:'Shelf life?',a:'18 months sealed.'}], relatedRecipes:['classic-boba-milk-tea','sparkling-kaffir-lime'], crossSell:['silky-mix-original-base','tapioca-pearls-classic-black','strawberry-fruit-syrup'] },
+  { id:'pb02', handle:'mango-popping-boba', title:'Mango Popping Boba', subtitle:'Tropical mango burst in every sip', category:'Popping Boba', categoryHandle:'popping-boba', packSizes:['1 kg','2 kg'], price:649, unit:'per 1kg', sku:'PB-MANG-1K', image:BOBA_IMG, tags:['popping-boba','topping','mango'], description:'Real mango juice-filled popping boba. A tropical bestseller that pairs perfectly with milk and fruit teas.', benefits:['Real mango juice filling','No cooking required','Premium upsell ingredient'], usageDosage:{notes:'Drain, rinse, and serve. 2–3 tbsp per cup.'}, applications:['Café','QSR','Cloud Kitchen'], faq:[{q:'Shelf life?',a:'18 months sealed.'}], relatedRecipes:['sparkling-kaffir-lime'], crossSell:['taro-bubble-tea-premix','mango-tapioca-pearls'] },
+  { id:'pb03', handle:'lychee-popping-boba', title:'Lychee Popping Boba', subtitle:'Delicate lychee burst — floral and sweet', category:'Popping Boba', categoryHandle:'popping-boba', packSizes:['400g','1 kg','2 kg'], price:649, unit:'per 1kg', sku:'PB-LYCHE-1K', image:BOBA_IMG, tags:['popping-boba','topping','lychee'], description:'Delicate floral lychee juice-filled popping boba. A premium variety that pairs exceptionally with green tea and jasmine bases.', benefits:['Delicate floral flavour','Premium menu positioning','Pairs with green tea & jasmine'], usageDosage:{notes:'Drain, rinse, and serve. 2–3 tbsp per cup.'}, applications:['Fine Dining','Café'], faq:[{q:'Shelf life?',a:'18 months sealed.'}], relatedRecipes:['sparkling-kaffir-lime'], crossSell:['grapefruit-bubble-tea-premix'] },
+  { id:'pb04', handle:'passion-fruit-popping-boba', title:'Passion Fruit Popping Boba', subtitle:'Tropical-tart passion fruit burst', category:'Popping Boba', categoryHandle:'popping-boba', packSizes:['400g','2 kg'], price:649, unit:'per 400g', sku:'PB-PASS-400', image:BOBA_IMG, tags:['popping-boba','topping','passion-fruit'], description:'Tropical passion fruit juice popping boba. Tart, exotic and highly premium. A strong upsell in fine dining and resort formats.', benefits:['Exotic tropical flavour','Premium positioning','Strong upsell in fine dining'], usageDosage:{notes:'Drain, rinse, and serve. 2–3 tbsp per cup.'}, applications:['Fine Dining','Hotel & Resort','Café'], faq:[{q:'Shelf life?',a:'18 months sealed.'}], relatedRecipes:['sparkling-kaffir-lime'], crossSell:['grapefruit-bubble-tea-premix','lychee-popping-boba'] },
+];
+
+// ─── NATA DE COCO ─────────────────────────────────────────────────────────────
+const NATA: MockProduct[] = [
+  { id:'nd01', handle:'nata-de-coco', title:'Nata de Coco', subtitle:'8–10mm coconut cubes — premium chewy topping', category:'Nata de Coco', categoryHandle:'nata-de-coco', packSizes:['1 kg','3 kg'], price:649, unit:'per kg', sku:'NDC-001', image:BOBA_IMG, tags:['topping','nata-de-coco'], description:'Premium 8–10mm nata de coco cubes. Firm, translucent and slightly sweet. A premium topping that drives per-cup revenue.', benefits:['Premium chewy texture','Upsell: +₹25–40 per cup','Ready to use — no cooking','Long shelf life: 12 months'], usageDosage:{notes:'Drain from liquid, rinse. Add 2–3 tbsp per cup. No cooking required.'}, applications:['Café & Tea Bar','Fine Dining','QSR'], faq:[{q:'Need cooking?',a:'No — drain, rinse and serve.'},{q:'Shelf life?',a:'12 months sealed.'}], relatedRecipes:['classic-boba-milk-tea'], crossSell:['coconut-bubble-tea-premix','silky-mix-original-base'] },
+];
+
+// ─── SYRUPS ───────────────────────────────────────────────────────────────────
+const SYRUPS: MockProduct[] = [
+  { id:'sy01', handle:'brown-sugar-syrup', title:'Brown Sugar Syrup', subtitle:'Thick Taiwanese-style caramel — tiger stripes & drizzle', category:'Syrups & Concentrates', categoryHandle:'syrups-concentrates', packSizes:['700ml','1L','5L'], price:750, unit:'per 700ml', sku:'91171', image:CAFE_IMG, tags:['syrup','bestseller'], isBestSeller:true, description:'Authentic Taiwanese-style brown sugar syrup. Thick consistency perfect for tiger stripes, drizzle and mixing. Heat stable to 100°C.', benefits:['Thick — ideal for tiger stripes','Caramel depth with molasses notes','Heat stable to 100°C','Cost per cup: ₹5–8'], usageDosage:{hot:'15–20ml per 100ml',cold:'20–30ml per 350ml'}, applications:['Café & Tea Bar','QSR','Cloud Kitchen','Bakery'], faq:[{q:'Good for cake drizzle?',a:'Yes — thick consistency is ideal.'}], relatedRecipes:['brown-sugar-boba','classic-boba-milk-tea'], crossSell:['tapioca-pearls-classic-black','silky-mix-original-base'] },
+  { id:'sy02', handle:'nutty-taro-fruit-syrup', title:'Nutty Taro Fruit Syrup', subtitle:'Sweet, earthy taro syrup for drinks & drizzle', category:'Syrups & Concentrates', categoryHandle:'syrups-concentrates', packSizes:['700ml'], price:750, unit:'per 700ml', sku:'SYR-TARO-700', image:CAFE_IMG, tags:['syrup','taro'], description:'Rich nutty taro fruit syrup. Perfect for drizzle, mixing and flavour enhancement in taro-based drinks.', benefits:['Rich taro flavour','Versatile — drizzle or mix','Pairs with taro premix'], usageDosage:{cold:'20–25ml per 350ml serving'}, applications:['Café','Bakery'], faq:[{q:'Shelf life?',a:'12 months sealed.'}], relatedRecipes:['iced-taro-boba'], crossSell:['taro-bubble-tea-premix','tapioca-pearls-classic-black'] },
+  { id:'sy03', handle:'strawberry-fruit-syrup', title:'Strawberry Fruit Syrup', subtitle:'Bright strawberry syrup for teas, mocktails & desserts', category:'Syrups & Concentrates', categoryHandle:'syrups-concentrates', packSizes:['700ml'], price:750, unit:'per 700ml', sku:'SYR-STRW-700', image:CAFE_IMG, tags:['syrup','strawberry'], description:'Vibrant strawberry fruit syrup. Bright colour, balanced sweetness. Versatile for beverages, desserts and baking.', benefits:['Vibrant colour','Balanced sweetness','Use in drinks, desserts & baking'], usageDosage:{cold:'20–25ml per 350ml serving'}, applications:['Café','Bakery','Cloud Kitchen'], faq:[{q:'Shelf life?',a:'12 months sealed.'}], relatedRecipes:['sparkling-kaffir-lime'], crossSell:['strawberry-popping-boba','strawberry-tapioca-pearls'] },
+];
+
+// ─── SILKY MIX ────────────────────────────────────────────────────────────────
+const SILKY_MIX: MockProduct[] = [
+  { id:'sm01', handle:'silky-mix-original-base', title:'Silky Mix — Original Boba Base', subtitle:'Hot & cold all-in-one base. One SKU, unlimited recipes.', category:'Silky Mix Bases', categoryHandle:'silky-mix', packSizes:['500g','1.5 kg','5 kg','10 kg'], price:599, compareAtPrice:699, unit:'per kg', sku:'72002', image:CAFE_IMG, tags:['silky-mix','premix','bestseller','hot','cold'], badge:'Best Seller', isBestSeller:true, description:'The professional-grade boba base trusted by 100+ partners. Works hot or cold — one SKU, unlimited recipes. ₹19–20 per cup vs ₹22–25 imported.', benefits:['Hot & cold — one SKU replaces 3–4 ingredients','Cost per cup ₹19–20 (vs ₹22–25 imported)','3x higher repeat rate','FSSC 22000 certified','1-week dispatch vs 4–8 weeks for imports'], usageDosage:{hot:'10–15g per 100ml hot water or milk',cold:'30g per 350ml cold milk + ice',notes:'Adjust sweetness by varying dosage. Pair with Tapioca Pearls (SKU 17025).'}, applications:['Café & Tea Bar','QSR','Cloud Kitchen','Hotel & Resort','Distributor'], faq:[{q:'Shelf life?',a:'18 months sealed.'},{q:'Refrigeration needed?',a:'Store cool & dry. Refrigerate after opening.'},{q:'Vegan?',a:'Yes — fully plant-based.'},{q:'Minimum order?',a:'Retail: 500g. B2B: 5kg. Custom packs available.'},{q:'Dispatch time?',a:'48hr standard. 1 week for bulk/custom.'}], relatedRecipes:['classic-boba-milk-tea','brown-sugar-boba','thai-milk-tea'], crossSell:['tapioca-pearls-classic-black','strawberry-popping-boba','brown-sugar-syrup'] },
+];
+
+// ─── SPONGE CAKE BASE MIXES ───────────────────────────────────────────────────
+const CAKE_MIXES: MockProduct[] = [
+  { id:'sc01', handle:'sponge-cake-mix-spiced-chai', title:'Sponge Cake Base Mix — Spiced Chai', subtitle:'Professional chiffon sponge with authentic chai flavour', category:'Sponge Cake Base Mixes', categoryHandle:'sponge-cake-mixes', packSizes:['500g'], price:899, unit:'per pack', sku:'SCM-CHAI-001', image:`${CDN}/SpicedChai.jpg`, tags:['cake','dessert'], description:'Chiffon sponge cake base with authentic Indian spiced chai. Pairs with boba toppings for premium dessert menus.', benefits:['Consistent bakery-quality results','Pairs with boba toppings','Extends menu into desserts','No specialist baking skills needed'], usageDosage:{notes:'Mix 500g with eggs, oil, water per pack instructions. Bake at 170°C for 25–30 min.'}, applications:['Bakery & Dessert','Café','Cloud Kitchen','Fine Dining'], faq:[{q:'Best toppings?',a:'Boba pearls, popping boba, nata de coco and konjac jelly.'},{q:'Other flavours?',a:'Matcha, Jasmine Green Tea, Earl Grey, Black Tea.'}], relatedRecipes:['matcha-boba-sponge-cake'], crossSell:['tapioca-pearls-classic-black','strawberry-popping-boba','nata-de-coco'] },
+  { id:'sc02', handle:'sponge-cake-mix-matcha', title:'Sponge Cake Base Mix — Matcha Tea', subtitle:'Premium Japanese matcha chiffon sponge', category:'Sponge Cake Base Mixes', categoryHandle:'sponge-cake-mixes', packSizes:['500g'], price:899, unit:'per pack', sku:'SCM-MATCHA-001', image:`${CDN}/MatchaTea.jpg`, tags:['cake','dessert','matcha'], isNew:true, badge:'New', description:'Premium matcha chiffon sponge with authentic Japanese green tea. Deep green colour. Instagram-worthy.', benefits:['Authentic matcha colour','Pairs with taro & red bean','Instagram-worthy deep green'], usageDosage:{notes:'Bake at 170°C for 25–30 min per pack instructions.'}, applications:['Bakery','Café','Fine Dining'], faq:[{q:'Add boba?',a:'Yes — matcha pairs beautifully with popping boba.'}], relatedRecipes:['matcha-boba-sponge-cake'], crossSell:['lychee-popping-boba','nata-de-coco'] },
+  { id:'sc03', handle:'sponge-cake-mix-jasmine-green-tea', title:'Sponge Cake Base Mix — Jasmine Green Tea', subtitle:'Delicate jasmine-infused chiffon sponge', category:'Sponge Cake Base Mixes', categoryHandle:'sponge-cake-mixes', packSizes:['500g'], price:899, unit:'per pack', sku:'SCM-JASMN-001', image:`${CDN}/JasmineGreenTea.jpg`, tags:['cake','dessert','jasmine'], description:'Delicate jasmine green tea chiffon sponge. Floral, light and premium. A sophisticated dessert menu item.', benefits:['Delicate floral jasmine flavour','Elegant & premium positioning','Light, airy chiffon texture'], usageDosage:{notes:'Bake at 170°C for 25–30 min.'}, applications:['Fine Dining','Café','Hotel'], faq:[{q:'Best toppings?',a:'Lychee popping boba and nata de coco pair best.'}], relatedRecipes:['matcha-boba-sponge-cake'], crossSell:['lychee-popping-boba','nata-de-coco'] },
+  { id:'sc04', handle:'sponge-cake-mix-earl-grey', title:'Sponge Cake Base Mix — Earl Grey', subtitle:'Classic bergamot Earl Grey chiffon sponge', category:'Sponge Cake Base Mixes', categoryHandle:'sponge-cake-mixes', packSizes:['500g'], price:899, unit:'per pack', sku:'SCM-EARL-001', image:`${CDN}/EarlGrey.jpg`, tags:['cake','dessert','earl-grey'], description:'Classic bergamot Earl Grey chiffon sponge. Sophisticated, fragrant and highly appealing to premium café customers.', benefits:['Classic bergamot flavour','Sophisticated premium appeal','Popular with premium café segment'], usageDosage:{notes:'Bake at 170°C for 25–30 min.'}, applications:['Fine Dining','Café','Hotel'], faq:[{q:'Best toppings?',a:'Popping boba and brown sugar drizzle.'}], relatedRecipes:['matcha-boba-sponge-cake'], crossSell:['strawberry-popping-boba','brown-sugar-syrup'] },
+  { id:'sc05', handle:'sponge-cake-mix-black-tea', title:'Sponge Cake Base Mix — Black Tea', subtitle:'Bold Assam black tea chiffon sponge', category:'Sponge Cake Base Mixes', categoryHandle:'sponge-cake-mixes', packSizes:['500g'], price:899, unit:'per pack', sku:'SCM-BLKT-001', image:`${CDN}/BlackTea.jpg`, tags:['cake','dessert','black-tea'], description:'Bold Assam black tea chiffon sponge. Currently out of stock — join the waitlist.', benefits:['Bold Assam tea flavour','Strong Indian market appeal'], usageDosage:{notes:'Bake at 170°C for 25–30 min.'}, applications:['Café','Bakery'], faq:[{q:'When back in stock?',a:'WhatsApp us to join the waitlist.'}], relatedRecipes:['matcha-boba-sponge-cake'], crossSell:['tapioca-pearls-classic-black','brown-sugar-syrup'] },
+];
+
+export const MOCK_PRODUCTS: MockProduct[] = [
+  ...SILKY_MIX,
+  ...MILK_PREMIXES,
+  ...TAPIOCA,
+  ...POPPING_BOBA,
+  ...NATA,
+  ...SYRUPS,
+  ...CAKE_MIXES,
+];
+
+export const BEST_SELLERS = MOCK_PRODUCTS.filter((p) => p.isBestSeller);
+
+export const MOCK_COLLECTIONS = [
+  { handle:'silky-mix',           title:'Silky Mix Bases',        description:'All-in-one hot & cold beverage bases. One SKU, unlimited recipes.',                  products: SILKY_MIX },
+  { handle:'milk-tea-premixes',   title:'Milk Tea Premixes',      description:'15+ milk tea flavours. Halal, Vegan, Non-GMO. Cost per cup from ₹19.',             products: MILK_PREMIXES },
+  { handle:'tapioca-pearls',      title:'Tapioca Pearls',         description:'Standard, instant & flavoured tapioca pearls. Ready in 5 minutes.',               products: TAPIOCA },
+  { handle:'popping-boba',        title:'Popping Boba',           description:'Juice-filled bursting pearls. 30+ flavours. No cooking. Premium upsell.',          products: POPPING_BOBA },
+  { handle:'nata-de-coco',        title:'Nata de Coco',           description:'8–10mm premium coconut cubes. Ready to serve. No cooking required.',              products: NATA },
+  { handle:'syrups-concentrates', title:'Syrups & Concentrates',  description:'Fruit, floral & classic syrups for beverages, desserts and baking.',              products: SYRUPS },
+  { handle:'sponge-cake-mixes',   title:'Sponge Cake Base Mixes', description:'5 tea-infused flavours. ₹899 each. Extend your menu into premium desserts.',      products: CAKE_MIXES },
 ];
 
 export const SIGNATURE_DRINKS = {
   fusion: [
-    { title: 'Mocha & Boba',           desc: 'Rich espresso meets creamy milk tea. Topped with signature popping boba.',       image: `${CDN}/TP_cafe.jpg`, recipe: 'mocha-boba' },
-    { title: 'Taro & Matcha',          desc: 'Earthy matcha blended with creamy taro. A premium fusion favourite.',              image: `${CDN}/TP_cafe.jpg`, recipe: 'taro-matcha' },
-    { title: 'Thai Milk Tea',          desc: 'Aromatic Thai tea with condensed milk and tapioca. A café classic.',               image: `${CDN}/TP_cafe.jpg`, recipe: 'thai-milk-tea' },
-    { title: 'Brown Tiger Sugar Latte',desc: 'Silky latte with caramelised brown sugar drizzle. Instagram-worthy every time.',  image: `${CDN}/TP_cafe.jpg`, recipe: 'brown-sugar-boba' },
+    { title:'Mocha & Boba',            desc:'Rich espresso meets creamy milk tea. Topped with signature popping boba.',      image:CAFE_IMG, recipe:'classic-boba-milk-tea' },
+    { title:'Taro & Matcha',           desc:'Earthy matcha blended with creamy taro. A premium fusion favourite.',             image:CAFE_IMG, recipe:'taro-matcha' },
+    { title:'Thai Milk Tea',           desc:'Aromatic Thai tea with condensed milk and tapioca. A café classic.',              image:CAFE_IMG, recipe:'thai-milk-tea' },
+    { title:'Brown Tiger Sugar Latte', desc:'Silky latte with caramelised brown sugar drizzle. Instagram-worthy every time.', image:CAFE_IMG, recipe:'brown-sugar-boba' },
   ],
   coolers: [
-    { title: 'Sparkling Kaffir Lime',  desc: 'Zesty kaffir lime with a sparkling finish. Tropical and bold.',                   image: `${CDN}/TP_cafe.jpg`, recipe: 'sparkling-kaffir-lime' },
-    { title: 'Yuzu Green Tea',         desc: 'Bright yuzu citrus with delicate green tea. Light, refreshing, premium.',          image: `${CDN}/TP_cafe.jpg`, recipe: 'yuzu-green-tea' },
-    { title: 'Ginger Jasmine',         desc: 'Warming ginger spice with floral jasmine. Wellness-focused favourite.',            image: `${CDN}/TP_cafe.jpg`, recipe: 'ginger-jasmine' },
-    { title: 'Oolong with Tapioca',    desc: 'Smooth oolong base with chewy tapioca pearls. A timeless combination.',            image: `${CDN}/TP_cafe.jpg`, recipe: 'oolong-tapioca' },
+    { title:'Sparkling Kaffir Lime',   desc:'Zesty kaffir lime with a sparkling finish. Tropical and bold.',                  image:CAFE_IMG, recipe:'sparkling-kaffir-lime' },
+    { title:'Yuzu Green Tea',          desc:'Bright yuzu citrus with delicate green tea. Light, refreshing, premium.',         image:CAFE_IMG, recipe:'yuzu-green-tea' },
+    { title:'Ginger Jasmine',          desc:'Warming ginger spice with floral jasmine. Wellness-focused favourite.',           image:CAFE_IMG, recipe:'ginger-jasmine' },
+    { title:'Oolong with Tapioca',     desc:'Smooth oolong base with chewy tapioca pearls. A timeless combination.',           image:CAFE_IMG, recipe:'oolong-tapioca' },
   ],
 };
 
-export const SPONGE_CAKE_PRODUCTS = MOCK_PRODUCTS.filter((p) => p.categoryHandle === 'sponge-cake-mixes');
-export const BEST_SELLERS       = MOCK_PRODUCTS.filter((p) => p.isBestSeller);
-export const MOCK_COLLECTIONS = [
-  { handle: 'boba-innovations',    title: 'Boba Innovations',      description: 'Complete boba ingredient range.',               products: MOCK_PRODUCTS.filter((p) => ['tapioca-pearls','popping-boba'].includes(p.categoryHandle)) },
-  { handle: 'syrups-concentrates', title: 'Syrups & Concentrates', description: 'Professional flavour syrups. 25+ flavours.',    products: MOCK_PRODUCTS.filter((p) => p.categoryHandle === 'syrups-concentrates') },
-  { handle: 'silky-mix',           title: 'Silky Mix Bases',       description: 'All-in-one hot & cold beverage bases.',         products: MOCK_PRODUCTS.filter((p) => p.categoryHandle === 'silky-mix') },
-  { handle: 'sponge-cake-mixes',   title: 'Sponge Cake Base Mixes',description: 'Professional chiffon sponge cake bases.',       products: SPONGE_CAKE_PRODUCTS },
-  { handle: 'tapioca-pearls',      title: 'Tapioca Pearls',        description: 'Standard & instant tapioca pearls.',            products: MOCK_PRODUCTS.filter((p) => p.categoryHandle === 'tapioca-pearls') },
-  { handle: 'popping-boba',        title: 'Popping Boba',          description: 'Juice-filled bursting pearls. 6+ varieties.',   products: MOCK_PRODUCTS.filter((p) => p.categoryHandle === 'popping-boba') },
+export const MOCK_RECIPES: MockRecipe[] = [
+  {
+    slug:'classic-boba-milk-tea', title:'Classic Boba Milk Tea', category:'Milk Teas',
+    prepTime:'8 min', servingSize:'350ml', difficulty:'Easy', image:CAFE_IMG,
+    description:'The original boba milk tea. Consistent, crowd-pleasing, highly profitable. The backbone of any boba menu.',
+    ingredients:[
+      { name:'Silky Mix — Original Base',     dosage:'30g',  sku:'72002', productHandle:'silky-mix-original-base' },
+      { name:'Black Tapioca Pearls (cooked)', dosage:'50g',  sku:'17025', productHandle:'tapioca-pearls-classic-black' },
+      { name:'Cold Milk or Water',            dosage:'280ml' },
+      { name:'Ice',                           dosage:'100g' },
+    ],
+    steps:[
+      'Cook tapioca pearls: boil 5 minutes, drain, coat in brown sugar syrup.',
+      'Add 30g Silky Mix to shaker.',
+      'Add 280ml cold milk and 100g ice.',
+      'Shake vigorously 15 seconds until frothy.',
+      'Add cooked pearls to cup.',
+      'Pour shaken mixture over pearls. Serve with wide boba straw.',
+    ],
+    sellingNotes:'Cost per cup: ₹22–28. Selling price: ₹120–180. Margin: 75–85%. Upsell popping boba for +₹30.',
+    applicationTypes:['Café','QSR','Cloud Kitchen'],
+    linkedProducts:['silky-mix-original-base','tapioca-pearls-classic-black','brown-sugar-syrup'],
+  },
+  {
+    slug:'brown-sugar-boba', title:'Brown Sugar Tiger Boba', category:'Signature Fusions',
+    prepTime:'10 min', servingSize:'350ml', difficulty:'Medium', image:CAFE_IMG,
+    description:'The viral tiger-stripe boba that drives social media shares and repeat visits.',
+    ingredients:[
+      { name:'Silky Mix — Original Base',     dosage:'30g',  sku:'72002', productHandle:'silky-mix-original-base' },
+      { name:'Black Tapioca Pearls (cooked)', dosage:'60g',  sku:'17025', productHandle:'tapioca-pearls-classic-black' },
+      { name:'Brown Sugar Syrup',             dosage:'25ml', sku:'91171', productHandle:'brown-sugar-syrup' },
+      { name:'Fresh Milk',                    dosage:'280ml' },
+      { name:'Ice',                           dosage:'100g' },
+    ],
+    steps:[
+      'Cook pearls and coat in brown sugar syrup while hot.',
+      'Drizzle brown sugar syrup inside glass in tiger stripe pattern.',
+      'Add hot coated pearls immediately.',
+      'Fill glass with ice.',
+      'Shake Silky Mix with milk, pour slowly over ice.',
+      'Serve immediately for maximum visual impact.',
+    ],
+    sellingNotes:'Cost per cup: ₹28–35. Selling price: ₹150–220. High Instagram-ability.',
+    applicationTypes:['Café','Fine Dining','QSR'],
+    linkedProducts:['silky-mix-original-base','tapioca-pearls-classic-black','brown-sugar-syrup'],
+  },
+  {
+    slug:'thai-milk-tea', title:'Thai Milk Tea', category:'Milk Teas',
+    prepTime:'8 min', servingSize:'350ml', difficulty:'Easy', image:CAFE_IMG,
+    description:'Aromatic Thai tea with condensed milk and tapioca. A café classic with strong repeat purchase behaviour.',
+    ingredients:[
+      { name:'Thai Tea Premix',               dosage:'40g',  sku:'MTP-THAI-800', productHandle:'thai-tea-bubble-tea-premix' },
+      { name:'Condensed Milk',                dosage:'30ml' },
+      { name:'Black Tapioca Pearls (cooked)', dosage:'50g',  sku:'17025', productHandle:'tapioca-pearls-classic-black' },
+      { name:'Ice',                           dosage:'150g' },
+    ],
+    steps:[
+      'Mix Thai Tea Premix with 280ml cold water.',
+      'Add condensed milk and stir.',
+      'Add cooked tapioca pearls to cup.',
+      'Fill with ice and pour tea mixture. Serve with boba straw.',
+    ],
+    sellingNotes:'Cost per cup: ₹18–24. Selling price: ₹100–160. Upsell popping boba.',
+    applicationTypes:['Café','QSR','Cloud Kitchen'],
+    linkedProducts:['thai-tea-bubble-tea-premix','tapioca-pearls-classic-black'],
+  },
+  {
+    slug:'sparkling-kaffir-lime', title:'Sparkling Kaffir Lime', category:'Fruit Coolers',
+    prepTime:'5 min', servingSize:'350ml', difficulty:'Easy', image:CAFE_IMG,
+    description:'Zesty kaffir lime with a sparkling finish. Tropical and bold. High margin, zero cooking.',
+    ingredients:[
+      { name:'Kaffir Lime Syrup',             dosage:'30ml' },
+      { name:'Passion Fruit Popping Boba',    dosage:'40g',  sku:'PB-PASS-400', productHandle:'passion-fruit-popping-boba' },
+      { name:'Sparkling Water',               dosage:'280ml' },
+      { name:'Ice',                           dosage:'100g' },
+      { name:'Kaffir Lime Leaf (garnish)',    dosage:'1 leaf' },
+    ],
+    steps:[
+      'Add popping boba to serving glass.',
+      'Add ice.',
+      'Mix kaffir lime syrup with sparkling water and pour over ice.',
+      'Garnish with fresh kaffir lime leaf.',
+    ],
+    sellingNotes:'Cost per cup: ₹15–20. Selling price: ₹140–180. Zero cooking. Premium look.',
+    applicationTypes:['Café','Fine Dining','Cloud Kitchen'],
+    linkedProducts:['passion-fruit-popping-boba'],
+  },
 ];
