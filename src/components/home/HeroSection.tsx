@@ -1,6 +1,7 @@
-import Link from 'next/link';
+import Link from 'next/image';
 import Image from 'next/image';
 import { ArrowRight, CheckCircle } from 'lucide-react';
+import { WA_LINK } from '@/lib/config';
 
 const CDN = 'https://theteaplanet.com/cdn/shop/files';
 
@@ -12,7 +13,6 @@ const STATS = [
 ];
 
 export default function HeroSection() {
-  const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '918886277713';
   return (
     <section className="relative bg-brand-green overflow-hidden">
       <div className="absolute inset-0 opacity-10"
@@ -20,7 +20,6 @@ export default function HeroSection() {
 
       <div className="container-site relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch min-h-[560px]">
-          {/* Left — Copy */}
           <div className="flex flex-col justify-center py-16 lg:py-20 lg:pr-12">
             <div className="inline-flex items-center gap-2 bg-brand-amber/20 text-brand-amber px-4 py-1.5 rounded-full text-sm font-semibold mb-6 self-start">
               <span className="w-2 h-2 rounded-full bg-brand-amber animate-pulse" />
@@ -54,7 +53,7 @@ export default function HeroSection() {
                 Shop Products <ArrowRight size={15} />
               </Link>
               <a
-                href={`https://wa.me/${waNumber}?text=${encodeURIComponent('Hi Tea Planet! I want to launch a boba menu. Please share your Menu Plug-In Kit details.')}`}
+                href={WA_LINK('Hi Tea Planet! I want to launch a boba menu. Please share your Menu Plug-In Kit details.')}
                 target="_blank" rel="noreferrer"
                 className="btn-whatsapp"
               >
@@ -66,19 +65,15 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right — Hero image + stat overlay */}
           <div className="relative hidden lg:block">
             <Image
               src={`${CDN}/TP_cafe.jpg`}
               alt="Tea Planet café setup"
-              fill
-              priority
+              fill priority
               className="object-cover object-center"
               sizes="50vw"
             />
             <div className="absolute inset-0 bg-gradient-to-l from-transparent to-brand-green/40" />
-
-            {/* Stat cards overlaid on image */}
             <div className="absolute bottom-6 left-6 right-6 grid grid-cols-2 gap-3">
               {STATS.map((s) => (
                 <div key={s.label} className="bg-white/90 backdrop-blur-sm rounded-[8px] p-3 text-center">
@@ -91,7 +86,6 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Mobile stats row */}
         <div className="lg:hidden grid grid-cols-2 gap-3 pb-8">
           {STATS.map((s) => (
             <div key={s.label} className="bg-white/10 rounded-[8px] p-4 text-center">

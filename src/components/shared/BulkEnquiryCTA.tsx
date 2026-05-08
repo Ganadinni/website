@@ -1,6 +1,7 @@
 'use client';
 
 import { MessageCircle, ArrowRight } from 'lucide-react';
+import { WA_LINK } from '@/lib/config';
 
 interface BulkEnquiryCTAProps {
   productName?: string;
@@ -9,20 +10,17 @@ interface BulkEnquiryCTAProps {
 }
 
 export default function BulkEnquiryCTA({ productName, sku, variant = 'inline' }: BulkEnquiryCTAProps) {
-  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '918886277713';
-  const baseMsg = productName
+  const msg = productName
     ? `Hi Tea Planet! I'd like bulk pricing for ${productName}${sku ? ` (SKU: ${sku})` : ''}. Please share your B2B price sheet.`
     : `Hi Tea Planet! I'd like to place a bulk order. Please share your B2B price sheet.`;
-  const waUrl = `https://wa.me/${number}?text=${encodeURIComponent(baseMsg)}`;
+  const waUrl = WA_LINK(msg);
 
   if (variant === 'banner') {
     return (
       <div className="bg-brand-pale border border-brand-light rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
           <p className="font-semibold text-brand-green">Need bulk quantities?</p>
-          <p className="text-sm text-gray-600 mt-0.5">
-            B2B pricing available from 5 kg. Custom pack sizes on request.
-          </p>
+          <p className="text-sm text-gray-600 mt-0.5">B2B pricing available from 5 kg. Custom pack sizes on request.</p>
         </div>
         <div className="flex gap-3 shrink-0">
           <a href={waUrl} target="_blank" rel="noreferrer" className="btn-whatsapp">

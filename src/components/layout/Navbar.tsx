@@ -3,6 +3,7 @@
 import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { Menu, X, ChevronDown, Phone } from 'lucide-react';
+import { WA_LINK } from '@/lib/config';
 
 const NAV = [
   {
@@ -19,10 +20,10 @@ const NAV = [
       {
         heading: 'Boba & Toppings',
         items: [
-          { label: 'Popping Boba',        href: '/collections/popping-boba' },
-          { label: 'Tapioca Pearls',      href: '/collections/tapioca-pearls' },
-          { label: 'Nata de Coco',        href: '/collections/nata-de-coco' },
-          { label: 'Konjac Pearls',       href: '/collections/konjac-pearls' },
+          { label: 'Popping Boba',   href: '/collections/popping-boba' },
+          { label: 'Tapioca Pearls', href: '/collections/tapioca-pearls' },
+          { label: 'Nata de Coco',   href: '/collections/nata-de-coco' },
+          { label: 'Konjac Pearls',  href: '/collections/konjac-pearls' },
         ],
       },
       {
@@ -36,8 +37,8 @@ const NAV = [
       {
         heading: 'Specialty',
         items: [
-          { label: 'Sponge Cake Base Mixes',  href: '/collections/sponge-cake-mixes' },
-          { label: 'Industrial Ingredients',  href: '/collections/industrial' },
+          { label: 'Sponge Cake Base Mixes', href: '/collections/sponge-cake-mixes' },
+          { label: 'Industrial Ingredients', href: '/collections/industrial' },
         ],
         cta: { label: 'View All Products →', href: '/collections/all' },
       },
@@ -49,20 +50,20 @@ const NAV = [
       {
         heading: 'By Business Type',
         items: [
-          { label: 'For Cafés & Tea Bars',    href: '/solutions/cafe-setup',   desc: 'Full bar setup, menu & training' },
-          { label: 'For QSR Chains',           href: '/solutions/qsr',          desc: 'Multi-outlet consistency & supply' },
-          { label: 'For Cloud Kitchens',       href: '/solutions/cloud-kitchen',desc: 'Delivery-stable beverages & kits' },
-          { label: 'For Distributors',         href: '/solutions/distributor',  desc: 'Regional partner program' },
-          { label: 'For Industrial Customers', href: '/solutions/industrial',   desc: 'Bulk 20kg supply & custom formulation' },
-          { label: 'Export Enquiry',           href: '/solutions/export',       desc: 'International B2B supply' },
+          { label: 'For Cafés & Tea Bars',    href: '/solutions/cafe-setup',    desc: 'Full bar setup, menu & training' },
+          { label: 'For QSR Chains',           href: '/solutions/qsr',           desc: 'Multi-outlet consistency & supply' },
+          { label: 'For Cloud Kitchens',       href: '/solutions/cloud-kitchen', desc: 'Delivery-stable beverages & kits' },
+          { label: 'For Distributors',         href: '/solutions/distributor',   desc: 'Regional partner program' },
+          { label: 'For Industrial Customers', href: '/solutions/industrial',    desc: 'Bulk 20kg supply & custom formulation' },
+          { label: 'Export Enquiry',           href: '/solutions/export',        desc: 'International B2B supply' },
         ],
       },
       {
         heading: 'Packages',
         items: [
-          { label: 'Menu Plug-In Kit',       href: '/solutions/menu-plugin',   desc: 'Launch a boba menu in 7 days' },
-          { label: 'Branded Operator Program', href: '/operator-program',     desc: 'Franchise-alternative model' },
-          { label: 'Business Packages',      href: '/packages',               desc: 'Starter, Growth & Pro kits' },
+          { label: 'Menu Plug-In Kit',          href: '/solutions/menu-plugin', desc: 'Launch a boba menu in 7 days' },
+          { label: 'Branded Operator Program',  href: '/operator-program',      desc: 'Franchise-alternative model' },
+          { label: 'Business Packages',         href: '/packages',              desc: 'Starter, Growth & Pro kits' },
         ],
       },
     ],
@@ -73,11 +74,11 @@ const NAV = [
       {
         heading: 'By Drink Type',
         items: [
-          { label: 'Milk Teas',          href: '/recipes?category=milk-tea' },
-          { label: 'Fruit Coolers',      href: '/recipes?category=fruit-cooler' },
-          { label: 'Signature Fusions',  href: '/recipes?category=signature' },
-          { label: 'Iced Teas',          href: '/recipes?category=iced-tea' },
-          { label: 'Hot Beverages',      href: '/recipes?category=hot' },
+          { label: 'Milk Teas',         href: '/recipes?category=milk-tea' },
+          { label: 'Fruit Coolers',     href: '/recipes?category=fruit-cooler' },
+          { label: 'Signature Fusions', href: '/recipes?category=signature' },
+          { label: 'Iced Teas',         href: '/recipes?category=iced-tea' },
+          { label: 'Hot Beverages',     href: '/recipes?category=hot' },
         ],
       },
       {
@@ -92,10 +93,7 @@ const NAV = [
       },
     ],
   },
-  {
-    label: 'Signature Drinks',
-    href: '/signature-drinks',
-  },
+  { label: 'Signature Drinks', href: '/signature-drinks' },
   {
     label: 'About',
     columns: [
@@ -110,10 +108,7 @@ const NAV = [
       },
     ],
   },
-  {
-    label: 'Contact',
-    href: '/contact',
-  },
+  { label: 'Contact', href: '/contact' },
 ];
 
 type NavItem = typeof NAV[number];
@@ -132,8 +127,6 @@ export default function Navbar() {
     timeoutRef.current = setTimeout(() => setActive(null), 120);
   };
 
-  const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '918886277713';
-
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-borderLight shadow-subtle">
       {/* Top announcement bar */}
@@ -144,7 +137,7 @@ export default function Navbar() {
           </span>
           <span className="sm:hidden">FSSC 22000 · Made in India · ₹19/cup</span>
           <a
-            href={`https://wa.me/${waNumber}?text=${encodeURIComponent('Hi Tea Planet! I have a bulk enquiry.')}`}
+            href={WA_LINK('Hi Tea Planet! I have a bulk enquiry.')}
             target="_blank" rel="noreferrer"
             className="flex items-center gap-1.5 font-medium hover:text-brand-amber transition-colors"
           >
@@ -155,14 +148,12 @@ export default function Navbar() {
 
       {/* Main nav */}
       <nav className="container-site flex items-center justify-between h-[64px]">
-        {/* Logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0">
           <span className="font-display text-xl font-bold text-brand-green tracking-tight leading-none">
             The Tea Planet
           </span>
         </Link>
 
-        {/* Desktop links */}
         <ul className="hidden lg:flex items-center">
           {NAV.map((item) => (
             <li
@@ -191,7 +182,6 @@ export default function Navbar() {
                 </button>
               )}
 
-              {/* Mega dropdown */}
               {item.columns && active === item.label && (
                 <div
                   className="absolute top-full left-0 mt-0 bg-white shadow-elevated border border-borderLight rounded-[8px] py-6 z-50 min-w-[480px]"
@@ -241,13 +231,12 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Desktop CTAs */}
         <div className="hidden lg:flex items-center gap-2">
           <Link href="/contact#bulk-enquiry" className="btn-secondary text-sm px-4 py-2">
             Bulk Enquiry
           </Link>
           <a
-            href={`https://wa.me/${waNumber}?text=${encodeURIComponent('Hi Tea Planet! I want to know about your products and pricing.')}`}
+            href={WA_LINK('Hi Tea Planet! I want to know about your products and pricing.')}
             target="_blank" rel="noreferrer"
             className="btn-whatsapp text-sm px-4 py-2"
           >
@@ -255,7 +244,6 @@ export default function Navbar() {
           </a>
         </div>
 
-        {/* Mobile toggle */}
         <button
           className="lg:hidden p-2 rounded-[8px] text-brand-green hover:bg-background min-w-[44px] min-h-[44px] flex items-center justify-center"
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -265,7 +253,6 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile menu */}
       {mobileOpen && (
         <div className="lg:hidden border-t border-borderLight bg-white max-h-[80vh] overflow-y-auto">
           {NAV.map((item: NavItem) => (
@@ -312,7 +299,7 @@ export default function Navbar() {
           ))}
           <div className="flex gap-3 p-4 border-t border-borderLight">
             <a
-              href={`https://wa.me/${waNumber}?text=${encodeURIComponent('Hi Tea Planet! Bulk enquiry.')}`}
+              href={WA_LINK('Hi Tea Planet! Bulk enquiry.')}
               target="_blank" rel="noreferrer"
               className="btn-whatsapp flex-1 justify-center text-sm"
             >

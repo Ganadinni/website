@@ -1,11 +1,10 @@
-import Link from 'next/link';
+import { WA_LINK } from '@/lib/config';
 
 export default function WhatsAppFloat() {
-  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '918886277713';
-  const message = encodeURIComponent('Hi, I\'d like to know more about your products and pricing.');
+  const href = WA_LINK('Hi, I\'d like to know more about your products and pricing.');
   return (
     <a
-      href={`https://wa.me/${number}?text=${message}`}
+      href={href}
       target="_blank"
       rel="noreferrer"
       aria-label="Chat on WhatsApp"
