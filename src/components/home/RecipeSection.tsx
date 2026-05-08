@@ -17,6 +17,7 @@ export default function RecipeSection() {
       <div className="container-site">
         <div className="flex items-end justify-between mb-10">
           <div>
+            <p className="text-brand-mid text-sm font-semibold uppercase tracking-widest mb-2">Menu Inspiration</p>
             <h2 className="section-heading">Discover Recipes</h2>
             <p className="section-subheading">Build your menu from 50+ tested recipes. Every recipe links directly to ingredients.</p>
           </div>
@@ -60,7 +61,7 @@ export default function RecipeSection() {
         {/* Recipe-to-product CTA */}
         <div className="mt-10 bg-brand-cream rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
-            <h3 className="font-display text-xl font-bold text-brand-green">📊 50+ Recipes, All Ingredients In Stock</h3>
+            <h3 className="font-display text-xl font-bold text-brand-green">50+ Recipes, All Ingredients In Stock</h3>
             <p className="text-gray-600 text-sm mt-1">Every recipe links to its exact Tea Planet ingredients. Order in one click.</p>
           </div>
           <Link href="/recipes" className="btn-primary shrink-0">
