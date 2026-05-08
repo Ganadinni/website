@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { CheckCircle, ArrowRight } from 'lucide-react';
 import BulkEnquiryCTA from '@/components/shared/BulkEnquiryCTA';
+import { WA_LINK } from '@/lib/config';
 
 const SOLUTIONS = {
   'menu-plugin': {
@@ -99,9 +100,9 @@ const SOLUTIONS = {
     tagline: 'Multi-outlet consistency & bulk supply',
     icon: '🏪',
     description:
-      'Supplying beverage ingredients to QSR chains requires absolute consistency across every outlet. Tea Planet's manufacturing-direct model ensures the same quality, the same taste, and the same cost — every single batch.',
+      'Supplying beverage ingredients to QSR chains requires absolute consistency across every outlet. Tea Planet’s manufacturing-direct model ensures the same quality, the same taste, and the same cost — every single batch.',
     includes: [
-      'Volume pricing from 50kg/month',
+      'Volume pricing from 50 kg/month',
       'Centralised ordering dashboard',
       'Standardised SOPs per menu item',
       'Multi-city delivery network',
@@ -114,15 +115,15 @@ const SOLUTIONS = {
   },
   'industrial': {
     title: 'Industrial Supply',
-    tagline: 'Bulk 20kg+ supply & custom formulation',
+    tagline: 'Bulk 20 kg+ supply & custom formulation',
     icon: '🏭',
     description:
       'For food manufacturers, institutional buyers and large processors requiring bulk beverage ingredients. Factory-direct pricing, FSSC 22000 certified batches, custom formulation, and private labelling available.',
     includes: [
-      'Factory-direct bulk pricing (20kg MOQ)',
+      'Factory-direct bulk pricing (20 kg MOQ)',
       'FSSC 22000 certified production batches',
       'Custom formulation & flavour development',
-      'Private label at 100kg+ MOQ',
+      'Private label at 100 kg+ MOQ',
       'Full batch documentation & COAs',
       'Flexible delivery scheduling',
     ],
@@ -140,8 +141,8 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
   const { slug } = await params;
   const sol = SOLUTIONS[slug as keyof typeof SOLUTIONS];
   if (!sol) notFound();
-  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '918886277713';
-  const waMsg = encodeURIComponent(`Hi! I'm interested in the ${sol.title} from Tea Planet. Can you share details?`);
+
+  const waUrl = WA_LINK(`Hi! I'm interested in the ${sol.title} from Tea Planet. Can you share details?`);
 
   return (
     <div className="bg-white">
@@ -158,7 +159,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
           <div className="lg:col-span-2">
             <p className="text-gray-700 text-lg leading-relaxed mb-10">{sol.description}</p>
 
-            <h2 className="font-display text-2xl font-bold text-brand-green mb-5">What's Included</h2>
+            <h2 className="font-display text-2xl font-bold text-brand-green mb-5">What’s Included</h2>
             <ul className="space-y-3 mb-10">
               {sol.includes.map((item) => (
                 <li key={item} className="flex items-start gap-3">
@@ -185,7 +186,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
             <div className="bg-brand-green rounded-2xl p-6 text-white">
               <h3 className="font-display text-xl font-bold mb-3">Ready to get started?</h3>
               <p className="text-brand-pale text-sm mb-5">Talk to our specialist. Free consultation.</p>
-              <a href={`https://wa.me/${number}?text=${waMsg}`} target="_blank" rel="noreferrer"
+              <a href={waUrl} target="_blank" rel="noreferrer"
                  className="btn-whatsapp w-full justify-center mb-3">
                 WhatsApp Now
               </a>
