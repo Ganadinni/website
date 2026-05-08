@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { ShoppingCart, MessageCircle } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 import { BEST_SELLERS } from '@/lib/mock-data';
 import { WA_LINK } from '@/lib/config';
 
@@ -56,7 +56,7 @@ export default function BestSellers() {
                   href={`/products/${product.handle}`}
                   className="flex-1 btn-primary text-xs py-2 justify-center"
                 >
-                  <ShoppingCart size={13} /> Order
+                  View Product
                 </Link>
                 <a
                   href={WA_LINK(`Hi! I'm interested in ${product.title} (SKU: ${product.sku}). Please share bulk pricing.`)}

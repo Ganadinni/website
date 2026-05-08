@@ -109,8 +109,7 @@ export default async function ProductPage({
               {/* Description */}
               <div>
                 <h2
-                  className="mb-4 text-2xl font-extrabold text-[#1a1412]"
-                  style={{ fontFamily: 'var(--font-archivo)' }}
+                  className="font-display mb-4 text-2xl font-extrabold text-[#1a1412]"
                 >
                   About This Product
                 </h2>
@@ -122,8 +121,7 @@ export default async function ProductPage({
               {/* Benefits */}
               <div>
                 <h2
-                  className="mb-5 text-2xl font-extrabold text-[#1a1412]"
-                  style={{ fontFamily: 'var(--font-archivo)' }}
+                  className="font-display mb-5 text-2xl font-extrabold text-[#1a1412]"
                 >
                   Key Benefits
                 </h2>
@@ -160,8 +158,7 @@ export default async function ProductPage({
               {(product.usageDosage.hot || product.usageDosage.cold || product.usageDosage.notes) && (
                 <div>
                   <h2
-                    className="mb-5 text-2xl font-extrabold text-[#1a1412]"
-                    style={{ fontFamily: 'var(--font-archivo)' }}
+                    className="font-display mb-5 text-2xl font-extrabold text-[#1a1412]"
                   >
                     How to Prepare
                   </h2>
@@ -205,8 +202,7 @@ export default async function ProductPage({
               {product.faq.length > 0 && (
                 <div>
                   <h2
-                    className="mb-5 text-2xl font-extrabold text-[#1a1412]"
-                    style={{ fontFamily: 'var(--font-archivo)' }}
+                    className="font-display mb-5 text-2xl font-extrabold text-[#1a1412]"
                   >
                     Frequently Asked Questions
                   </h2>
@@ -241,8 +237,7 @@ export default async function ProductPage({
               <div className="rounded-2xl border border-[#e5e0da] bg-white overflow-hidden">
                 <div className="bg-[#1a5c38] px-4 py-3">
                   <h3
-                    className="text-sm font-extrabold uppercase tracking-widest text-white"
-                    style={{ fontFamily: 'var(--font-archivo)' }}
+                    className="font-display text-sm font-extrabold uppercase tracking-widest text-white"
                   >
                     Specifications
                   </h3>
@@ -296,8 +291,7 @@ export default async function ProductPage({
                 <div className="rounded-2xl border border-[#e5e0da] bg-white overflow-hidden">
                   <div className="bg-[#0f3a22] px-4 py-3">
                     <h3
-                      className="text-sm font-extrabold uppercase tracking-widest text-white"
-                      style={{ fontFamily: 'var(--font-archivo)' }}
+                      className="font-display text-sm font-extrabold uppercase tracking-widest text-white"
                     >
                       Pack Size Guide
                     </h3>
@@ -328,8 +322,7 @@ export default async function ProductPage({
               {/* Perfect for */}
               <div>
                 <h3
-                  className="mb-3 text-sm font-extrabold uppercase tracking-widest text-[#1a1412]"
-                  style={{ fontFamily: 'var(--font-archivo)' }}
+                  className="font-display mb-3 text-sm font-extrabold uppercase tracking-widest text-[#1a1412]"
                 >
                   Perfect For
                 </h3>
@@ -371,8 +364,7 @@ export default async function ProductPage({
                 Made With This Product
               </p>
               <h2
-                className="mt-2 text-2xl font-extrabold text-[#1a1412] lg:text-3xl"
-                style={{ fontFamily: 'var(--font-archivo)' }}
+                className="font-display mt-2 text-2xl font-extrabold text-[#1a1412] lg:text-3xl"
               >
                 Tested Recipes for Your Menu
               </h2>
@@ -426,8 +418,7 @@ export default async function ProductPage({
                 Complete Your Menu
               </p>
               <h2
-                className="mt-2 text-2xl font-extrabold text-[#1a1412] lg:text-3xl"
-                style={{ fontFamily: 'var(--font-archivo)' }}
+                className="font-display mt-2 text-2xl font-extrabold text-[#1a1412] lg:text-3xl"
               >
                 Pairs Well With
               </h2>
@@ -481,8 +472,7 @@ export default async function ProductPage({
               Ready to Scale?
             </p>
             <h2
-              className="mt-2 text-2xl font-extrabold text-white lg:text-3xl"
-              style={{ fontFamily: 'var(--font-archivo)' }}
+              className="font-display mt-2 text-2xl font-extrabold text-white lg:text-3xl"
             >
               Order in Bulk — Direct from the Factory
             </h2>

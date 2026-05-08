@@ -57,8 +57,7 @@ export default function BuyBox({ product }: { product: MockProduct }) {
         {/* Title */}
         <div>
           <h1
-            className="text-[1.75rem] font-extrabold leading-tight text-[#1a1412] sm:text-3xl lg:text-[2.2rem]"
-            style={{ fontFamily: 'var(--font-archivo)' }}
+            className="font-display text-[1.75rem] font-extrabold leading-tight text-[#1a1412] sm:text-3xl lg:text-[2.2rem]"
           >
             {product.title}
           </h1>

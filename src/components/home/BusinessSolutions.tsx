@@ -5,7 +5,11 @@ import { WA_LINK } from '@/lib/config';
 const SOLUTIONS = [
   {
     href: '/operator-program',
-    icon: '🎨',
+    icon: (
+      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+      </svg>
+    ),
     title: 'Branded Operator Program',
     tagline: 'Your brand. Our backbone. No franchise fees.',
     points: [
@@ -19,7 +23,11 @@ const SOLUTIONS = [
   },
   {
     href: '/solutions/menu-plugin',
-    icon: '🚀',
+    icon: (
+      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+      </svg>
+    ),
     title: 'Menu Plug-In Kit',
     tagline: 'Launch a profitable boba menu in 7 days',
     points: [
@@ -32,7 +40,11 @@ const SOLUTIONS = [
   },
   {
     href: '/solutions/cloud-kitchen',
-    icon: '📦',
+    icon: (
+      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+      </svg>
+    ),
     title: 'Cloud Kitchen Pack',
     tagline: 'Delivery-optimised beverages that travel well',
     points: [
@@ -45,7 +57,11 @@ const SOLUTIONS = [
   },
   {
     href: '/solutions/distributor',
-    icon: '🚚',
+    icon: (
+      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+      </svg>
+    ),
     title: 'Distributor Program',
     tagline: 'Become a regional supply partner',
     points: [
@@ -79,9 +95,11 @@ export default function BusinessSolutions() {
               }`}
             >
               {sol.highlight && (
-                <span className="self-start badge bg-brand-green text-white mb-4">⭐ Most Popular</span>
+                <span className="self-start badge bg-brand-green text-white mb-4">Most Popular</span>
               )}
-              <div className="text-4xl mb-3">{sol.icon}</div>
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#e8f5ee] text-[#1a5c38] mb-4">
+                {sol.icon}
+              </div>
               <h3 className="font-display text-xl font-bold text-brand-green mb-1">{sol.title}</h3>
               <p className="text-brand-mid text-sm mb-4">{sol.tagline}</p>
               <ul className="space-y-2 mb-6 flex-1">

@@ -95,8 +95,7 @@ export default function CategoryGrid() {
         <div className="text-center mb-14">
           <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#d4a24e]">Our Products</p>
           <h2
-            className="mt-3 text-[2rem] font-extrabold tracking-tight text-[#1a1412] sm:text-[2.5rem] lg:text-[2.75rem]"
-            style={{ fontFamily: 'var(--font-archivo)' }}
+            className="font-display mt-3 text-[2rem] font-extrabold tracking-tight text-[#1a1412] sm:text-[2.5rem] lg:text-[2.75rem]"
           >
             Premium Beverage Ingredients
           </h2>

@@ -23,7 +23,7 @@ export default function SignatureDrinksCarousel() {
   ];
 
   return (
-    <section className="bg-[#1A1A1A] py-16 md:py-24">
+    <section className="bg-[#0f3a22] py-16 md:py-24">
       <div className="container-site">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
@@ -34,7 +34,7 @@ export default function SignatureDrinksCarousel() {
               <br />
               <span className="text-brand-amber">Drive Revenue</span>
             </h2>
-            <p className="text-[#999] text-sm mt-3">Eight proven drinks. Tested across our partner cafés.</p>
+            <p className="text-white/55 text-sm mt-3">Eight proven drinks. Tested across our partner cafés.</p>
           </div>
 
           {/* Tab switcher */}

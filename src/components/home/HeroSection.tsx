@@ -38,8 +38,7 @@ export default function HeroSection() {
 
           {/* headline */}
           <h1
-            className="text-[1.85rem] font-extrabold leading-[1.1] tracking-tight text-white sm:text-[2.5rem] lg:text-[3.5rem]"
-            style={{ fontFamily: 'var(--font-archivo)' }}
+            className="font-display text-[1.85rem] font-extrabold leading-[1.1] tracking-tight text-white sm:text-[2.5rem] lg:text-[3.5rem]"
           >
             Bulk Ingredients &amp; Boba Solutions at Scale
           </h1>
