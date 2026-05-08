@@ -1,21 +1,21 @@
 import type { Metadata } from 'next';
-import { Poppins, Playfair_Display } from 'next/font/google';
+import { Inter, Archivo } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import WhatsAppFloat from '@/components/shared/WhatsAppFloat';
 
-const poppins = Poppins({
+const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-poppins',
+  weight: ['400', '500', '600'],
+  variable: '--font-inter',
   display: 'swap',
 });
 
-const playfair = Playfair_Display({
+const archivo = Archivo({
   subsets: ['latin'],
   weight: ['400', '600', '700', '800'],
-  variable: '--font-playfair',
+  variable: '--font-archivo',
   display: 'swap',
 });
 
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${poppins.variable} ${playfair.variable}`}>
+    <html lang="en" className={`${inter.variable} ${archivo.variable}`}>
       <body>
         <Navbar />
         <main>{children}</main>

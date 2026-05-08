@@ -9,28 +9,29 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        /* ── Functional colors (migration doc) ── */
-        background: '#F9F9F9',
-        surface:    '#FFFFFF',
-        textPrimary:   '#1A1A1A',
-        textSecondary: '#666666',
-        borderLight:   '#E0E0E0',
+        /* ── Functional colors — matched to live site ── */
+        background:    '#faf8f5',
+        surface:       '#FFFFFF',
+        textPrimary:   '#1a1412',
+        textSecondary: '#6b6560',
+        borderLight:   '#e5e0da',
 
-        /* ── Brand palette ── */
+        /* ── Brand palette — matched to live site ── */
         brand: {
-          green:  '#1B4332',
-          mid:    '#2D6A4F',
-          light:  '#52B788',
-          pale:   '#D8F3DC',
-          cream:  '#F9F9F9',
-          gold:   '#D4A017',
-          amber:  '#E9C46A',
-          brown:  '#6B3A2A',
+          green:  '#1a5c38',   /* primary green */
+          dark:   '#0f3a22',   /* dark section backgrounds */
+          mid:    '#14472b',   /* hover / gradient end */
+          light:  '#e8f5ee',   /* pale hover bg */
+          pale:   '#e8f5ee',   /* same as light */
+          cream:  '#faf8f5',   /* warm off-white */
+          gold:   '#d4a24e',   /* amber/gold accent */
+          amber:  '#d4a24e',   /* same as gold */
+          brown:  '#6b6560',   /* warm gray text */
         },
       },
       fontFamily: {
-        sans:    ['var(--font-poppins)', 'system-ui', 'sans-serif'],
-        display: ['var(--font-playfair)', 'Georgia', 'serif'],
+        sans:    ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-archivo)', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         'h1': ['3rem',    { lineHeight: '1.15', fontWeight: '700' }],

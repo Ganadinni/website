@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: 'https', hostname: 'cdn.shopify.com' },
       { protocol: 'https', hostname: 'theteaplanet.com' },
+      { protocol: 'https', hostname: 'cdn.sintra.ai' },
       { protocol: 'https', hostname: 'images.unsplash.com' },
     ],
   },
