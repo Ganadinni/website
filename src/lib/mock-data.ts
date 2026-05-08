@@ -108,6 +108,16 @@ export const MOCK_COLLECTIONS = [
   { handle:'tea-concentrates',    title:'Tea Concentrates',         description:'Masala chai, cold brew green tea & wellness concentrates. Just dilute and serve.',  products: TEA_CONCENTRATES },
   { handle:'sponge-cake-mixes',   title:'Sponge Cake Base Mixes',   description:'5 tea-infused flavours. ₹899 each. Extend your menu into premium desserts.',      products: CAKE_MIXES },
   { handle:'industrial',          title:'Industrial Ingredients',   description:'Bulk 20kg+ supply for manufacturers, chains & institutional buyers.',             products: INDUSTRIAL },
+  // ── 8 mega-menu category pages ──────────────────────────────────────────────
+  { handle:'boba-bubble-tea',  title:'Boba & Bubble Tea',   description:'Premixes, toppings, pearls & everything boba.',                              products:[...MILK_PREMIXES,...TAPIOCA,...POPPING_BOBA,...NATA,...KONJAC] as MockProduct[] },
+  { handle:'boba-desserts',    title:'Boba Desserts',       description:'Sponge cake base mixes & frost swirls whip premix.',                         products: CAKE_MIXES },
+  { handle:'tea-coffee',       title:'Tea & Coffee',        description:'Chai premixes, tea concentrates & coffee blends.',                           products:[...TEA_CONCENTRATES,...SILKY_MIX] as MockProduct[] },
+  { handle:'japanese-tea',     title:'Japanese Tea Range',  description:'Premium Sencha, Matcha, Hōjicha, Gyokuro & latte premixes.',            products:[] as MockProduct[] },
+  { handle:'beverage-mixes',   title:'Beverage Mixes',      description:'Milkshakes, mocktails, lemonades & syrups.',                                products: SYRUPS },
+  { handle:'toppings',         title:'Toppings',            description:'Popping boba, nata de coco, tapioca pearls & konjac jelly.',                 products:[...TAPIOCA,...POPPING_BOBA,...NATA,...KONJAC] as MockProduct[] },
+  { handle:'diy-boba-cups',    title:'DIY Boba Cups',       description:'Single-serve boba cups — just add hot water.',                         products:[] as MockProduct[] },
+  { handle:'rtd-beverages',    title:'RTD Beverages',       description:'Ready to drink popping boba, nata de coco & iced tea.',                      products:[] as MockProduct[] },
+  { handle:'all',              title:'All Products',        description:'Browse the complete Tea Planet catalog — 39+ SKUs across all categories.', products: MOCK_PRODUCTS },
 ];
 
 export const SIGNATURE_DRINKS = {

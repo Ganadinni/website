@@ -37,10 +37,10 @@ const COLLECTION_META: Record<string, { description: string; education: string; 
   },
   'toppings': {
     description:
-      'Premium drink toppings: nata de coco, konjac jelly, sago, popping boba and more. Upsell by ₹30–50 per cup with the right topping.',
+      'Premium drink toppings: popping boba, nata de coco, tapioca pearls & konjac jelly. Upsell by ₹30–50 per cup with the right topping.',
     education:
       'Toppings are high-margin upsell items. Adding a topping costs ₹6–15 but adds ₹30–60 to the selling price. Train your staff to suggest toppings on every boba order.',
-    relatedCollections: ['boba-innovations'],
+    relatedCollections: ['boba-bubble-tea', 'beverage-mixes'],
   },
   'kits': {
     description:
@@ -48,6 +48,63 @@ const COLLECTION_META: Record<string, { description: string; education: string; 
     education:
       'Our kits are designed to eliminate the guesswork of stocking a boba bar for the first time. Each kit includes ingredient quantities for 300–500 cups so you can trial, validate, and scale.',
     relatedCollections: ['boba-innovations', 'syrups-flavours'],
+  },
+  // ── 8 mega-menu category pages ─────────────────────────────────────────────
+  'boba-bubble-tea': {
+    description:
+      'Complete boba range — milk tea premixes, tapioca pearls, popping boba, nata de coco & konjac jelly. Everything for a profitable boba menu from ₹19 per cup.',
+    education:
+      'Boba beverages deliver 70%+ gross margin. A cup costs ₹19–28 to make and sells for ₹120–220. Our premixes are Halal, Vegan & Non-GMO certified — consistent quality across every shift.',
+    relatedCollections: ['toppings', 'beverage-mixes', 'boba-desserts'],
+  },
+  'boba-desserts': {
+    description:
+      'Sponge cake base mixes & frost swirls whip premix — extend your boba menu into high-margin desserts. Five tea-infused flavours: Matcha, Chai, Jasmine, Earl Grey & Black Tea.',
+    education:
+      'A boba sponge cake slice costs ₹380–420 per cake (8 slices) and sells for ₹120–160 per slice. Adding a dessert line to your boba bar increases average ticket by 35–50%.',
+    relatedCollections: ['boba-bubble-tea', 'toppings'],
+  },
+  'tea-coffee': {
+    description:
+      'Masala chai premixes, tea concentrates & coffee blends for cafes, QSRs and cloud kitchens. Consistent cup quality every time — no grinding or brewing expertise required.',
+    education:
+      'Our tea concentrates eliminate barista skill dependency. Every cup is identical — critical for QSR and multi-outlet chains. FSSC 22000 certified, 18-month shelf life.',
+    relatedCollections: ['japanese-tea', 'beverage-mixes'],
+  },
+  'japanese-tea': {
+    description:
+      'Premium Japanese tea range: Sencha, Matcha, Hōjicha, Gyokuro & Japanese latte premixes. Authentic flavour profiles for fine dining, specialty cafes and high-end tea bars.',
+    education:
+      'Japanese tea commands 40–60% higher selling prices than standard chai and milk tea. Matcha and Hojicha lattes are among the fastest-growing beverage categories in India.',
+    relatedCollections: ['tea-coffee', 'boba-bubble-tea'],
+  },
+  'beverage-mixes': {
+    description:
+      'Milkshake premixes, mocktail bases, lemonade concentrates & professional syrups. 25+ flavours in stock. Heat stable, consistent, cost-effective.',
+    education:
+      'The right syrup adds ₹8–15 to your selling price while costing only ₹3–5 per serving. Our syrups are heat-stable to 100°C — use in hot drinks, cold blends, baking and mocktails.',
+    relatedCollections: ['tea-coffee', 'boba-bubble-tea'],
+  },
+  'diy-boba-cups': {
+    description:
+      'Single-serve DIY boba cups — just add hot water and your favourite toppings. Ready in under 3 minutes. Perfect for gifting, retail and events.',
+    education:
+      'DIY boba cups are a zero-cooking retail SKU. Customers add hot water, shake and add toppings. Strong impulse-buy and gifting potential at ₹80–150 retail price point.',
+    relatedCollections: ['boba-bubble-tea', 'toppings'],
+  },
+  'rtd-beverages': {
+    description:
+      'Ready-to-drink (RTD) popping boba, nata de coco & iced tea beverages. No preparation needed — open, pour and serve. Ideal for retail, vending and on-the-go consumption.',
+    education:
+      'RTD beverages are the fastest growing segment in Indian F&B. Zero preparation means zero training cost. Strong retail and modern trade channel potential.',
+    relatedCollections: ['boba-bubble-tea', 'beverage-mixes'],
+  },
+  'all': {
+    description:
+      'Browse the complete Tea Planet catalog — 39+ SKUs across Boba, Tea & Coffee, Japanese Tea, Beverage Mixes, Toppings and more. B2B wholesale pricing, FSSC 22000 certified.',
+    education:
+      'Tea Planet is India\'s leading B2B boba & specialty beverage supplier. FSSC 22000 certified Hyderabad facility, 48-hour dispatch, factory-direct pricing with no distributor margin.',
+    relatedCollections: ['boba-bubble-tea', 'tea-coffee', 'toppings', 'beverage-mixes'],
   },
 };
 
