@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { ChevronRight } from 'lucide-react';
 import { MOCK_PRODUCTS, MOCK_RECIPES } from '@/lib/mock-data';
 import { WA_LINK } from '@/lib/config';
-import { PACK_GRAMS, cupsFromPack, priceForPack } from '@/lib/product-utils';
+import { cupsFromPack, priceForPack } from '@/lib/product-utils';
 import ProductImageGallery from '@/components/product/ProductImageGallery';
 import BuyBox from '@/components/product/BuyBox';
 
@@ -59,20 +59,21 @@ export default async function ProductPage({
   );
 
   return (
-    <div className="bg-white">
+    /* pb-20 lg:pb-0 reserves space so the mobile sticky bar doesn't cover content */
+    <div className="bg-white pb-20 lg:pb-0">
       {/* ── Breadcrumb ──────────────────────────────────────────────── */}
       <div className="container-site py-4">
-        <nav className="flex items-center gap-1.5 text-xs text-[#6b6560]">
-          <Link href="/" className="hover:text-[#1a5c38]">Home</Link>
-          <ChevronRight size={12} />
+        <nav className="flex items-center gap-1.5 overflow-hidden text-xs text-[#6b6560]">
+          <Link href="/" className="shrink-0 hover:text-[#1a5c38]">Home</Link>
+          <ChevronRight size={12} className="shrink-0" />
           <Link
             href={`/collections/${product.categoryHandle}`}
-            className="hover:text-[#1a5c38]"
+            className="shrink-0 hover:text-[#1a5c38] hidden sm:inline"
           >
             {product.category}
           </Link>
-          <ChevronRight size={12} />
-          <span className="max-w-[200px] truncate font-medium text-[#1a5c38]">
+          <ChevronRight size={12} className="shrink-0 hidden sm:block" />
+          <span className="truncate font-medium text-[#1a5c38]">
             {product.title}
           </span>
         </nav>
