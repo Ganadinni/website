@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Menu, X, ChevronDown, Phone } from 'lucide-react';
 import { WA_LINK } from '@/lib/config';
 
-// ── Products mega-menu data (matches theteaplanet.co.in exactly) ─────────────
+// ── Products mega-menu data ───────────────────────────────────────────────────
 const PRODUCT_CATEGORIES = [
   {
     icon: '🧋',
@@ -148,75 +148,68 @@ const SOLUTIONS_NAV = [
   },
 ];
 
-// ── Rest of nav (Recipes, Launch Business, Contact) ───────────────────────────
-type Column = {
-  heading: string;
-  items: Array<{ label: string; href: string; desc?: string }>;
-  cta?: { label: string; href: string };
-};
-type ColumnarNavItem = { label: string; columns: Column[] };
-type LinkNavItem    = { label: string; href: string };
-type RestNavItem    = ColumnarNavItem | LinkNavItem;
-
-function hasColumns(item: RestNavItem): item is ColumnarNavItem { return 'columns' in item; }
-function hasHref(item: RestNavItem): item is LinkNavItem       { return 'href' in item; }
-
-const NAV_REST: RestNavItem[] = [
+// ── Recipes dropdown columns ──────────────────────────────────────────────────
+const RECIPES_COLUMNS = [
   {
-    label: 'Recipes',
-    columns: [
-      {
-        heading: 'By Drink Type',
-        items: [
-          { label: 'Milk Teas',         href: '/recipes?category=milk-tea' },
-          { label: 'Fruit Coolers',     href: '/recipes?category=fruit-cooler' },
-          { label: 'Signature Fusions', href: '/recipes?category=signature' },
-          { label: 'Iced Teas',         href: '/recipes?category=iced-tea' },
-          { label: 'Hot Beverages',     href: '/recipes?category=hot' },
-          { label: 'Signature Drinks',  href: '/signature-drinks' },
-        ],
-      },
-      {
-        heading: 'By Series',
-        items: [
-          { label: 'Premium Series',    href: '/recipes?series=premium' },
-          { label: 'Seasonal Specials', href: '/recipes?series=seasonal' },
-          { label: 'Wellness Range',    href: '/recipes?series=wellness' },
-          { label: 'Desserts & Cakes',  href: '/recipes?series=dessert' },
-        ],
-        cta: { label: 'All Recipes →', href: '/recipes' },
-      },
+    heading: 'By Drink Type',
+    items: [
+      { label: 'Boba & Bubble Tea',    href: '/recipes?type=boba' },
+      { label: 'Matcha & Lattes',      href: '/recipes?type=matcha' },
+      { label: 'Chai & Tea',           href: '/recipes?type=chai' },
+      { label: 'Mocktails & Lemonades', href: '/recipes?type=mocktails' },
+      { label: 'Boba Desserts',        href: '/recipes?type=desserts' },
+      { label: '⭐ Signature Drinks',  href: '/signature-drinks' },
     ],
   },
   {
-    label: 'Launch Business',
-    columns: [
-      {
-        heading: 'Operator Programs',
-        items: [
-          { label: 'Branded Operator Program', href: '/operator-program',      desc: 'Your brand, our backbone' },
-          { label: 'Menu Plug-In Kit',         href: '/solutions/menu-plugin', desc: 'Launch a boba menu in 7 days' },
-          { label: 'Café Setup Program',       href: '/solutions/cafe-setup',  desc: 'Full setup: menu, training & supply' },
-        ],
-      },
-      {
-        heading: 'Why Tea Planet',
-        items: [
-          { label: 'Our Story & Certifications', href: '/about' },
-          { label: 'High-Margin Recipes',        href: '/recipes' },
-          { label: 'Signature Drinks',           href: '/signature-drinks' },
-          { label: 'Contact & Bulk Enquiry',     href: '/contact' },
-        ],
-        cta: { label: 'Get Free Menu Plan →', href: '/contact#bulk-enquiry' },
-      },
+    heading: 'Tools & Guides',
+    items: [
+      { label: 'All Recipes',         href: '/recipes' },
+      { label: 'Menu Planning Guide', href: '/recipes#menu-plan' },
+      { label: 'Cost Calculator',     href: '/recipes#calculator' },
     ],
+    cta: { label: 'Browse All Recipes →', href: '/recipes' },
   },
-  { label: 'Contact', href: '/contact' },
 ];
 
+// ── Launch Business packages ──────────────────────────────────────────────────
+const LAUNCH_PACKAGES = [
+  {
+    icon: '🏆',
+    title: 'Branded Operator Program',
+    desc: 'Operate under The Tea Planet brand — ₹0 fee',
+    href: '/operator-program',
+    tags: ['₹0 Franchise Fee', 'No Royalties', 'Full Brand License', 'Ongoing Mentorship'],
+  },
+  {
+    icon: '🧋',
+    title: 'Boba Business Package',
+    desc: 'Complete bubble tea business setup',
+    href: '/packages',
+    tags: ['Full Ingredient Kit', '30+ Recipes', 'Costing Sheets', 'Staff Training'],
+  },
+  {
+    icon: '☕',
+    title: 'Tea & Coffee Package',
+    desc: 'Premium tea & coffee counter setup',
+    href: '/solutions/cafe-setup',
+    tags: ['Chai & Coffee Premixes', 'Recipe SOPs', 'Menu Design', 'Marketing Materials'],
+  },
+  {
+    icon: '🎉',
+    title: 'ODC / Events Package',
+    desc: 'Event beverage solutions',
+    href: '/solutions/cloud-kitchen',
+    tags: ['Event-Sized Packs', 'Portable Setup Guide', 'Seasonal Menus', 'Quick-Serve Recipes'],
+  },
+];
+
+// ── Contact-only rest nav ─────────────────────────────────────────────────────
+type LinkNavItem = { label: string; href: string };
+
 export default function Navbar() {
-  const [mobileOpen, setMobileOpen]     = useState(false);
-  const [active, setActive]             = useState<string | null>(null);
+  const [mobileOpen, setMobileOpen]         = useState(false);
+  const [active, setActive]                 = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -230,7 +223,7 @@ export default function Navbar() {
       <div className="bg-brand-green text-white">
         <div className="container-site flex items-center justify-between py-1.5 text-xs">
           <span className="hidden sm:block">
-            🇮🇳 Made in India | FSSC 22000 Certified | Cost per cup from ₹19 | 100+ Partners
+            🇮🇳 Made in India | FSSC 22000 Certified | Cost per cup from ₹19 | 100+ Partners
           </span>
           <span className="sm:hidden">FSSC 22000 · Made in India · ₹19/cup</span>
           <a
@@ -385,94 +378,164 @@ export default function Navbar() {
             )}
           </li>
 
-          {/* ── Rest of nav items ── */}
-          {NAV_REST.map((item) => (
-            <li
-              key={item.label}
-              className="relative"
-              onMouseEnter={() => hasColumns(item) && openDropdown(item.label)}
-              onMouseLeave={() => hasColumns(item) && closeDropdown()}
+          {/* ── Recipes dropdown ── */}
+          <li
+            className="relative"
+            onMouseEnter={() => openDropdown('Recipes')}
+            onMouseLeave={closeDropdown}
+          >
+            <button
+              className={`flex items-center gap-1 px-3.5 py-2 text-sm font-medium rounded-[8px] transition-colors ${
+                active === 'Recipes'
+                  ? 'text-brand-green bg-background'
+                  : 'text-textPrimary hover:text-brand-green hover:bg-background'
+              }`}
             >
-              {hasHref(item) ? (
-                <Link
-                  href={item.href}
-                  className="flex items-center gap-1 px-3.5 py-2 text-sm font-medium text-textPrimary hover:text-brand-green rounded-[8px] hover:bg-background transition-colors"
-                >
-                  {item.label}
-                </Link>
-              ) : (
-                <button
-                  className={`flex items-center gap-1 px-3.5 py-2 text-sm font-medium rounded-[8px] transition-colors ${
-                    active === item.label
-                      ? 'text-brand-green bg-background'
-                      : 'text-textPrimary hover:text-brand-green hover:bg-background'
-                  }`}
-                >
-                  {item.label}
-                  <ChevronDown size={13} className={`transition-transform ${active === item.label ? 'rotate-180' : ''}`} />
-                </button>
-              )}
+              Recipes
+              <ChevronDown size={13} className={`transition-transform ${active === 'Recipes' ? 'rotate-180' : ''}`} />
+            </button>
 
-              {hasColumns(item) && active === item.label && (
-                <div
-                  className="absolute top-full left-0 mt-0 bg-white shadow-elevated border border-borderLight rounded-[8px] py-6 z-50 min-w-[440px]"
-                  onMouseEnter={() => openDropdown(item.label)}
-                  onMouseLeave={closeDropdown}
-                >
-                  <div className={`grid gap-6 px-6 ${
-                    item.columns.length >= 3 ? 'grid-cols-3' :
-                    item.columns.length === 2 ? 'grid-cols-2' : 'grid-cols-1'
-                  }`}>
-                    {item.columns.map((col) => (
-                      <div key={col.heading}>
-                        <p className="text-xs font-semibold uppercase tracking-widest text-textSecondary mb-3 pb-2 border-b border-borderLight">
-                          {col.heading}
-                        </p>
-                        <ul className="space-y-1">
-                          {col.items.map((child) => (
-                            <li key={child.label}>
-                              <Link
-                                href={child.href}
-                                className="block py-1.5 text-sm text-textPrimary hover:text-brand-green transition-colors"
-                                onClick={() => setActive(null)}
-                              >
-                                {child.label}
-                                {child.desc && (
-                                  <span className="block text-xs text-textSecondary mt-0.5">{child.desc}</span>
-                                )}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                        {col.cta && (
-                          <Link
-                            href={col.cta.href}
-                            className="mt-3 inline-block text-xs font-semibold text-brand-mid hover:text-brand-green transition-colors"
-                            onClick={() => setActive(null)}
-                          >
-                            {col.cta.label}
-                          </Link>
-                        )}
-                      </div>
-                    ))}
-                  </div>
+            {active === 'Recipes' && (
+              <div
+                className="absolute top-full left-0 mt-0 bg-white shadow-elevated border border-borderLight rounded-[12px] z-50 w-[440px]"
+                onMouseEnter={() => openDropdown('Recipes')}
+                onMouseLeave={closeDropdown}
+              >
+                <div className="grid grid-cols-2 gap-6 p-6">
+                  {RECIPES_COLUMNS.map((col) => (
+                    <div key={col.heading}>
+                      <p className="text-xs font-semibold uppercase tracking-widest text-textSecondary mb-3 pb-2 border-b border-borderLight">
+                        {col.heading}
+                      </p>
+                      <ul className="space-y-1">
+                        {col.items.map((item) => (
+                          <li key={item.label}>
+                            <Link
+                              href={item.href}
+                              className="block py-1.5 text-sm text-textPrimary hover:text-brand-green transition-colors"
+                              onClick={() => setActive(null)}
+                            >
+                              {item.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                      {col.cta && (
+                        <Link
+                          href={col.cta.href}
+                          className="mt-3 inline-block text-xs font-semibold text-brand-mid hover:text-brand-green transition-colors"
+                          onClick={() => setActive(null)}
+                        >
+                          {col.cta.label}
+                        </Link>
+                      )}
+                    </div>
+                  ))}
                 </div>
-              )}
-            </li>
-          ))}
+              </div>
+            )}
+          </li>
+
+          {/* ── Launch Business dropdown ── */}
+          <li
+            className="relative"
+            onMouseEnter={() => openDropdown('Launch Business')}
+            onMouseLeave={closeDropdown}
+          >
+            <button
+              className={`flex items-center gap-1 px-3.5 py-2 text-sm font-medium rounded-[8px] transition-colors ${
+                active === 'Launch Business'
+                  ? 'text-brand-green bg-background'
+                  : 'text-textPrimary hover:text-brand-green hover:bg-background'
+              }`}
+            >
+              Launch Business
+              <ChevronDown size={13} className={`transition-transform ${active === 'Launch Business' ? 'rotate-180' : ''}`} />
+            </button>
+
+            {active === 'Launch Business' && (
+              <div
+                className="absolute top-full right-0 mt-0 bg-white shadow-elevated border border-borderLight rounded-[12px] z-50 w-[520px]"
+                onMouseEnter={() => openDropdown('Launch Business')}
+                onMouseLeave={closeDropdown}
+              >
+                {/* Header */}
+                <div className="px-5 pt-5 pb-4 border-b border-borderLight flex items-center justify-between">
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-textSecondary">Launch Your Business</p>
+                    <p className="text-sm font-semibold text-textPrimary mt-0.5">4 Ways to Start with Tea Planet</p>
+                  </div>
+                  <span className="text-xs font-bold text-[#d4a24e] border border-[#d4a24e]/40 rounded-full px-3 py-1 bg-[#fef9f0] shrink-0 ml-4">
+                    ₹0 Franchise Fee
+                  </span>
+                </div>
+
+                {/* 2×2 package grid */}
+                <div className="p-4 grid grid-cols-2 gap-3">
+                  {LAUNCH_PACKAGES.map((pkg) => (
+                    <Link
+                      key={pkg.title}
+                      href={pkg.href}
+                      onClick={() => setActive(null)}
+                      className="block p-3.5 rounded-[8px] border border-borderLight hover:border-brand-green/30 hover:bg-brand-pale transition-all"
+                    >
+                      <div className="flex items-start gap-2 mb-1.5">
+                        <span className="text-xl leading-none shrink-0 mt-0.5">{pkg.icon}</span>
+                        <p className="font-semibold text-sm text-textPrimary leading-snug">{pkg.title}</p>
+                      </div>
+                      <p className="text-xs text-textSecondary mb-2 leading-relaxed pl-[30px]">{pkg.desc}</p>
+                      <div className="flex flex-wrap gap-1 pl-[30px]">
+                        {pkg.tags.slice(0, 2).map((tag) => (
+                          <span key={tag} className="text-[10px] px-1.5 py-0.5 rounded-full bg-gray-100 text-gray-600">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+
+                {/* Footer */}
+                <div className="px-5 pb-4 pt-1 border-t border-borderLight flex items-center justify-between">
+                  <p className="text-xs text-textSecondary">Not sure which package?</p>
+                  <Link
+                    href="/packages"
+                    onClick={() => setActive(null)}
+                    className="text-xs font-semibold text-brand-green hover:underline"
+                  >
+                    Compare All Packages →
+                  </Link>
+                </div>
+              </div>
+            )}
+          </li>
+
+          {/* ── Contact ── */}
+          <li>
+            <Link
+              href="/contact"
+              className="flex items-center gap-1 px-3.5 py-2 text-sm font-medium text-textPrimary hover:text-brand-green rounded-[8px] hover:bg-background transition-colors"
+            >
+              Contact
+            </Link>
+          </li>
+
         </ul>
 
+        {/* ── Desktop right-side CTAs ── */}
         <div className="hidden lg:flex items-center gap-2">
-          <Link href="/contact#bulk-enquiry" className="btn-secondary text-sm px-4 py-2">
-            Bulk Enquiry
-          </Link>
-          <a
-            href={WA_LINK('Hi Tea Planet! I want to know about your products and pricing.')}
-            target="_blank" rel="noreferrer"
-            className="btn-whatsapp text-sm px-4 py-2"
+          <Link
+            href="/about"
+            className="px-3.5 py-1.5 text-sm font-semibold text-[#d4a24e] border border-[#d4a24e]/50 rounded-full hover:bg-[#fef9f0] transition-colors whitespace-nowrap"
           >
-            WhatsApp
-          </a>
+            Why Tea Planet
+          </Link>
+          <Link href="/recipes" className="btn-secondary text-sm px-4 py-2 whitespace-nowrap">
+            Browse All Recipes
+          </Link>
+          <Link href="/contact#menu-plan" className="btn-primary text-sm px-4 py-2 whitespace-nowrap">
+            Get Menu Plan
+          </Link>
         </div>
 
         <button
@@ -561,64 +624,108 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Rest of nav */}
-          {NAV_REST.map((item) => (
-            <div key={item.label}>
-              {hasHref(item) ? (
+          {/* Recipes */}
+          <div>
+            <button
+              className="w-full flex items-center justify-between px-6 py-3.5 text-sm font-semibold text-textPrimary border-b border-borderLight hover:bg-background min-h-[44px]"
+              onClick={() => setMobileExpanded(mobileExpanded === 'Recipes' ? null : 'Recipes')}
+            >
+              Recipes
+              <ChevronDown size={14} className={`transition-transform ${mobileExpanded === 'Recipes' ? 'rotate-180' : ''}`} />
+            </button>
+            {mobileExpanded === 'Recipes' && (
+              <div className="bg-background px-6 pb-4">
+                {RECIPES_COLUMNS.map((col) => (
+                  <div key={col.heading} className="pt-3">
+                    <p className="text-[10px] font-semibold uppercase tracking-widest text-textSecondary mb-2">{col.heading}</p>
+                    {col.items.map((item) => (
+                      <Link
+                        key={item.label}
+                        href={item.href}
+                        className="block py-2 text-sm text-textPrimary hover:text-brand-green border-b border-borderLight/40 last:border-0"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                ))}
                 <Link
-                  href={item.href}
-                  className="block px-6 py-3.5 text-sm font-semibold text-textPrimary border-b border-borderLight hover:bg-background"
+                  href="/recipes"
+                  className="block mt-3 text-sm font-semibold text-brand-mid hover:text-brand-green"
                   onClick={() => setMobileOpen(false)}
                 >
-                  {item.label}
+                  Browse All Recipes →
                 </Link>
-              ) : (
-                <>
-                  <button
-                    className="w-full flex items-center justify-between px-6 py-3.5 text-sm font-semibold text-textPrimary border-b border-borderLight hover:bg-background min-h-[44px]"
-                    onClick={() => setMobileExpanded(mobileExpanded === item.label ? null : item.label)}
-                  >
-                    {item.label}
-                    <ChevronDown size={14} className={`transition-transform ${mobileExpanded === item.label ? 'rotate-180' : ''}`} />
-                  </button>
-                  {mobileExpanded === item.label && (
-                    <div className="bg-background px-6 pb-3">
-                      {item.columns.map((col) => (
-                        <div key={col.heading} className="pt-3">
-                          <p className="text-[10px] font-semibold uppercase tracking-widest text-textSecondary mb-2">{col.heading}</p>
-                          {col.items.map((child) => (
-                            <Link
-                              key={child.label}
-                              href={child.href}
-                              className="block py-2 text-sm text-textPrimary hover:text-brand-green"
-                              onClick={() => setMobileOpen(false)}
-                            >
-                              {child.label}
-                            </Link>
-                          ))}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </>
-              )}
-            </div>
-          ))}
+              </div>
+            )}
+          </div>
 
-          <div className="flex gap-3 p-4 border-t border-borderLight">
-            <a
-              href={WA_LINK('Hi Tea Planet! Bulk enquiry.')}
-              target="_blank" rel="noreferrer"
-              className="btn-whatsapp flex-1 justify-center text-sm"
+          {/* Launch Business */}
+          <div>
+            <button
+              className="w-full flex items-center justify-between px-6 py-3.5 text-sm font-semibold text-textPrimary border-b border-borderLight hover:bg-background min-h-[44px]"
+              onClick={() => setMobileExpanded(mobileExpanded === 'Launch Business' ? null : 'Launch Business')}
             >
-              WhatsApp
-            </a>
+              Launch Business
+              <ChevronDown size={14} className={`transition-transform ${mobileExpanded === 'Launch Business' ? 'rotate-180' : ''}`} />
+            </button>
+            {mobileExpanded === 'Launch Business' && (
+              <div className="bg-background px-4 pb-4">
+                <div className="pt-3 pb-2 border-b border-borderLight/50">
+                  <p className="text-xs text-textSecondary">
+                    4 ways to start — <span className="font-semibold text-[#d4a24e]">₹0 Franchise Fee</span>
+                  </p>
+                </div>
+                {LAUNCH_PACKAGES.map((pkg) => (
+                  <Link
+                    key={pkg.title}
+                    href={pkg.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center gap-3 py-3 border-b border-borderLight/50 last:border-0"
+                  >
+                    <span className="text-xl shrink-0">{pkg.icon}</span>
+                    <div>
+                      <p className="text-sm font-semibold text-textPrimary">{pkg.title}</p>
+                      <p className="text-xs text-textSecondary">{pkg.desc}</p>
+                    </div>
+                  </Link>
+                ))}
+                <Link
+                  href="/packages"
+                  className="block mt-3 text-sm font-semibold text-brand-mid hover:text-brand-green"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Compare All Packages →
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {/* Contact */}
+          <Link
+            href="/contact"
+            className="block px-6 py-3.5 text-sm font-semibold text-textPrimary border-b border-borderLight hover:bg-background"
+            onClick={() => setMobileOpen(false)}
+          >
+            Contact
+          </Link>
+
+          {/* Mobile bottom CTAs */}
+          <div className="flex gap-3 p-4 border-t border-borderLight">
             <Link
-              href="/contact#bulk-enquiry"
-              className="btn-secondary flex-1 justify-center text-sm"
+              href="/about"
+              className="flex-1 text-center py-2.5 text-sm font-semibold text-[#d4a24e] border border-[#d4a24e]/50 rounded-full hover:bg-[#fef9f0] transition-colors"
               onClick={() => setMobileOpen(false)}
             >
-              Enquiry
+              Why Tea Planet
+            </Link>
+            <Link
+              href="/contact#menu-plan"
+              className="btn-primary flex-1 justify-center text-sm"
+              onClick={() => setMobileOpen(false)}
+            >
+              Get Menu Plan
             </Link>
           </div>
         </div>
