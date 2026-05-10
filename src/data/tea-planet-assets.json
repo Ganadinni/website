@@ -1,112 +1,50 @@
 {
-  "_note": "Brand and static asset references for The Tea Planet website. Product images will eventually come from Shopify Storefront API. Update this file when real assets are available.",
+  "_note": "Static and brand asset registry for The Tea Planet website. Fill in values as assets are confirmed. Product images will come from Shopify Storefront API — do not hardcode them here.",
   "_lastUpdated": "2026-05-10",
 
-  "brand": {
-    "name": "The Tea Planet",
-    "legalName": "The Tea Planet",
-    "tagline": "India's First Bubble Tea Manufacturer",
-    "established": 2015,
-    "location": "Hyderabad, Telangana, India"
+  "logo": {
+    "primary": null,
+    "white": null,
+    "dark": null,
+    "favicon": null,
+    "_note": "Awaiting logo files. Currently rendered as text in Navbar."
   },
 
-  "colors": {
-    "primaryGreen":  "#1a5c38",
-    "darkGreen":     "#0f3a22",
-    "midGreen":      "#14472b",
-    "lightGreen":    "#e8f5ee",
-    "cream":         "#faf8f5",
-    "gold":          "#d4a24e",
-    "textPrimary":   "#1a1412",
-    "textSecondary": "#6b6560",
-    "border":        "#e5e0da"
+  "brandBanners": {
+    "homepage_hero": null,
+    "collections_hero": null,
+    "about_hero": null,
+    "operator_program_hero": null,
+    "_note": "Full-width section banners. Add CDN URLs when ready."
   },
 
-  "fonts": {
-    "display": "Archivo",
-    "body":    "Inter",
-    "displayWeights": [400, 600, 700, 800],
-    "bodyWeights":    [400, 500, 600]
+  "aboutPage": {
+    "factory_exterior": null,
+    "factory_interior": null,
+    "production_line": null,
+    "team_photo": null,
+    "founder_photo": null,
+    "certification_wall": null,
+    "_note": "Facility and team photography for the About page."
   },
 
-  "cdn": {
-    "base": "https://theteaplanet.com/cdn/shop/files",
-    "_note": "Shopify CDN base. Product images will be served from here once Shopify is connected."
+  "certificationImages": {
+    "fssc_22000": null,
+    "fssai": null,
+    "iso_9001": null,
+    "halal": null,
+    "non_gmo": null,
+    "_note": "Official certification badge images. Use vector/PNG format."
   },
 
-  "staticImages": {
-    "current": {
-      "BOBA_IMG": "https://theteaplanet.com/cdn/shop/files/Boba_packs.jpg",
-      "CAFE_IMG":  "https://theteaplanet.com/cdn/shop/files/TP_cafe.jpg"
-    },
-    "_note": "These 2 images are currently used as placeholders across all 37 products and all recipe/signature drink cards. Replace with per-product Shopify images when connected.",
-    "needed": [
-      "Per-product images (37 SKUs) — source: Shopify product metafields",
-      "Collection hero images (19 collections)",
-      "Recipe card images (10 recipes)",
-      "Signature drink images (8 drinks)",
-      "About/factory/facility photo",
-      "Team/founder photo",
-      "Certification badge assets (FSSC 22000, FSSAI, Halal, Non-GMO)"
-    ]
+  "productPlaceholder": {
+    "default": "https://theteaplanet.com/cdn/shop/files/Boba_packs.jpg",
+    "_note": "Temporary placeholder only. Replace per-product when Shopify is connected."
   },
 
-  "contact": {
-    "phone": "+91 88862 77713",
-    "email": "founder@theteaplanet.com",
-    "whatsappNumber": "918886277713",
-    "address": "Manufacturing Unit, Hyderabad, Telangana, India"
-  },
-
-  "social": {
-    "instagram": "https://instagram.com/theteaplanet",
-    "youtube":   "https://youtube.com/@theteaplanet",
-    "linkedin":  "https://linkedin.com/company/theteaplanet"
-  },
-
-  "certifications": [
-    {
-      "name": "FSSC 22000",
-      "fullName": "Food Safety System Certification 22000",
-      "description": "Highest international standard for food safety management systems",
-      "since": 2019
-    },
-    {
-      "name": "FSSAI",
-      "fullName": "Food Safety and Standards Authority of India",
-      "description": "Mandatory Indian food safety license"
-    },
-    {
-      "name": "ISO 9001:2015",
-      "fullName": "Quality Management System",
-      "description": "International standard for quality management"
-    },
-    {
-      "name": "Halal Certified",
-      "description": "Applicable to Milk Tea Premixes and select SKUs"
-    },
-    {
-      "name": "Non-GMO",
-      "description": "Applicable to Milk Tea Premixes and select SKUs"
-    }
-  ],
-
-  "keyStats": {
-    "partnerBusinesses": "500+",
-    "recipes":           "200+",
-    "skus":              "100+",
-    "statesServed":      28,
-    "dispatchSLA":       "48 hours",
-    "certifiedSince":    2019,
-    "founded":           2015,
-    "costPerCupFrom":    "₹19"
-  },
-
-  "whatsappTemplates": {
-    "general":       "Hi Tea Planet! I want to know about your products and pricing.",
-    "bulkEnquiry":   "Hi Tea Planet! I have a bulk enquiry.",
-    "consultation":  "Hi Tea Planet! I'd like a free beverage consultation for my business.",
-    "menuPlan":      "Hi Tea Planet! I want to launch a beverage business. Can you help?",
-    "productEnquiry": "Hi! I'm interested in {productTitle} (SKU: {sku}). Please share bulk pricing."
+  "socialPreview": {
+    "og_image": null,
+    "twitter_card": null,
+    "_note": "Open Graph and Twitter card images for social sharing."
   }
 }

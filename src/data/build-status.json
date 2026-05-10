@@ -1,181 +1,136 @@
 {
-  "_note": "Tracks build progress for every page and section. Update status after each TASK completes.",
+  "_note": "Tracks build progress for every page and section of The Tea Planet website.",
   "_lastUpdated": "2026-05-10",
-  "_statuses": ["complete", "partial", "empty", "not-started", "needs-review"],
+  "_statuses": ["pending", "in-progress", "ready-for-review", "live"],
 
   "pages": {
     "/": {
       "label": "Homepage",
       "file": "src/app/page.tsx",
-      "overallStatus": "complete",
+      "status": "live",
       "sections": {
-        "HeroSection":              { "status": "complete",  "notes": "Dark green, headline, CTAs, trust badges" },
-        "StatsBar":                 { "status": "complete",  "notes": "4 stats: 500+ partners, 200+ recipes, FSSC 22000, 48hr dispatch" },
-        "BusinessSolutions":        { "status": "complete",  "notes": "4 cards with SVG icons, CTA bar" },
-        "CategoryGrid":             { "status": "complete",  "notes": "9 category carousel" },
-        "SignatureDrinksCarousel":  { "status": "complete",  "notes": "Brand dark green bg, 2 tabs" },
-        "TrustBadges":              { "status": "complete",  "notes": "6 SVG credential icons" },
-        "RecipeSection":            { "status": "complete",  "notes": "3 featured recipes, eyebrow label added" },
-        "LeadCapture":              { "status": "complete",  "notes": "Free menu plan form → WhatsApp" }
+        "HeroSection":             "live",
+        "StatsBar":                "live",
+        "BusinessSolutions":       "live",
+        "CategoryGrid":            "live",
+        "SignatureDrinksCarousel": "live",
+        "TrustBadges":             "live",
+        "RecipeSection":           "live",
+        "LeadCapture":             "live"
       }
     },
 
     "/products/[handle]": {
       "label": "Product Detail Page",
       "file": "src/app/products/[handle]/page.tsx",
-      "overallStatus": "complete",
-      "notes": "Full B2B layout — BuyBox, pricing tiers, cost-per-cup calculator, WhatsApp CTA, recipes, cross-sell",
+      "status": "live",
       "sections": {
-        "Breadcrumb":         { "status": "complete" },
-        "ProductImageGallery":{ "status": "complete", "notes": "Placeholder images — will update when Shopify connected" },
-        "BuyBox":             { "status": "complete", "notes": "Pack selector, pricing tiers, calculator, sticky mobile bar" },
-        "Description":        { "status": "complete" },
-        "KeyBenefits":        { "status": "complete" },
-        "HowToPrepare":       { "status": "complete" },
-        "FAQ":                { "status": "complete" },
-        "SpecSidebar":        { "status": "complete" },
-        "PackSizeGuide":      { "status": "complete", "notes": "Shows for premix products only" },
-        "RecipeGrid":         { "status": "complete" },
-        "CrossSell":          { "status": "complete" },
-        "CTABar":             { "status": "complete" }
-      },
-      "knownIssues": [
-        "All product images are shared placeholder (BOBA_IMG / CAFE_IMG) — needs real Shopify images",
-        "pricingTiers only set for Milk Tea Premixes and Silky Mix — other categories use fallback"
-      ]
+        "Breadcrumb":          "live",
+        "ProductImageGallery": "live",
+        "BuyBox":              "live",
+        "Description":         "live",
+        "KeyBenefits":         "live",
+        "HowToPrepare":        "live",
+        "FAQ":                 "live",
+        "SpecSidebar":         "live",
+        "PackSizeGuide":       "live",
+        "RecipeGrid":          "live",
+        "CrossSell":           "live",
+        "CTABar":              "live"
+      }
     },
 
     "/collections/[handle]": {
       "label": "Collection / Category Page",
       "file": "src/app/collections/[handle]/page.tsx",
-      "overallStatus": "partial",
+      "status": "ready-for-review",
       "sections": {
-        "Breadcrumb":           { "status": "complete" },
-        "CollectionHero":       { "status": "complete", "notes": "Title, description, Bulk Enquiry + Download Price List buttons" },
-        "ProductGrid":          { "status": "partial",  "notes": "Grid renders correctly but still has ShoppingCart+Order button — needs fix" },
-        "EducationSection":     { "status": "complete", "notes": "Why Choose Tea Planet block per collection" },
-        "BulkEnquiryCTA":       { "status": "complete" },
-        "RelatedCollections":   { "status": "complete" }
-      },
-      "knownIssues": [
-        "ProductGrid CTA still shows ShoppingCart icon + 'Order' — should be 'View Product' (same fix applied to BestSellers)",
-        "3 collections render 'Products coming soon': japanese-tea, diy-boba-cups, rtd-beverages"
-      ]
+        "Breadcrumb":         "live",
+        "CollectionHero":     "live",
+        "ProductGrid":        "ready-for-review",
+        "EducationSection":   "live",
+        "BulkEnquiryCTA":     "live",
+        "RelatedCollections": "live"
+      }
     },
 
     "/about": {
       "label": "About / Why Tea Planet",
       "file": "src/app/about/page.tsx",
-      "overallStatus": "partial",
+      "status": "ready-for-review",
       "sections": {
-        "Hero":           { "status": "complete" },
-        "Stats":          { "status": "complete", "notes": "Founded 2015 · 1000+ clients · 100+ SKUs · 28 states" },
-        "OurStory":       { "status": "complete", "notes": "3 paragraphs — accurate company story" },
-        "Values":         { "status": "partial",  "notes": "4 value cards — still using emoji icons (needs SVG like BusinessSolutions)" },
-        "Certifications": { "status": "complete", "notes": "FSSC 22000, FSSAI, ISO 9001, Made in India" },
-        "CTA":            { "status": "complete" }
-      },
-      "knownIssues": [
-        "Values section uses emoji icons (🦹🏼‍♂️ 🔬 💰 🤝) — inconsistent with BusinessSolutions SVG approach",
-        "No factory/facility imagery section",
-        "No team section",
-        "No market research or pitch data section"
-      ]
+        "Hero":           "live",
+        "Stats":          "live",
+        "OurStory":       "live",
+        "Values":         "ready-for-review",
+        "Certifications": "live",
+        "CTA":            "live"
+      }
     },
 
     "/contact": {
       "label": "Contact Page",
       "file": "src/app/contact/page.tsx",
-      "overallStatus": "needs-review",
-      "notes": "File exists but not yet audited in detail"
+      "status": "pending"
     },
 
     "/operator-program": {
       "label": "Branded Operator Program",
       "file": "src/app/operator-program/page.tsx",
-      "overallStatus": "needs-review",
-      "notes": "File exists but not yet audited in detail"
+      "status": "pending"
     },
 
     "/packages": {
       "label": "Business Packages",
       "file": "src/app/packages/page.tsx",
-      "overallStatus": "needs-review",
-      "notes": "File exists but not yet audited in detail"
+      "status": "pending"
     },
 
     "/recipes": {
       "label": "Recipes List Page",
       "file": "src/app/recipes/page.tsx",
-      "overallStatus": "needs-review",
-      "notes": "File exists but not yet audited in detail. 10 recipes in mock data."
+      "status": "pending"
     },
 
     "/recipes/[slug]": {
       "label": "Recipe Detail Page",
       "file": "src/app/recipes/[slug]/page.tsx",
-      "overallStatus": "needs-review",
-      "notes": "File exists but not yet audited in detail"
+      "status": "pending"
     },
 
     "/signature-drinks": {
       "label": "Signature Drinks Page",
       "file": "src/app/signature-drinks/page.tsx",
-      "overallStatus": "needs-review",
-      "notes": "File exists but not yet audited in detail"
+      "status": "pending"
     },
 
     "/solutions/[slug]": {
       "label": "Solutions Pages",
       "file": "src/app/solutions/[slug]/page.tsx",
-      "overallStatus": "needs-review",
-      "notes": "File exists but not yet audited in detail. Slugs: cafe-setup, qsr, cloud-kitchen, distributor, industrial, export, menu-plugin"
+      "status": "pending",
+      "slugs": [
+        "cafe-setup",
+        "qsr",
+        "cloud-kitchen",
+        "distributor",
+        "industrial",
+        "export",
+        "menu-plugin"
+      ]
     }
   },
 
   "globalComponents": {
-    "Navbar":        { "status": "complete", "notes": "Mega-menu + mobile accordion. Emoji icons in product categories remain." },
-    "Footer":        { "status": "partial",  "notes": "Functional. Trust bar still uses emojis (✅ 🇮🇳 📦 🤝)." },
-    "WhatsAppFloat": { "status": "complete" },
-    "BulkEnquiryCTA":{ "status": "complete" }
+    "Navbar":         "live",
+    "Footer":         "ready-for-review",
+    "WhatsAppFloat":  "live",
+    "BulkEnquiryCTA": "live"
   },
 
   "dataLayer": {
-    "mockData": {
-      "status": "partial",
-      "productCount": 37,
-      "recipeCount": 10,
-      "collectionCount": 19,
-      "emptyCollections": ["japanese-tea", "diy-boba-cups", "rtd-beverages"],
-      "images": "All products share 2 placeholder CDN images — not product-specific"
-    },
-    "shopify": {
-      "status": "not-started",
-      "integrationFile": "src/lib/shopify.ts",
-      "note": "Storefront API client built. Env vars not set. isShopifyConfigured = false."
-    }
-  },
-
-  "pendingFixes": [
-    {
-      "priority": "high",
-      "issue": "collections/[handle] ProductGrid: ShoppingCart + Order button",
-      "file": "src/app/collections/[handle]/page.tsx",
-      "line": 209,
-      "fix": "Replace with 'View Product' — same as BestSellers fix already applied"
-    },
-    {
-      "priority": "medium",
-      "issue": "about/page.tsx Values section: emoji icons",
-      "file": "src/app/about/page.tsx",
-      "line": "20-23",
-      "fix": "Replace emoji with SVG icons matching BusinessSolutions style"
-    },
-    {
-      "priority": "low",
-      "issue": "Footer trust bar: emoji characters",
-      "file": "src/components/layout/Footer.tsx",
-      "fix": "Replace ✅ 🇮🇳 📦 🤝 with SVG icons or text-only"
-    }
-  ]
+    "mockData":     "in-progress",
+    "shopify":      "pending",
+    "siteMapJson":  "live",
+    "assetsJson":   "live"
+  }
 }
