@@ -109,7 +109,46 @@ const PRODUCT_CATEGORIES = [
   },
 ];
 
-// ── Rest of nav (Solutions, Recipes, etc.) ────────────────────────────────────
+// ── Solutions dropdown data ───────────────────────────────────────────────────
+const SOLUTIONS_NAV = [
+  {
+    icon: '📖',
+    title: 'Shop by Recipe',
+    desc: 'Recipe series & beverage success toolkit',
+    href: '/recipes',
+    featured: false,
+  },
+  {
+    icon: '✏️',
+    title: 'Menu Plug-In',
+    desc: 'Ready-made beverage category modules',
+    href: '/solutions/menu-plugin',
+    featured: false,
+  },
+  {
+    icon: '🏠',
+    title: 'Cloud Kitchen Menu',
+    desc: 'Delivery-optimized complete beverage menu',
+    href: '/solutions/cloud-kitchen',
+    featured: false,
+  },
+  {
+    icon: '🏭',
+    title: 'Industrial Ingredients',
+    desc: 'Bulk ingredients for manufacturers & food service',
+    href: '/solutions/industrial',
+    featured: false,
+  },
+  {
+    icon: '🏆',
+    title: 'Why Tea Planet',
+    desc: 'Cost-per-cup advantage, formulation & support',
+    href: '/about',
+    featured: true,
+  },
+];
+
+// ── Rest of nav (Recipes, Launch Business, Contact) ───────────────────────────
 type Column = {
   heading: string;
   items: Array<{ label: string; href: string; desc?: string }>;
@@ -124,29 +163,6 @@ function hasHref(item: RestNavItem): item is LinkNavItem       { return 'href' i
 
 const NAV_REST: RestNavItem[] = [
   {
-    label: 'Solutions',
-    columns: [
-      {
-        heading: 'By Business Type',
-        items: [
-          { label: 'For Cafés & Tea Bars',    href: '/solutions/cafe-setup',    desc: 'Full bar setup, menu & training' },
-          { label: 'For QSR Chains',           href: '/solutions/qsr',           desc: 'Multi-outlet consistency & supply' },
-          { label: 'For Cloud Kitchens',       href: '/solutions/cloud-kitchen', desc: 'Delivery-stable beverages & kits' },
-          { label: 'For Distributors',         href: '/solutions/distributor',   desc: 'Regional partner program' },
-          { label: 'For Industrial Customers', href: '/solutions/industrial',    desc: 'Bulk 20 kg supply & custom formulation' },
-          { label: 'Export Enquiry',           href: '/solutions/export',        desc: 'International B2B supply' },
-        ],
-      },
-      {
-        heading: 'Packages',
-        items: [
-          { label: 'Menu Plug-In Kit',         href: '/solutions/menu-plugin', desc: 'Launch a boba menu in 7 days' },
-          { label: 'Branded Operator Program', href: '/operator-program',      desc: 'Franchise-alternative model' },
-        ],
-      },
-    ],
-  },
-  {
     label: 'Recipes',
     columns: [
       {
@@ -157,6 +173,7 @@ const NAV_REST: RestNavItem[] = [
           { label: 'Signature Fusions', href: '/recipes?category=signature' },
           { label: 'Iced Teas',         href: '/recipes?category=iced-tea' },
           { label: 'Hot Beverages',     href: '/recipes?category=hot' },
+          { label: 'Signature Drinks',  href: '/signature-drinks' },
         ],
       },
       {
@@ -171,7 +188,6 @@ const NAV_REST: RestNavItem[] = [
       },
     ],
   },
-  { label: 'Signature Drinks', href: '/signature-drinks' },
   {
     label: 'Launch Business',
     columns: [
@@ -309,6 +325,62 @@ export default function Navbar() {
                     </Link>
                   </div>
                 </div>
+              </div>
+            )}
+          </li>
+
+          {/* ── Solutions dropdown ── */}
+          <li
+            className="relative"
+            onMouseEnter={() => openDropdown('Solutions')}
+            onMouseLeave={closeDropdown}
+          >
+            <button
+              className={`flex items-center gap-1 px-3.5 py-2 text-sm font-medium rounded-[8px] transition-colors ${
+                active === 'Solutions'
+                  ? 'text-brand-green bg-background'
+                  : 'text-textPrimary hover:text-brand-green hover:bg-background'
+              }`}
+            >
+              Solutions
+              <ChevronDown size={13} className={`transition-transform ${active === 'Solutions' ? 'rotate-180' : ''}`} />
+            </button>
+
+            {active === 'Solutions' && (
+              <div
+                className="absolute top-full left-0 mt-0 bg-white shadow-elevated border border-borderLight rounded-[12px] z-50 w-[360px] p-2"
+                onMouseEnter={() => openDropdown('Solutions')}
+                onMouseLeave={closeDropdown}
+              >
+                {SOLUTIONS_NAV.map((item) =>
+                  item.featured ? (
+                    <Link
+                      key={item.title}
+                      href={item.href}
+                      onClick={() => setActive(null)}
+                      className="flex items-start gap-3 rounded-[8px] bg-[#fef9f0] border border-[#d4a24e]/25 p-3 mt-1 hover:bg-[#fef3e2] transition-colors"
+                    >
+                      <span className="text-2xl leading-none mt-0.5 shrink-0">{item.icon}</span>
+                      <div>
+                        <p className="font-bold text-sm text-[#d4a24e]">{item.title}</p>
+                        <p className="text-xs text-textSecondary mt-0.5 leading-relaxed">{item.desc}</p>
+                      </div>
+                    </Link>
+                  ) : (
+                    <Link
+                      key={item.title}
+                      href={item.href}
+                      onClick={() => setActive(null)}
+                      className="flex items-start gap-3 p-3 rounded-[8px] hover:bg-background transition-colors"
+                    >
+                      <span className="text-2xl leading-none mt-0.5 shrink-0">{item.icon}</span>
+                      <div>
+                        <p className="font-bold text-sm text-textPrimary">{item.title}</p>
+                        <p className="text-xs text-textSecondary mt-0.5 leading-relaxed">{item.desc}</p>
+                      </div>
+                    </Link>
+                  )
+                )}
               </div>
             )}
           </li>
@@ -457,6 +529,34 @@ export default function Navbar() {
                 >
                   All Products →
                 </Link>
+              </div>
+            )}
+          </div>
+
+          {/* Solutions */}
+          <div>
+            <button
+              className="w-full flex items-center justify-between px-6 py-3.5 text-sm font-semibold text-textPrimary border-b border-borderLight hover:bg-background min-h-[44px]"
+              onClick={() => setMobileExpanded(mobileExpanded === 'Solutions' ? null : 'Solutions')}
+            >
+              Solutions
+              <ChevronDown size={14} className={`transition-transform ${mobileExpanded === 'Solutions' ? 'rotate-180' : ''}`} />
+            </button>
+            {mobileExpanded === 'Solutions' && (
+              <div className="bg-background px-4 pb-3">
+                {SOLUTIONS_NAV.map((item) => (
+                  <Link
+                    key={item.title}
+                    href={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    className={`flex items-center gap-3 py-3 border-b border-borderLight/50 last:border-0 ${
+                      item.featured ? 'text-[#d4a24e]' : 'text-textPrimary'
+                    }`}
+                  >
+                    <span className="text-xl shrink-0">{item.icon}</span>
+                    <span className="text-sm font-semibold">{item.title}</span>
+                  </Link>
+                ))}
               </div>
             )}
           </div>
