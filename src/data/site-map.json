@@ -1,0 +1,289 @@
+{
+  "_note": "Canonical route and navigation reference for The Tea Planet website. Keep in sync with Navbar.tsx and Footer.tsx.",
+  "_lastUpdated": "2026-05-10",
+
+  "domain": "https://www.theteaplanet.com",
+
+  "routes": {
+    "public": [
+      {
+        "path": "/",
+        "label": "Home",
+        "file": "src/app/page.tsx",
+        "inNav": false,
+        "inFooter": false,
+        "inSitemap": true
+      },
+      {
+        "path": "/collections/all",
+        "label": "All Products",
+        "file": "src/app/collections/[handle]/page.tsx",
+        "inNav": true,
+        "inFooter": false,
+        "inSitemap": true
+      },
+      {
+        "path": "/collections/boba-bubble-tea",
+        "label": "Boba & Bubble Tea",
+        "file": "src/app/collections/[handle]/page.tsx",
+        "inNav": true,
+        "inFooter": false,
+        "inSitemap": true
+      },
+      {
+        "path": "/collections/boba-desserts",
+        "label": "Boba Desserts",
+        "file": "src/app/collections/[handle]/page.tsx",
+        "inNav": true,
+        "inFooter": false,
+        "inSitemap": true
+      },
+      {
+        "path": "/collections/tea-coffee",
+        "label": "Tea & Coffee",
+        "file": "src/app/collections/[handle]/page.tsx",
+        "inNav": true,
+        "inFooter": false,
+        "inSitemap": true
+      },
+      {
+        "path": "/collections/japanese-tea",
+        "label": "Japanese Tea Range",
+        "file": "src/app/collections/[handle]/page.tsx",
+        "inNav": true,
+        "inFooter": false,
+        "inSitemap": true,
+        "note": "Empty — no products assigned yet"
+      },
+      {
+        "path": "/collections/beverage-mixes",
+        "label": "Beverage Mixes",
+        "file": "src/app/collections/[handle]/page.tsx",
+        "inNav": true,
+        "inFooter": false,
+        "inSitemap": true
+      },
+      {
+        "path": "/collections/toppings",
+        "label": "Toppings",
+        "file": "src/app/collections/[handle]/page.tsx",
+        "inNav": true,
+        "inFooter": true,
+        "inSitemap": true
+      },
+      {
+        "path": "/collections/diy-boba-cups",
+        "label": "DIY Boba Cups",
+        "file": "src/app/collections/[handle]/page.tsx",
+        "inNav": true,
+        "inFooter": false,
+        "inSitemap": true,
+        "note": "Empty — no products assigned yet"
+      },
+      {
+        "path": "/collections/rtd-beverages",
+        "label": "RTD Beverages",
+        "file": "src/app/collections/[handle]/page.tsx",
+        "inNav": true,
+        "inFooter": false,
+        "inSitemap": true,
+        "note": "Empty — no products assigned yet"
+      },
+      {
+        "path": "/collections/silky-mix",
+        "label": "Silky Mix Bases",
+        "file": "src/app/collections/[handle]/page.tsx",
+        "inNav": false,
+        "inFooter": true,
+        "inSitemap": true
+      },
+      {
+        "path": "/collections/syrups-concentrates",
+        "label": "Syrups & Concentrates",
+        "file": "src/app/collections/[handle]/page.tsx",
+        "inNav": false,
+        "inFooter": true,
+        "inSitemap": true
+      },
+      {
+        "path": "/collections/milk-tea-premixes",
+        "label": "Milk Tea Premixes",
+        "file": "src/app/collections/[handle]/page.tsx",
+        "inNav": false,
+        "inFooter": false,
+        "inSitemap": true
+      },
+      {
+        "path": "/collections/tapioca-pearls",
+        "label": "Tapioca Pearls",
+        "file": "src/app/collections/[handle]/page.tsx",
+        "inNav": false,
+        "inFooter": false,
+        "inSitemap": true
+      },
+      {
+        "path": "/collections/popping-boba",
+        "label": "Popping Boba",
+        "file": "src/app/collections/[handle]/page.tsx",
+        "inNav": false,
+        "inFooter": false,
+        "inSitemap": true
+      },
+      {
+        "path": "/collections/nata-de-coco",
+        "label": "Nata de Coco",
+        "file": "src/app/collections/[handle]/page.tsx",
+        "inNav": false,
+        "inFooter": false,
+        "inSitemap": true
+      },
+      {
+        "path": "/collections/konjac-pearls",
+        "label": "Konjac Pearls",
+        "file": "src/app/collections/[handle]/page.tsx",
+        "inNav": false,
+        "inFooter": false,
+        "inSitemap": true
+      },
+      {
+        "path": "/collections/tea-concentrates",
+        "label": "Tea Concentrates",
+        "file": "src/app/collections/[handle]/page.tsx",
+        "inNav": false,
+        "inFooter": false,
+        "inSitemap": true
+      },
+      {
+        "path": "/collections/sponge-cake-mixes",
+        "label": "Sponge Cake Base Mixes",
+        "file": "src/app/collections/[handle]/page.tsx",
+        "inNav": false,
+        "inFooter": false,
+        "inSitemap": true
+      },
+      {
+        "path": "/collections/industrial",
+        "label": "Industrial Ingredients",
+        "file": "src/app/collections/[handle]/page.tsx",
+        "inNav": false,
+        "inFooter": false,
+        "inSitemap": true
+      },
+      {
+        "path": "/products/[handle]",
+        "label": "Product Detail",
+        "file": "src/app/products/[handle]/page.tsx",
+        "inNav": false,
+        "inFooter": false,
+        "inSitemap": true,
+        "note": "Dynamic — 37 product pages generated via generateStaticParams"
+      },
+      {
+        "path": "/recipes",
+        "label": "Recipes",
+        "file": "src/app/recipes/page.tsx",
+        "inNav": true,
+        "inFooter": true,
+        "inSitemap": true
+      },
+      {
+        "path": "/recipes/[slug]",
+        "label": "Recipe Detail",
+        "file": "src/app/recipes/[slug]/page.tsx",
+        "inNav": false,
+        "inFooter": false,
+        "inSitemap": true,
+        "note": "Dynamic — 10 recipe pages generated via generateStaticParams"
+      },
+      {
+        "path": "/signature-drinks",
+        "label": "Signature Drinks",
+        "file": "src/app/signature-drinks/page.tsx",
+        "inNav": true,
+        "inFooter": false,
+        "inSitemap": true
+      },
+      {
+        "path": "/about",
+        "label": "Why Tea Planet",
+        "file": "src/app/about/page.tsx",
+        "inNav": true,
+        "inFooter": true,
+        "inSitemap": true
+      },
+      {
+        "path": "/contact",
+        "label": "Contact",
+        "file": "src/app/contact/page.tsx",
+        "inNav": true,
+        "inFooter": true,
+        "inSitemap": true
+      },
+      {
+        "path": "/operator-program",
+        "label": "Branded Operator Program",
+        "file": "src/app/operator-program/page.tsx",
+        "inNav": true,
+        "inFooter": false,
+        "inSitemap": true
+      },
+      {
+        "path": "/packages",
+        "label": "Business Packages",
+        "file": "src/app/packages/page.tsx",
+        "inNav": false,
+        "inFooter": true,
+        "inSitemap": true
+      },
+      {
+        "path": "/solutions/[slug]",
+        "label": "Solutions",
+        "file": "src/app/solutions/[slug]/page.tsx",
+        "inNav": true,
+        "inFooter": true,
+        "inSitemap": true,
+        "slugs": [
+          "cafe-setup",
+          "qsr",
+          "cloud-kitchen",
+          "distributor",
+          "industrial",
+          "export",
+          "menu-plugin"
+        ]
+      }
+    ],
+
+    "planned": [
+      {
+        "path": "/market-research",
+        "label": "Market Research",
+        "note": "Company pitch and industry research page — not built yet"
+      },
+      {
+        "path": "/why-boba",
+        "label": "Why Boba?",
+        "note": "Category education — market size, margins, Gen Z trends"
+      },
+      {
+        "path": "/blog",
+        "label": "Blog / Insights",
+        "note": "Not started"
+      }
+    ]
+  },
+
+  "navigation": {
+    "topBar": "FSSC 22000 · Made in India · ₹19/cup + Bulk Enquiry CTA",
+    "primaryItems": [
+      "Products (mega-menu)",
+      "Solutions",
+      "Recipes",
+      "Signature Drinks",
+      "Launch Business",
+      "Contact"
+    ],
+    "ctaButtons": ["Bulk Enquiry", "WhatsApp"],
+    "mobileMenu": "Accordion — matches desktop items"
+  }
+}
