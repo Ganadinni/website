@@ -148,30 +148,6 @@ const SOLUTIONS_NAV = [
   },
 ];
 
-// ── Recipes dropdown columns ──────────────────────────────────────────────────
-const RECIPES_COLUMNS = [
-  {
-    heading: 'By Drink Type',
-    items: [
-      { label: 'Boba & Bubble Tea',    href: '/recipes?type=boba' },
-      { label: 'Matcha & Lattes',      href: '/recipes?type=matcha' },
-      { label: 'Chai & Tea',           href: '/recipes?type=chai' },
-      { label: 'Mocktails & Lemonades', href: '/recipes?type=mocktails' },
-      { label: 'Boba Desserts',        href: '/recipes?type=desserts' },
-      { label: '⭐ Signature Drinks',  href: '/signature-drinks' },
-    ],
-  },
-  {
-    heading: 'Tools & Guides',
-    items: [
-      { label: 'All Recipes',         href: '/recipes' },
-      { label: 'Menu Planning Guide', href: '/recipes#menu-plan' },
-      { label: 'Cost Calculator',     href: '/recipes#calculator' },
-    ],
-    cta: { label: 'Browse All Recipes →', href: '/recipes' },
-  },
-];
-
 // ── Launch Business packages ──────────────────────────────────────────────────
 const LAUNCH_PACKAGES = [
   {
@@ -203,9 +179,6 @@ const LAUNCH_PACKAGES = [
     tags: ['Event-Sized Packs', 'Portable Setup Guide', 'Seasonal Menus', 'Quick-Serve Recipes'],
   },
 ];
-
-// ── Contact-only rest nav ─────────────────────────────────────────────────────
-type LinkNavItem = { label: string; href: string };
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen]         = useState(false);
@@ -378,64 +351,6 @@ export default function Navbar() {
             )}
           </li>
 
-          {/* ── Recipes dropdown ── */}
-          <li
-            className="relative"
-            onMouseEnter={() => openDropdown('Recipes')}
-            onMouseLeave={closeDropdown}
-          >
-            <button
-              className={`flex items-center gap-1 px-3.5 py-2 text-sm font-medium rounded-[8px] transition-colors ${
-                active === 'Recipes'
-                  ? 'text-brand-green bg-background'
-                  : 'text-textPrimary hover:text-brand-green hover:bg-background'
-              }`}
-            >
-              Recipes
-              <ChevronDown size={13} className={`transition-transform ${active === 'Recipes' ? 'rotate-180' : ''}`} />
-            </button>
-
-            {active === 'Recipes' && (
-              <div
-                className="absolute top-full left-0 mt-0 bg-white shadow-elevated border border-borderLight rounded-[12px] z-50 w-[440px]"
-                onMouseEnter={() => openDropdown('Recipes')}
-                onMouseLeave={closeDropdown}
-              >
-                <div className="grid grid-cols-2 gap-6 p-6">
-                  {RECIPES_COLUMNS.map((col) => (
-                    <div key={col.heading}>
-                      <p className="text-xs font-semibold uppercase tracking-widest text-textSecondary mb-3 pb-2 border-b border-borderLight">
-                        {col.heading}
-                      </p>
-                      <ul className="space-y-1">
-                        {col.items.map((item) => (
-                          <li key={item.label}>
-                            <Link
-                              href={item.href}
-                              className="block py-1.5 text-sm text-textPrimary hover:text-brand-green transition-colors"
-                              onClick={() => setActive(null)}
-                            >
-                              {item.label}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                      {col.cta && (
-                        <Link
-                          href={col.cta.href}
-                          className="mt-3 inline-block text-xs font-semibold text-brand-mid hover:text-brand-green transition-colors"
-                          onClick={() => setActive(null)}
-                        >
-                          {col.cta.label}
-                        </Link>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </li>
-
           {/* ── Launch Business dropdown ── */}
           <li
             className="relative"
@@ -508,16 +423,6 @@ export default function Navbar() {
                 </div>
               </div>
             )}
-          </li>
-
-          {/* ── Contact ── */}
-          <li>
-            <Link
-              href="/contact"
-              className="flex items-center gap-1 px-3.5 py-2 text-sm font-medium text-textPrimary hover:text-brand-green rounded-[8px] hover:bg-background transition-colors"
-            >
-              Contact
-            </Link>
           </li>
 
         </ul>
@@ -624,42 +529,14 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Recipes */}
-          <div>
-            <button
-              className="w-full flex items-center justify-between px-6 py-3.5 text-sm font-semibold text-textPrimary border-b border-borderLight hover:bg-background min-h-[44px]"
-              onClick={() => setMobileExpanded(mobileExpanded === 'Recipes' ? null : 'Recipes')}
-            >
-              Recipes
-              <ChevronDown size={14} className={`transition-transform ${mobileExpanded === 'Recipes' ? 'rotate-180' : ''}`} />
-            </button>
-            {mobileExpanded === 'Recipes' && (
-              <div className="bg-background px-6 pb-4">
-                {RECIPES_COLUMNS.map((col) => (
-                  <div key={col.heading} className="pt-3">
-                    <p className="text-[10px] font-semibold uppercase tracking-widest text-textSecondary mb-2">{col.heading}</p>
-                    {col.items.map((item) => (
-                      <Link
-                        key={item.label}
-                        href={item.href}
-                        className="block py-2 text-sm text-textPrimary hover:text-brand-green border-b border-borderLight/40 last:border-0"
-                        onClick={() => setMobileOpen(false)}
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </div>
-                ))}
-                <Link
-                  href="/recipes"
-                  className="block mt-3 text-sm font-semibold text-brand-mid hover:text-brand-green"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  Browse All Recipes →
-                </Link>
-              </div>
-            )}
-          </div>
+          {/* Browse All Recipes — direct link */}
+          <Link
+            href="/recipes"
+            className="block px-6 py-3.5 text-sm font-semibold text-textPrimary border-b border-borderLight hover:bg-background"
+            onClick={() => setMobileOpen(false)}
+          >
+            Browse All Recipes
+          </Link>
 
           {/* Launch Business */}
           <div>
@@ -701,15 +578,6 @@ export default function Navbar() {
               </div>
             )}
           </div>
-
-          {/* Contact */}
-          <Link
-            href="/contact"
-            className="block px-6 py-3.5 text-sm font-semibold text-textPrimary border-b border-borderLight hover:bg-background"
-            onClick={() => setMobileOpen(false)}
-          >
-            Contact
-          </Link>
 
           {/* Mobile bottom CTAs */}
           <div className="flex gap-3 p-4 border-t border-borderLight">
